@@ -1,0 +1,94 @@
+name: Microsoft Power Automate
+description: Microsoft Power Automate is a service that helps you create automated workflows between your favorite apps and services to synchronize files, get notifications, collect data, and more.
+image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+url: https://powerautomate.microsoft.com
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+tags:
+- Automation
+- Workflow
+- Integration
+- Low-Code
+- Microsoft
+- Business Process
+- RPA
+apis:
+- name: Power Automate Management API
+  description: REST API for managing flows, connections, and environments in Power Automate
+  image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+  humanURL: https://powerautomate.microsoft.com
+  baseURL: https://api.flow.microsoft.com
+  tags:
+  - Management
+  - Flows
+  - Automation
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/web-api
+  - type: OpenAPI
+    url: https://learn.microsoft.com/en-us/rest/api/power-automate/
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+  - type: Pricing
+    url: https://powerautomate.microsoft.com/en-us/pricing/
+  - type: Terms of Service
+    url: https://powerautomate.microsoft.com/en-us/terms-of-use/
+- name: Power Automate Connectors API
+  description: API for creating and managing custom connectors in Power Automate
+  image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+  humanURL: https://learn.microsoft.com/en-us/connectors/
+  baseURL: https://api.flow.microsoft.com/providers/Microsoft.PowerApps/apis
+  tags:
+  - Connectors
+  - Integration
+  - Custom Connectors
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/connectors/custom-connectors/
+  - type: OpenAPI
+    url: https://learn.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition
+  - type: Connector Reference
+    url: https://learn.microsoft.com/en-us/connectors/connector-reference/
+- name: Power Automate Desktop API
+  description: API for interacting with Power Automate Desktop for robotic process automation
+  image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+  humanURL: https://powerautomate.microsoft.com/en-us/desktop/
+  baseURL: https://api.flow.microsoft.com
+  tags:
+  - RPA
+  - Desktop Automation
+  - Robotic Process Automation
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/desktop-flows/
+  - type: Getting Started
+    url: https://learn.microsoft.com/en-us/power-automate/desktop-flows/introduction
+common:
+- type: Portal
+  url: https://make.powerautomate.com
+- type: Blog
+  url: https://powerautomate.microsoft.com/en-us/blog/
+- type: Community
+  url: https://powerusers.microsoft.com/t5/Microsoft-Power-Automate/ct-p/MPACommunity
+- type: Support
+  url: https://powerautomate.microsoft.com/en-us/support/
+- type: Status
+  url: https://status.powerplatform.microsoft.com/
+- type: Learning Resources
+  url: https://learn.microsoft.com/en-us/training/powerplatform/power-automate
+- type: Templates
+  url: https://powerautomate.microsoft.com/en-us/templates/
+- type: GitHub
+  url: https://github.com/microsoft/PowerApps-Samples
+- type: Privacy Policy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: Terms of Service
+  url: https://www.microsoft.com/en-us/servicesagreement
+maintainers:
+- name: Microsoft Corporation
+  email: powerautomate@microsoft.com
+  url: https://www.microsoft.com
+include:
+- name: Power Platform Admin Center API
+  url: https://learn.microsoft.com/en-us/power-platform/admin/
