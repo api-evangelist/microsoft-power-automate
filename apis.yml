@@ -1,42 +1,37 @@
 aid: microsoft-power-automate
 name: Microsoft Power Automate
-description: Microsoft Power Automate is a service that helps you create 
-  automated workflows between your favorite apps and services to synchronize 
-  files, get notifications, collect data, and more.
-image: 
-  https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+description: Microsoft Power Automate is a service that helps you create automated workflows between your favorite apps and services to synchronize files, get notifications, collect data, and more.
+image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
 url: https://powerautomate.microsoft.com
 created: '2024'
 modified: '2026-03-16'
 specificationVersion: '0.19'
 tags:
   - Automation
-  - Workflow
+  - Business Process
   - Integration
   - Low-Code
   - Microsoft
-  - Business Process
   - RPA
+  - Workflow
 apis:
   - name: Power Automate Management API
     description: >-
       REST API for managing flows, connections, and environments in Power Automate.
-    image: 
-      https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+    image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
     humanURL: https://powerautomate.microsoft.com
     baseURL: https://api.flow.microsoft.com
     tags:
-      - Management
-      - Flows
       - Automation
+      - Flows
+      - Management
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/power-automate/web-api
       - type: OpenAPI
         url: https://learn.microsoft.com/en-us/rest/api/power-automate/
       - type: Authentication
-        url: 
-          https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+        url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
       - type: Pricing
         url: https://powerautomate.microsoft.com/en-us/pricing/
       - type: Terms of Service
@@ -44,47 +39,42 @@ apis:
   - name: Power Automate Connectors API
     description: >-
       API for creating and managing custom connectors in Power Automate.
-    image: 
-      https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+    image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
     humanURL: https://learn.microsoft.com/en-us/connectors/
     baseURL: https://api.flow.microsoft.com/providers/Microsoft.PowerApps/apis
     tags:
       - Connectors
-      - Integration
       - Custom Connectors
+      - Integration
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/connectors/custom-connectors/
       - type: OpenAPI
-        url: 
-          https://learn.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition
+        url: https://learn.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition
       - type: Connector Reference
         url: https://learn.microsoft.com/en-us/connectors/connector-reference/
   - name: Power Automate Desktop API
     description: >-
       API for interacting with Power Automate Desktop for robotic process automation.
-    image: 
-      https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+    image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
     humanURL: https://powerautomate.microsoft.com/en-us/desktop/
     baseURL: https://api.flow.microsoft.com
     tags:
-      - RPA
       - Desktop Automation
       - Robotic Process Automation
+      - RPA
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/power-automate/desktop-flows/
       - type: Getting Started
-        url: 
-          https://learn.microsoft.com/en-us/power-automate/desktop-flows/introduction
+        url: https://learn.microsoft.com/en-us/power-automate/desktop-flows/introduction
 common:
   - type: Portal
     url: https://make.powerautomate.com
   - type: Blog
     url: https://powerautomate.microsoft.com/en-us/blog/
   - type: Community
-    url: 
-      https://powerusers.microsoft.com/t5/Microsoft-Power-Automate/ct-p/MPACommunity
+    url: https://powerusers.microsoft.com/t5/Microsoft-Power-Automate/ct-p/MPACommunity
   - type: Support
     url: https://powerautomate.microsoft.com/en-us/support/
   - type: Status
