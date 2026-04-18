@@ -1,0 +1,11 @@
+{
+  "name": "08585132316362410016778943264CU43",
+  "id": "/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4/runs/08585132316362410016778943264CU43",
+  "type": "Microsoft.ProcessSimple/environments/flows/runs",
+  "properties": {
+    "startTime": "2026-04-15T10:00:00Z",
+    "endTime": "2026-04-15T10:00:05Z",
+    "status": "Succeeded",
+    "code": "OK"
+  }
+}

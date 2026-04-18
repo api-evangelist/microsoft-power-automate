@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-power-automate/refs/heads/main/json-structure/power-automate-management-api-connector-structure.json",
+  "name": "Connector",
+  "description": "A Power Automate connector.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "iconUri": { "type": "uri" },
+        "isCustomApi": { "type": "boolean" },
+        "tier": { "type": "string" }
+      }
+    }
+  }
+}

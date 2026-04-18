@@ -1,0 +1,14 @@
+{
+  "name": "Default-a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "location": "unitedstates",
+  "properties": {
+    "displayName": "Production Environment",
+    "description": "Main production environment for business flows.",
+    "createdTime": "2025-01-15T10:00:00Z",
+    "lastModifiedTime": "2026-04-10T14:30:00Z",
+    "provisioningState": "Succeeded",
+    "environmentSku": "Production",
+    "environmentType": "Production",
+    "isDefault": false
+  }
+}

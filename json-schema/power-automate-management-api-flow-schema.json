@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-power-automate/refs/heads/main/json-schema/power-automate-management-api-flow-schema.json",
+  "title": "Flow",
+  "description": "A Power Automate cloud flow.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "description": "The unique name or ID of the flow." },
+    "id": { "type": "string", "description": "The full resource ID of the flow." },
+    "type": { "type": "string", "description": "The resource type." },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string", "description": "The display name of the flow." },
+        "state": { "type": "string", "enum": ["Started", "Stopped", "Suspended"] },
+        "createdTime": { "type": "string", "format": "date-time" },
+        "lastModifiedTime": { "type": "string", "format": "date-time" },
+        "templateName": { "type": "string" },
+        "flowTriggerUri": { "type": "string" },
+        "installationStatus": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-power-automate/refs/heads/main/json-structure/power-automate-management-api-flow-run-structure.json",
+  "name": "FlowRun",
+  "description": "A flow run representing a single execution of a flow.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "id": { "type": "string" },
+    "type": { "type": "string" },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "startTime": { "type": "datetime" },
+        "endTime": { "type": "datetime" },
+        "status": { "type": "string" },
+        "code": { "type": "string" }
+      }
+    }
+  }
+}

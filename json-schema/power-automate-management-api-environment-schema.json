@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-power-automate/refs/heads/main/json-schema/power-automate-management-api-environment-schema.json",
+  "title": "Environment",
+  "description": "A Power Automate environment.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "description": "The unique name of the environment." },
+    "location": { "type": "string", "description": "The geographic location." },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "description": { "type": "string" },
+        "createdTime": { "type": "string", "format": "date-time" },
+        "lastModifiedTime": { "type": "string", "format": "date-time" },
+        "provisioningState": { "type": "string" },
+        "environmentSku": { "type": "string" },
+        "environmentType": { "type": "string" },
+        "isDefault": { "type": "boolean" }
+      }
+    }
+  }
+}

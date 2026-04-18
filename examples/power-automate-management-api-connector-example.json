@@ -1,0 +1,9 @@
+{
+  "name": "shared_commondataserviceforapps",
+  "properties": {
+    "displayName": "Microsoft Dataverse",
+    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1778/1.0.1778.4417/commondataserviceforapps/icon.png",
+    "isCustomApi": false,
+    "tier": "Standard"
+  }
+}

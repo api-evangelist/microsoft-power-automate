@@ -1,0 +1,14 @@
+{
+  "name": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "id": "/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4",
+  "type": "Microsoft.ProcessSimple/environments/flows",
+  "properties": {
+    "displayName": "Daily Report Automation",
+    "state": "Started",
+    "createdTime": "2025-06-15T08:00:00Z",
+    "lastModifiedTime": "2026-04-10T14:30:00Z",
+    "templateName": "blank",
+    "flowTriggerUri": "https://prod-01.westus.logic.azure.com/workflows/abc123",
+    "installationStatus": "Installed"
+  }
+}

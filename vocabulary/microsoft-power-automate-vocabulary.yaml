@@ -1,0 +1,171 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Microsoft Power Automate"
+  description: "Vocabulary covering the Microsoft Power Automate Management API operational and capability dimensions."
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+operational:
+  apis:
+    - name: Power Automate Management API
+      namespace: management-api
+      version: v1
+      baseUrl: https://api.flow.microsoft.com
+      status: active
+
+  resources:
+    - name: environments
+      apis: [management-api]
+      actions: [list]
+    - name: flows
+      apis: [management-api]
+      actions: [list, create, get, update, delete, turnOn, turnOff]
+    - name: flowRuns
+      apis: [management-api]
+      actions: [list, get, cancel, resubmit]
+    - name: connectors
+      apis: [management-api]
+      actions: [list, get]
+    - name: connections
+      apis: [management-api]
+      actions: [list]
+    - name: flowOwners
+      apis: [management-api]
+      actions: [list, modify]
+
+  actions:
+    - name: list
+      methods: [GET]
+      pattern: read
+    - name: create
+      methods: [POST]
+      pattern: write
+    - name: get
+      methods: [GET]
+      pattern: read
+    - name: update
+      methods: [PATCH]
+      pattern: write
+    - name: delete
+      methods: [DELETE]
+      pattern: destructive
+    - name: turnOn
+      methods: [POST]
+      pattern: write
+    - name: turnOff
+      methods: [POST]
+      pattern: write
+    - name: cancel
+      methods: [POST]
+      pattern: write
+    - name: resubmit
+      methods: [POST]
+      pattern: write
+    - name: modify
+      methods: [POST]
+      pattern: write
+
+  schemas:
+    core:
+      - name: Flow
+        description: A Power Automate cloud flow
+        keyProperties: [name, displayName, state, createdTime]
+      - name: Environment
+        description: A Power Automate environment
+        keyProperties: [name, location, displayName, environmentSku]
+      - name: FlowRun
+        description: A flow run execution record
+        keyProperties: [name, startTime, endTime, status]
+      - name: Connector
+        description: A connector for integrating with external services
+        keyProperties: [name, displayName, tier, isCustomApi]
+
+  parameters:
+    identifiers:
+      - name: environmentName
+        type: string
+      - name: flowName
+        type: string
+      - name: runId
+        type: string
+      - name: apiName
+        type: string
+
+  enums:
+    flowStates:
+      - Started
+      - Stopped
+      - Suspended
+    runStatuses:
+      - Running
+      - Succeeded
+      - Failed
+      - Cancelled
+      - Waiting
+      - Suspended
+    connectorTiers:
+      - Standard
+      - Premium
+
+  authentication:
+    schemes:
+      - type: oauth2
+        flows: [authorizationCode]
+        scopes:
+          - https://service.flow.microsoft.com/.default
+
+capability:
+  workflows:
+    - name: Flow Automation
+      file: capabilities/flow-automation.yaml
+      description: "Manage flows, environments, and connectors"
+      apisUsed: [management-api]
+      toolCount: 10
+      personas: [Automation Engineer, Platform Administrator]
+      domains: [Flow Management, Environment Administration]
+
+  personas:
+    - id: automation-engineer
+      name: Automation Engineer
+      description: Creates and manages automation flows
+      workflows: [Flow Automation]
+    - id: platform-admin
+      name: Platform Administrator
+      description: Manages environments, connectors, and permissions
+      workflows: [Flow Automation]
+
+  domains:
+    - name: Flow Management
+      description: Creating, running, and managing automation flows
+      resources: [flows, flowRuns]
+    - name: Environment Administration
+      description: Managing environments and available connectors
+      resources: [environments, connectors, connections]
+
+  namespaces:
+    consumed:
+      - management-api
+    restExposed:
+      - namespace: flow-automation-api
+        port: 8080
+    mcpExposed:
+      - namespace: flow-automation-mcp
+        port: 9090
+
+  binds:
+    - POWER_AUTOMATE_TOKEN
+
+crossReference:
+  - resource: environments
+    operations: [listEnvironments]
+    workflows: [Flow Automation]
+    personas: [Platform Administrator]
+  - resource: flows
+    operations: [listFlows, createFlow, getFlow, updateFlow, deleteFlow, turnOnFlow, turnOffFlow]
+    workflows: [Flow Automation]
+    personas: [Automation Engineer, Platform Administrator]
+  - resource: connectors
+    operations: [listConnectors, getConnector]
+    workflows: [Flow Automation]
+    personas: [Platform Administrator]

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-power-automate/refs/heads/main/json-structure/power-automate-management-api-flow-structure.json",
+  "name": "Flow",
+  "description": "A Power Automate cloud flow.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "id": { "type": "string" },
+    "type": { "type": "string" },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "state": { "type": "string" },
+        "createdTime": { "type": "datetime" },
+        "lastModifiedTime": { "type": "datetime" },
+        "templateName": { "type": "string" },
+        "flowTriggerUri": { "type": "uri" },
+        "installationStatus": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-power-automate/refs/heads/main/json-schema/power-automate-management-api-flow-run-schema.json",
+  "title": "FlowRun",
+  "description": "A flow run representing a single execution of a flow.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "description": "The unique ID of the flow run." },
+    "id": { "type": "string", "description": "The full resource ID." },
+    "type": { "type": "string" },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "startTime": { "type": "string", "format": "date-time" },
+        "endTime": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["Running", "Succeeded", "Failed", "Cancelled", "Waiting", "Suspended"] },
+        "code": { "type": "string" }
+      }
+    }
+  }
+}

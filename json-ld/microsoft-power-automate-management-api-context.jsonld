@@ -1,0 +1,83 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "mpa": "https://api.flow.microsoft.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Flow": "mpa:Flow",
+    "Environment": "mpa:Environment",
+    "FlowRun": "mpa:FlowRun",
+    "Connector": "mpa:Connector",
+    "Connection": "mpa:Connection",
+    "FlowPermission": "mpa:FlowPermission",
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "displayName": {
+      "@id": "mpa:displayName",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "mpa:state",
+      "@type": "xsd:string"
+    },
+    "createdTime": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "lastModifiedTime": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "startTime": {
+      "@id": "mpa:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "mpa:endTime",
+      "@type": "xsd:dateTime"
+    },
+    "status": {
+      "@id": "mpa:status",
+      "@type": "xsd:string"
+    },
+    "location": {
+      "@id": "mpa:location",
+      "@type": "xsd:string"
+    },
+    "environmentSku": {
+      "@id": "mpa:environmentSku",
+      "@type": "xsd:string"
+    },
+    "isDefault": {
+      "@id": "mpa:isDefault",
+      "@type": "xsd:boolean"
+    },
+    "flowTriggerUri": {
+      "@id": "mpa:flowTriggerUri",
+      "@type": "@id"
+    },
+    "iconUri": {
+      "@id": "mpa:iconUri",
+      "@type": "@id"
+    },
+    "tier": {
+      "@id": "mpa:tier",
+      "@type": "xsd:string"
+    },
+    "isCustomApi": {
+      "@id": "mpa:isCustomApi",
+      "@type": "xsd:boolean"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    }
+  }
+}

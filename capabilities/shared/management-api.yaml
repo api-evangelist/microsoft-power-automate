@@ -1,0 +1,274 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Microsoft Power Automate Management API"
+  description: "Manage flows, environments, connections, and connectors in Power Automate."
+  tags:
+    - Microsoft Power Automate
+    - Automation
+    - Flows
+    - Workflow Management
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      POWER_AUTOMATE_TOKEN: POWER_AUTOMATE_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: management-api
+      baseUri: https://api.flow.microsoft.com
+      description: "Power Automate Management API for managing flows, environments, and connectors."
+      authentication:
+        type: bearer
+        token: "{{POWER_AUTOMATE_TOKEN}}"
+      resources:
+        - name: environments
+          path: /providers/Microsoft.ProcessSimple/environments
+          description: "Environment management operations"
+          operations:
+            - name: list-environments
+              method: GET
+              description: "List all accessible environments"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: flows
+          path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows
+          description: "Flow management operations"
+          operations:
+            - name: list-flows
+              method: GET
+              description: "List flows in an environment"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Environment name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-flow
+              method: POST
+              description: "Create a new flow"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Environment name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  properties: "{{tools.flowProperties}}"
+            - name: get-flow
+              method: GET
+              description: "Get flow details"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                - name: flowName
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-flow
+              method: PATCH
+              description: "Update a flow"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                - name: flowName
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-flow
+              method: DELETE
+              description: "Delete a flow"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                - name: flowName
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: turn-on-flow
+              method: POST
+              description: "Start a flow"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                - name: flowName
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: turn-off-flow
+              method: POST
+              description: "Stop a flow"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                - name: flowName
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: connectors
+          path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis
+          description: "Connector operations"
+          operations:
+            - name: list-connectors
+              method: GET
+              description: "List all connectors"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-connector
+              method: GET
+              description: "Get connector details"
+              inputParameters:
+                - name: environmentName
+                  in: path
+                  type: string
+                  required: true
+                - name: apiName
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: management-api-rest
+      resources:
+        - path: /v1/environments
+          name: environments
+          description: "Environment management"
+          operations:
+            - method: GET
+              name: list-environments
+              call: "management-api.list-environments"
+        - path: /v1/flows
+          name: flows
+          description: "Flow management"
+          operations:
+            - method: GET
+              name: list-flows
+              call: "management-api.list-flows"
+            - method: POST
+              name: create-flow
+              call: "management-api.create-flow"
+
+    - type: mcp
+      port: 9100
+      namespace: management-api-mcp
+      transport: http
+      tools:
+        - name: list-environments
+          description: "List Power Automate environments"
+          hints:
+            readOnly: true
+          call: "management-api.list-environments"
+        - name: list-flows
+          description: "List flows in an environment"
+          hints:
+            readOnly: true
+          call: "management-api.list-flows"
+        - name: create-flow
+          description: "Create a new flow"
+          hints:
+            readOnly: false
+          call: "management-api.create-flow"
+        - name: get-flow
+          description: "Get flow details"
+          hints:
+            readOnly: true
+          call: "management-api.get-flow"
+        - name: update-flow
+          description: "Update a flow"
+          hints:
+            readOnly: false
+          call: "management-api.update-flow"
+        - name: delete-flow
+          description: "Delete a flow"
+          hints:
+            destructive: true
+          call: "management-api.delete-flow"
+        - name: turn-on-flow
+          description: "Start a flow"
+          hints:
+            readOnly: false
+          call: "management-api.turn-on-flow"
+        - name: turn-off-flow
+          description: "Stop a flow"
+          hints:
+            readOnly: false
+          call: "management-api.turn-off-flow"
+        - name: list-connectors
+          description: "List available connectors"
+          hints:
+            readOnly: true
+          call: "management-api.list-connectors"
+        - name: get-connector
+          description: "Get connector details"
+          hints:
+            readOnly: true
+          call: "management-api.get-connector"

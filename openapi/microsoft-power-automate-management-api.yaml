@@ -1,0 +1,1305 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Power Automate Management API
+  description: >-
+    The Power Automate Management API enables interaction with the Power Automate
+    Management service for creating, editing, updating, and managing flows,
+    environments, connections, and connectors programmatically.
+  version: v1
+  contact:
+    name: Microsoft
+    url: https://powerautomate.microsoft.com
+  license:
+    name: Microsoft API Terms
+    url: https://www.microsoft.com/en-us/servicesagreement
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+
+servers:
+  - url: https://api.flow.microsoft.com
+    description: Power Automate Management API server
+
+security:
+  - oauth2: []
+
+tags:
+  - name: Environments
+    description: Operations for managing Power Automate environments
+  - name: Flows
+    description: Operations for managing cloud flows
+  - name: Flow Runs
+    description: Operations for managing flow run history
+  - name: Connections
+    description: Operations for managing connections
+  - name: Connectors
+    description: Operations for managing connectors
+  - name: Flow Permissions
+    description: Operations for managing flow sharing and ownership
+
+paths:
+  /providers/Microsoft.ProcessSimple/environments:
+    get:
+      operationId: listEnvironments
+      summary: Microsoft Power Automate List Environments
+      description: List all the environments the current user has access to.
+      tags:
+        - Environments
+      responses:
+        '200':
+          description: Successful response with list of environments.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows:
+    get:
+      operationId: listFlows
+      summary: Microsoft Power Automate List Flows
+      description: List all flows the current user created in the given environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of flows.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createFlow
+      summary: Microsoft Power Automate Create Flow
+      description: Create a new flow in the given environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowCreateRequest'
+      responses:
+        '201':
+          description: Flow created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flow'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}:
+    get:
+      operationId: getFlow
+      summary: Microsoft Power Automate Get Flow
+      description: Get the details of a specific flow in an environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with flow details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flow'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateFlow
+      summary: Microsoft Power Automate Update Flow
+      description: Update the properties of a specific flow in an environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowUpdateRequest'
+      responses:
+        '200':
+          description: Flow updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flow'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteFlow
+      summary: Microsoft Power Automate Delete Flow
+      description: Delete a specific flow from an environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Flow deleted successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/start:
+    post:
+      operationId: turnOnFlow
+      summary: Microsoft Power Automate Turn on Flow
+      description: Start (activate) a specific flow in an environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Flow turned on successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/stop:
+    post:
+      operationId: turnOffFlow
+      summary: Microsoft Power Automate Turn off Flow
+      description: Stop (deactivate) a specific flow in an environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Flow turned off successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs:
+    get:
+      operationId: listFlowRuns
+      summary: Microsoft Power Automate List Flow Runs
+      description: List the run history for a specific flow.
+      tags:
+        - Flow Runs
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of flow runs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowRunList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}:
+    get:
+      operationId: getFlowRun
+      summary: Microsoft Power Automate Get Flow Run
+      description: Get the details of a specific flow run.
+      tags:
+        - Flow Runs
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+        - name: runId
+          in: path
+          required: true
+          description: The ID of the flow run.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with flow run details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowRun'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow run not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}/cancel:
+    post:
+      operationId: cancelFlowRun
+      summary: Microsoft Power Automate Cancel Flow Run
+      description: Cancel a currently running flow run.
+      tags:
+        - Flow Runs
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+        - name: runId
+          in: path
+          required: true
+          description: The ID of the flow run to cancel.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Flow run cancelled successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow run not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}/resubmit:
+    post:
+      operationId: resubmitFlowRun
+      summary: Microsoft Power Automate Resubmit Flow Run
+      description: Resubmit a previously executed flow run.
+      tags:
+        - Flow Runs
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+        - name: runId
+          in: path
+          required: true
+          description: The ID of the flow run to resubmit.
+          schema:
+            type: string
+        - name: triggerName
+          in: query
+          required: true
+          description: Name of the flow trigger to resubmit.
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Flow run resubmitted successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow run not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/owners:
+    get:
+      operationId: listFlowOwners
+      summary: Microsoft Power Automate List Flow Owners
+      description: List all owners of a specific flow in an environment.
+      tags:
+        - Flow Permissions
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of flow owners.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowPermissionList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: modifyFlowOwners
+      summary: Microsoft Power Automate Modify Flow Owners
+      description: Add or remove owners of a specific flow in an environment.
+      tags:
+        - Flow Permissions
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowOwnerModifyRequest'
+      responses:
+        '200':
+          description: Flow owners modified successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/listCallbackUrl:
+    post:
+      operationId: listCallbackUrl
+      summary: Microsoft Power Automate List Callback URL
+      description: Get the callback URL for a specific flow in an environment.
+      tags:
+        - Flows
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: flowName
+          in: path
+          required: true
+          description: The name or ID of the flow.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with callback URL.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallbackUrlResponse'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis:
+    get:
+      operationId: listConnectors
+      summary: Microsoft Power Automate List Connectors
+      description: List all connectors available in the given environment including custom and built-in connectors.
+      tags:
+        - Connectors
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of connectors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis/{apiName}:
+    get:
+      operationId: getConnector
+      summary: Microsoft Power Automate Get Connector
+      description: Get the details of a specific connector in an environment.
+      tags:
+        - Connectors
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+        - name: apiName
+          in: path
+          required: true
+          description: The name of the connector.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with connector details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connector'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Connector not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/connections:
+    get:
+      operationId: listConnections
+      summary: Microsoft Power Automate List Connections
+      description: List all connections available in the given environment.
+      tags:
+        - Connections
+      parameters:
+        - name: environmentName
+          in: path
+          required: true
+          description: The name of the environment.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of connections.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft Entra ID (Azure AD) OAuth 2.0 authentication.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/token
+          scopes:
+            https://service.flow.microsoft.com/.default: Access Power Automate Management API
+
+  schemas:
+    Environment:
+      type: object
+      description: A Power Automate environment.
+      properties:
+        name:
+          type: string
+          description: The unique name of the environment.
+          example: "Default-a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+        location:
+          type: string
+          description: The geographic location of the environment.
+          example: "unitedstates"
+        properties:
+          $ref: '#/components/schemas/EnvironmentProperties'
+
+    EnvironmentProperties:
+      type: object
+      description: Properties of an environment.
+      properties:
+        displayName:
+          type: string
+          description: The display name of the environment.
+          example: "Production Environment"
+        description:
+          type: string
+          description: The description of the environment.
+          example: "Main production environment for business flows."
+        createdTime:
+          type: string
+          format: date-time
+          description: The date and time the environment was created.
+          example: "2025-01-15T10:00:00Z"
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: The last modification time.
+          example: "2026-04-10T14:30:00Z"
+        provisioningState:
+          type: string
+          description: The provisioning state of the environment.
+          example: "Succeeded"
+        environmentSku:
+          type: string
+          description: The SKU of the environment.
+          example: "Production"
+        environmentType:
+          type: string
+          description: The type of the environment.
+          example: "Production"
+        isDefault:
+          type: boolean
+          description: Whether this is the default environment.
+          example: false
+
+    EnvironmentList:
+      type: object
+      description: A list of environments.
+      properties:
+        value:
+          type: array
+          description: The array of environments.
+          items:
+            $ref: '#/components/schemas/Environment'
+
+    Flow:
+      type: object
+      description: A Power Automate cloud flow.
+      properties:
+        name:
+          type: string
+          description: The unique name or ID of the flow.
+          example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+        id:
+          type: string
+          description: The full resource ID of the flow.
+          example: "/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4"
+        type:
+          type: string
+          description: The resource type.
+          example: "Microsoft.ProcessSimple/environments/flows"
+        properties:
+          $ref: '#/components/schemas/FlowProperties'
+
+    FlowProperties:
+      type: object
+      description: Properties of a flow.
+      properties:
+        displayName:
+          type: string
+          description: The display name of the flow.
+          example: "Daily Report Automation"
+        state:
+          type: string
+          description: The state of the flow.
+          enum:
+            - Started
+            - Stopped
+            - Suspended
+          example: "Started"
+        createdTime:
+          type: string
+          format: date-time
+          description: The date and time the flow was created.
+          example: "2025-06-15T08:00:00Z"
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: The last modification time.
+          example: "2026-04-10T14:30:00Z"
+        templateName:
+          type: string
+          description: The name of the template used to create the flow.
+          example: "blank"
+        flowTriggerUri:
+          type: string
+          description: The trigger URI for the flow.
+          example: "https://prod-01.westus.logic.azure.com/..."
+        installationStatus:
+          type: string
+          description: The installation status of the flow.
+          example: "Installed"
+        connectionReferences:
+          type: object
+          description: Connection references used by the flow.
+          additionalProperties:
+            $ref: '#/components/schemas/ConnectionReference'
+        creator:
+          $ref: '#/components/schemas/UserIdentity'
+        definitionSummary:
+          $ref: '#/components/schemas/DefinitionSummary'
+
+    FlowCreateRequest:
+      type: object
+      description: Request to create a new flow.
+      required:
+        - properties
+      properties:
+        properties:
+          type: object
+          properties:
+            displayName:
+              type: string
+              description: The display name for the new flow.
+              example: "My New Automation"
+            state:
+              type: string
+              description: The initial state of the flow.
+              example: "Stopped"
+            definition:
+              type: object
+              description: The workflow definition of the flow.
+            connectionReferences:
+              type: object
+              description: Connection references needed by the flow.
+              additionalProperties:
+                $ref: '#/components/schemas/ConnectionReference'
+
+    FlowUpdateRequest:
+      type: object
+      description: Request to update an existing flow.
+      properties:
+        properties:
+          type: object
+          properties:
+            displayName:
+              type: string
+              description: The new display name.
+              example: "Updated Flow Name"
+            state:
+              type: string
+              description: The new state of the flow.
+              example: "Started"
+            definition:
+              type: object
+              description: Updated workflow definition.
+
+    FlowList:
+      type: object
+      description: A list of flows.
+      properties:
+        value:
+          type: array
+          description: The array of flows.
+          items:
+            $ref: '#/components/schemas/Flow'
+
+    FlowRun:
+      type: object
+      description: A flow run representing a single execution of a flow.
+      properties:
+        name:
+          type: string
+          description: The unique ID of the flow run.
+          example: "08585132316362410016778943264CU43"
+        id:
+          type: string
+          description: The full resource ID of the flow run.
+        type:
+          type: string
+          description: The resource type.
+          example: "Microsoft.ProcessSimple/environments/flows/runs"
+        properties:
+          $ref: '#/components/schemas/FlowRunProperties'
+
+    FlowRunProperties:
+      type: object
+      description: Properties of a flow run.
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          description: The start time of the flow run.
+          example: "2026-04-15T10:00:00Z"
+        endTime:
+          type: string
+          format: date-time
+          description: The end time of the flow run.
+          example: "2026-04-15T10:00:05Z"
+        status:
+          type: string
+          description: The status of the flow run.
+          enum:
+            - Running
+            - Succeeded
+            - Failed
+            - Cancelled
+            - Waiting
+            - Suspended
+          example: "Succeeded"
+        code:
+          type: string
+          description: The result code.
+          example: "OK"
+        trigger:
+          $ref: '#/components/schemas/TriggerInfo'
+
+    TriggerInfo:
+      type: object
+      description: Information about the trigger that started the flow run.
+      properties:
+        name:
+          type: string
+          description: The name of the trigger.
+          example: "manual"
+        outputsLink:
+          type: object
+          description: Link to the trigger outputs.
+          properties:
+            uri:
+              type: string
+              description: URI to the trigger outputs.
+            contentVersion:
+              type: string
+              description: Content version.
+
+    FlowRunList:
+      type: object
+      description: A list of flow runs.
+      properties:
+        value:
+          type: array
+          description: The array of flow runs.
+          items:
+            $ref: '#/components/schemas/FlowRun'
+
+    FlowPermission:
+      type: object
+      description: A flow permission entry.
+      properties:
+        name:
+          type: string
+          description: The permission name.
+          example: "permission-abc123"
+        properties:
+          type: object
+          properties:
+            roleName:
+              type: string
+              description: The role name.
+              example: "Owner"
+            principal:
+              $ref: '#/components/schemas/Principal'
+
+    Principal:
+      type: object
+      description: A user or service principal.
+      properties:
+        id:
+          type: string
+          description: The object ID of the principal.
+          example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+        displayName:
+          type: string
+          description: The display name.
+          example: "Jane Smith"
+        email:
+          type: string
+          format: email
+          description: The email address.
+          example: "jane.smith@contoso.com"
+        type:
+          type: string
+          description: The principal type.
+          example: "User"
+        tenantId:
+          type: string
+          description: The tenant ID.
+          example: "tenant-a1b2c3d4"
+        userPrincipalName:
+          type: string
+          description: The user principal name.
+          example: "jane.smith@contoso.com"
+
+    FlowPermissionList:
+      type: object
+      description: A list of flow permissions.
+      properties:
+        value:
+          type: array
+          description: The array of permissions.
+          items:
+            $ref: '#/components/schemas/FlowPermission'
+
+    FlowOwnerModifyRequest:
+      type: object
+      description: Request to modify flow owners.
+      properties:
+        add:
+          type: array
+          description: Users to add as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to add.
+              type:
+                type: string
+                description: The type of the user.
+        remove:
+          type: array
+          description: Users to remove as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to remove.
+              type:
+                type: string
+                description: The type of the user.
+
+    ConnectionReference:
+      type: object
+      description: A reference to a connection used by a flow.
+      properties:
+        connectionName:
+          type: string
+          description: The name of the connection.
+          example: "shared-commondataserviceforapps-abc123"
+        displayName:
+          type: string
+          description: The display name of the connection.
+          example: "Dataverse"
+        id:
+          type: string
+          description: The connector ID.
+          example: "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+        source:
+          type: string
+          description: The connection source type.
+          example: "embedded"
+        connectionReferenceLogicalName:
+          type: string
+          description: Logical name of the connection reference.
+          example: "crdcb_sharedcommondataserviceforapps_109ea"
+
+    UserIdentity:
+      type: object
+      description: Identity of a user.
+      properties:
+        tenantId:
+          type: string
+          description: The tenant ID.
+          example: "tenant-a1b2c3d4"
+        objectId:
+          type: string
+          description: The object ID.
+          example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+        userId:
+          type: string
+          description: The user ID.
+          example: "user-abc123"
+        userType:
+          type: string
+          description: The user type.
+          example: "ActiveDirectory"
+
+    DefinitionSummary:
+      type: object
+      description: Summary of the flow definition.
+      properties:
+        triggers:
+          type: array
+          description: List of trigger summaries.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The trigger type.
+                example: "Request"
+              kind:
+                type: string
+                description: The trigger kind.
+                example: "Button"
+        actions:
+          type: array
+          description: List of action summaries.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The action type.
+                example: "OpenApiConnection"
+              swaggerOperationId:
+                type: string
+                description: The Swagger operation ID.
+                example: "ListRecords"
+              api:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "shared_commondataserviceforapps"
+                  id:
+                    type: string
+                    example: "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  type:
+                    type: string
+                    example: "Microsoft.PowerApps/apis"
+
+    Connector:
+      type: object
+      description: A Power Automate connector.
+      properties:
+        name:
+          type: string
+          description: The connector name.
+          example: "shared_commondataserviceforapps"
+        properties:
+          type: object
+          properties:
+            displayName:
+              type: string
+              description: The display name of the connector.
+              example: "Microsoft Dataverse"
+            iconUri:
+              type: string
+              description: The icon URI.
+              example: "https://connectoricons-prod.azureedge.net/..."
+            isCustomApi:
+              type: boolean
+              description: Whether this is a custom API.
+              example: false
+            tier:
+              type: string
+              description: The tier of the connector.
+              example: "Standard"
+
+    ConnectorList:
+      type: object
+      description: A list of connectors.
+      properties:
+        value:
+          type: array
+          description: The array of connectors.
+          items:
+            $ref: '#/components/schemas/Connector'
+
+    Connection:
+      type: object
+      description: A Power Automate connection.
+      properties:
+        name:
+          type: string
+          description: The connection name.
+          example: "shared-commondataserviceforapps-abc123"
+        properties:
+          type: object
+          properties:
+            displayName:
+              type: string
+              description: The display name.
+              example: "Dataverse Connection"
+            apiId:
+              type: string
+              description: The connector ID.
+              example: "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            createdTime:
+              type: string
+              format: date-time
+              description: Creation time.
+              example: "2025-06-15T08:00:00Z"
+            lastModifiedTime:
+              type: string
+              format: date-time
+              description: Last modification time.
+              example: "2026-04-10T14:30:00Z"
+
+    ConnectionList:
+      type: object
+      description: A list of connections.
+      properties:
+        value:
+          type: array
+          description: The array of connections.
+          items:
+            $ref: '#/components/schemas/Connection'
+
+    CallbackUrlResponse:
+      type: object
+      description: Response containing a callback URL.
+      properties:
+        response:
+          type: object
+          properties:
+            value:
+              type: string
+              description: The callback URL.
+              example: "https://prod-01.westus.logic.azure.com/workflows/..."
+
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: "FlowNotFound"
+            message:
+              type: string
+              description: A human-readable error message.
+              example: "The specified flow was not found."
