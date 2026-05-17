@@ -89,7 +89,7 @@ common:
     url: https://www.microsoft.com/en-us/servicesagreement
   - type: GitHubRepository
     url: https://github.com/microsoft/PowerApps-Samples
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/microsoft-power-automate-management-api-context.jsonld
   - type: SpectralRules
     url: rules/microsoft-power-automate-spectral-rules.yml
