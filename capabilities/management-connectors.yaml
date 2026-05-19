@@ -1,0 +1,129 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Power Automate Management API — Connectors
+  description: 'Microsoft Power Automate Management API — Connectors. 2 operations. Lead operation: Microsoft Power Automate
+    List Connectors. Self-contained Naftiko capability covering one Microsoft Power Automate business surface.'
+  tags:
+  - Microsoft Power Automate
+  - Connectors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_POWER_AUTOMATE_API_KEY: MICROSOFT_POWER_AUTOMATE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-connectors
+    baseUri: https://api.flow.microsoft.com
+    description: Microsoft Power Automate Management API — Connectors business capability. Self-contained, no shared references.
+    resources:
+    - name: providers-Microsoft.ProcessSimple-environments-environmentName-apis
+      path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis
+      operations:
+      - name: listconnectors
+        method: GET
+        description: Microsoft Power Automate List Connectors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+    - name: providers-Microsoft.ProcessSimple-environments-environmentName-apis-apiName
+      path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis/{apiName}
+      operations:
+      - name: getconnector
+        method: GET
+        description: Microsoft Power Automate Get Connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: apiName
+          in: path
+          type: string
+          description: The name of the connector.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_POWER_AUTOMATE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: management-connectors-rest
+    port: 8080
+    description: REST adapter for Microsoft Power Automate Management API — Connectors. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/providers/microsoft-processsimple/environments/{environmentname}/apis
+      name: providers-microsoft-processsimple-environments-environmentname-apis
+      description: REST surface for providers-Microsoft.ProcessSimple-environments-environmentName-apis.
+      operations:
+      - method: GET
+        name: listconnectors
+        description: Microsoft Power Automate List Connectors
+        call: management-connectors.listconnectors
+        with:
+          environmentName: rest.environmentName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/providers/microsoft-processsimple/environments/{environmentname}/apis/{apiname}
+      name: providers-microsoft-processsimple-environments-environmentname-apis-apiname
+      description: REST surface for providers-Microsoft.ProcessSimple-environments-environmentName-apis-apiName.
+      operations:
+      - method: GET
+        name: getconnector
+        description: Microsoft Power Automate Get Connector
+        call: management-connectors.getconnector
+        with:
+          environmentName: rest.environmentName
+          apiName: rest.apiName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-connectors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Power Automate Management API — Connectors. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-power-automate-list-connectors
+      description: Microsoft Power Automate List Connectors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-connectors.listconnectors
+      with:
+        environmentName: tools.environmentName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-get-connector
+      description: Microsoft Power Automate Get Connector
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-connectors.getconnector
+      with:
+        environmentName: tools.environmentName
+        apiName: tools.apiName
+      outputParameters:
+      - type: object
+        mapping: $.

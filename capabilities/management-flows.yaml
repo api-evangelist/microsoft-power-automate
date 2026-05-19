@@ -1,0 +1,409 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Power Automate Management API — Flows
+  description: 'Microsoft Power Automate Management API — Flows. 8 operations. Lead operation: Microsoft Power Automate List
+    Flows. Self-contained Naftiko capability covering one Microsoft Power Automate business surface.'
+  tags:
+  - Microsoft Power Automate
+  - Flows
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_POWER_AUTOMATE_API_KEY: MICROSOFT_POWER_AUTOMATE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-flows
+    baseUri: https://api.flow.microsoft.com
+    description: Microsoft Power Automate Management API — Flows business capability. Self-contained, no shared references.
+    resources:
+    - name: providers-Microsoft.ProcessSimple-environments-environmentName-flows
+      path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows
+      operations:
+      - name: listflows
+        method: GET
+        description: Microsoft Power Automate List Flows
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+      - name: createflow
+        method: POST
+        description: Microsoft Power Automate Create Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName
+      path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}
+      operations:
+      - name: getflow
+        method: GET
+        description: Microsoft Power Automate Get Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: flowName
+          in: path
+          type: string
+          description: The name or ID of the flow.
+          required: true
+      - name: updateflow
+        method: PATCH
+        description: Microsoft Power Automate Update Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: flowName
+          in: path
+          type: string
+          description: The name or ID of the flow.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteflow
+        method: DELETE
+        description: Microsoft Power Automate Delete Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: flowName
+          in: path
+          type: string
+          description: The name or ID of the flow.
+          required: true
+    - name: providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName-li
+      path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/listCallbackUrl
+      operations:
+      - name: listcallbackurl
+        method: POST
+        description: Microsoft Power Automate List Callback URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: flowName
+          in: path
+          type: string
+          description: The name or ID of the flow.
+          required: true
+    - name: providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName-st
+      path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/start
+      operations:
+      - name: turnonflow
+        method: POST
+        description: Microsoft Power Automate Turn on Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: flowName
+          in: path
+          type: string
+          description: The name or ID of the flow.
+          required: true
+    - name: providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName-st
+      path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/stop
+      operations:
+      - name: turnoffflow
+        method: POST
+        description: Microsoft Power Automate Turn off Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: The name of the environment.
+          required: true
+        - name: flowName
+          in: path
+          type: string
+          description: The name or ID of the flow.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_POWER_AUTOMATE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: management-flows-rest
+    port: 8080
+    description: REST adapter for Microsoft Power Automate Management API — Flows. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/providers/microsoft-processsimple/environments/{environmentname}/flows
+      name: providers-microsoft-processsimple-environments-environmentname-flows
+      description: REST surface for providers-Microsoft.ProcessSimple-environments-environmentName-flows.
+      operations:
+      - method: GET
+        name: listflows
+        description: Microsoft Power Automate List Flows
+        call: management-flows.listflows
+        with:
+          environmentName: rest.environmentName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createflow
+        description: Microsoft Power Automate Create Flow
+        call: management-flows.createflow
+        with:
+          environmentName: rest.environmentName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/providers/microsoft-processsimple/environments/{environmentname}/flows/{flowname}
+      name: providers-microsoft-processsimple-environments-environmentname-flows-flowname
+      description: REST surface for providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName.
+      operations:
+      - method: GET
+        name: getflow
+        description: Microsoft Power Automate Get Flow
+        call: management-flows.getflow
+        with:
+          environmentName: rest.environmentName
+          flowName: rest.flowName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateflow
+        description: Microsoft Power Automate Update Flow
+        call: management-flows.updateflow
+        with:
+          environmentName: rest.environmentName
+          flowName: rest.flowName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteflow
+        description: Microsoft Power Automate Delete Flow
+        call: management-flows.deleteflow
+        with:
+          environmentName: rest.environmentName
+          flowName: rest.flowName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/providers/microsoft-processsimple/environments/{environmentname}/flows/{flowname}/listcallbackurl
+      name: providers-microsoft-processsimple-environments-environmentname-flows-flowname-li
+      description: REST surface for providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName-li.
+      operations:
+      - method: POST
+        name: listcallbackurl
+        description: Microsoft Power Automate List Callback URL
+        call: management-flows.listcallbackurl
+        with:
+          environmentName: rest.environmentName
+          flowName: rest.flowName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/providers/microsoft-processsimple/environments/{environmentname}/flows/{flowname}/start
+      name: providers-microsoft-processsimple-environments-environmentname-flows-flowname-st
+      description: REST surface for providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName-st.
+      operations:
+      - method: POST
+        name: turnonflow
+        description: Microsoft Power Automate Turn on Flow
+        call: management-flows.turnonflow
+        with:
+          environmentName: rest.environmentName
+          flowName: rest.flowName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/providers/microsoft-processsimple/environments/{environmentname}/flows/{flowname}/stop
+      name: providers-microsoft-processsimple-environments-environmentname-flows-flowname-st
+      description: REST surface for providers-Microsoft.ProcessSimple-environments-environmentName-flows-flowName-st.
+      operations:
+      - method: POST
+        name: turnoffflow
+        description: Microsoft Power Automate Turn off Flow
+        call: management-flows.turnoffflow
+        with:
+          environmentName: rest.environmentName
+          flowName: rest.flowName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-flows-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Power Automate Management API — Flows. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-power-automate-list-flows
+      description: Microsoft Power Automate List Flows
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-flows.listflows
+      with:
+        environmentName: tools.environmentName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-create-flow
+      description: Microsoft Power Automate Create Flow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-flows.createflow
+      with:
+        environmentName: tools.environmentName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-get-flow
+      description: Microsoft Power Automate Get Flow
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-flows.getflow
+      with:
+        environmentName: tools.environmentName
+        flowName: tools.flowName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-update-flow
+      description: Microsoft Power Automate Update Flow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-flows.updateflow
+      with:
+        environmentName: tools.environmentName
+        flowName: tools.flowName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-delete-flow
+      description: Microsoft Power Automate Delete Flow
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-flows.deleteflow
+      with:
+        environmentName: tools.environmentName
+        flowName: tools.flowName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-list-callback
+      description: Microsoft Power Automate List Callback URL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: management-flows.listcallbackurl
+      with:
+        environmentName: tools.environmentName
+        flowName: tools.flowName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-turn-flow
+      description: Microsoft Power Automate Turn on Flow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-flows.turnonflow
+      with:
+        environmentName: tools.environmentName
+        flowName: tools.flowName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-power-automate-turn-off
+      description: Microsoft Power Automate Turn off Flow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-flows.turnoffflow
+      with:
+        environmentName: tools.environmentName
+        flowName: tools.flowName
+      outputParameters:
+      - type: object
+        mapping: $.
