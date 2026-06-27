@@ -51,29 +51,29 @@ apis:
     url: json-structure/power-automate-management-api-flow-run-structure.json
   - type: JSONStructure
     url: json-structure/power-automate-management-api-connector-structure.json
-  - type: Example
+  - type: Examples
     url: examples/power-automate-management-api-flow-example.json
-  - type: Example
+  - type: Examples
     url: examples/power-automate-management-api-environment-example.json
-  - type: Example
+  - type: Examples
     url: examples/power-automate-management-api-flow-run-example.json
-  - type: Example
+  - type: Examples
     url: examples/power-automate-management-api-connector-example.json
   - type: Authentication
     url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
   - type: APIReference
     url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-connections.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-connectors.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-environments.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-flow-permissions.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-flow-runs.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/management-flows.yaml
 common:
 - type: Portal
