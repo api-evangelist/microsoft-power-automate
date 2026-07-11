@@ -76,6 +76,10 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/management-flows.yaml
 common:
+- type: DomainSecurity
+  url: security/microsoft-power-automate-domain-security.yml
+- type: Authentication
+  url: authentication/microsoft-power-automate-authentication.yml
 - type: OAuthScopes
   url: scopes/microsoft-power-automate-scopes.yml
 - type: Portal
