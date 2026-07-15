@@ -76,6 +76,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/management-flows.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/microsoft-power-automate-agentic-access.yml
 - type: DomainSecurity
   url: security/microsoft-power-automate-domain-security.yml
 - type: Authentication

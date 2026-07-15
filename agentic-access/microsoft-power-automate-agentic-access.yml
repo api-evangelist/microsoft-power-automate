@@ -1,0 +1,251 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/microsoft-power-automate-management-api.yaml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 18
+  by_action_class:
+    connected: 9
+    acting: 9
+  by_consequence:
+    read: 9
+    write: 8
+    safety-critical: 1
+  human_in_the_loop_required: 1
+operations:
+- path: /providers/Microsoft.ProcessSimple/environments
+  method: get
+  operationId: listEnvironments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows
+  method: get
+  operationId: listFlows
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows
+  method: post
+  operationId: createFlow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}
+  method: get
+  operationId: getFlow
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}
+  method: patch
+  operationId: updateFlow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}
+  method: delete
+  operationId: deleteFlow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/start
+  method: post
+  operationId: turnOnFlow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/stop
+  method: post
+  operationId: turnOffFlow
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs
+  method: get
+  operationId: listFlowRuns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}
+  method: get
+  operationId: getFlowRun
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}/cancel
+  method: post
+  operationId: cancelFlowRun
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}/resubmit
+  method: post
+  operationId: resubmitFlowRun
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/owners
+  method: get
+  operationId: listFlowOwners
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/owners
+  method: post
+  operationId: modifyFlowOwners
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/listCallbackUrl
+  method: post
+  operationId: listCallbackUrl
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis
+  method: get
+  operationId: listConnectors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis/{apiName}
+  method: get
+  operationId: getConnector
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /providers/Microsoft.ProcessSimple/environments/{environmentName}/connections
+  method: get
+  operationId: listConnections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
