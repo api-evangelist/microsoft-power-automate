@@ -1,0 +1,78 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/microsoft-power-automate-management-api.yaml
+notes: >-
+  Microsoft does not publish a dedicated MCP server for the Power Automate
+  Management API. Microsoft's official Power Platform MCP server exposes
+  Dataverse (tables/records/prompts), not flow management. The tools below are a
+  candidate list derived one-per-operation from the Power Automate Management API
+  OpenAPI; they are a governance starting point, not a shipped server.
+related_servers:
+- name: Microsoft Dataverse MCP Server
+  vendor: Microsoft Power Platform
+  status: published
+  transport: http
+  docs: https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-mcp
+  description: >-
+    Official Power Platform MCP server exposing Dataverse data and schema to MCP
+    clients (Copilot Studio, VS Code / GitHub Copilot, Claude). Tools include
+    search, read_query, create_record, update_record, delete_record.
+server:
+  name: microsoft-power-automate-management
+  transport: http
+tools:
+- name: list_environments
+  description: List all the environments the current user has access to.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#listEnvironments
+- name: list_flows
+  description: List all flows the current user created in the given environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#listFlows
+- name: create_flow
+  description: Create a new flow in the given environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#createFlow
+- name: get_flow
+  description: Get the details of a specific flow in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#getFlow
+- name: update_flow
+  description: Update the properties of a specific flow in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#updateFlow
+- name: delete_flow
+  description: Delete a specific flow from an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#deleteFlow
+- name: turn_on_flow
+  description: Start (activate) a specific flow in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#turnOnFlow
+- name: turn_off_flow
+  description: Stop (deactivate) a specific flow in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#turnOffFlow
+- name: list_flow_runs
+  description: List the run history for a specific flow.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#listFlowRuns
+- name: get_flow_run
+  description: Get the details of a specific flow run.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#getFlowRun
+- name: cancel_flow_run
+  description: Cancel a currently running flow run.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#cancelFlowRun
+- name: resubmit_flow_run
+  description: Resubmit a previously executed flow run.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#resubmitFlowRun
+- name: list_flow_owners
+  description: List all owners of a specific flow in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#listFlowOwners
+- name: modify_flow_owners
+  description: Add or remove owners of a specific flow in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#modifyFlowOwners
+- name: list_callback_url
+  description: Get the callback URL for a specific flow in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#listCallbackUrl
+- name: list_connectors
+  description: List all connectors available in the given environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#listConnectors
+- name: get_connector
+  description: Get the details of a specific connector in an environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#getConnector
+- name: list_connections
+  description: List all connections available in the given environment.
+  source_operation: openapi/microsoft-power-automate-management-api.yaml#listConnections

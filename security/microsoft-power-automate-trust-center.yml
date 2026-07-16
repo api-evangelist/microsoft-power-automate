@@ -1,0 +1,26 @@
+generated: '2026-06-20'
+method: searched
+probe: true
+url: https://servicetrust.microsoft.com/
+trust_center: https://www.microsoft.com/en-us/trust-center
+compliance_docs: https://learn.microsoft.com/en-us/power-platform/admin/wp-compliance-data-privacy
+certifications:
+- SOC 1
+- SOC 2 Type II
+- ISO 27001
+- ISO 27018
+- HIPAA
+- FedRAMP Moderate
+- FedRAMP High
+- PCI DSS
+- GDPR
+notes: >-
+  Microsoft Power Platform (which includes Power Automate) inherits the Microsoft
+  cloud compliance portfolio. Certification documents are distributed through the
+  Microsoft Service Trust Portal (servicetrust.microsoft.com). FedRAMP High and
+  DoD IL levels apply to the GCC High / government clouds.
+evidence:
+- source: https://servicetrust.microsoft.com/
+  keywords: [service trust portal, compliance, soc 2, iso 27001, fedramp]
+- source: https://learn.microsoft.com/en-us/power-platform/admin/wp-compliance-data-privacy
+  keywords: [compliance, data privacy, power platform]

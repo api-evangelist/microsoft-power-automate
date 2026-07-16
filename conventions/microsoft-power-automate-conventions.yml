@@ -1,0 +1,52 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/microsoft-power-automate-management-api.yaml, Microsoft Learn web-api
+  docs, and repo artifacts (authentication/, lifecycle/, errors/, rate-limits/).
+authentication:
+  style: oauth2-bearer
+  provider: Microsoft Entra ID (Azure AD)
+  flow: authorizationCode
+  resource: https://service.flow.microsoft.com
+  scope: https://service.flow.microsoft.com/.default
+  ref: authentication/microsoft-power-automate-authentication.yml
+base_url: https://api.flow.microsoft.com
+resource_model:
+  style: azure-resource-manager
+  provider_namespace: Microsoft.ProcessSimple
+  path_shape: /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}
+  scoping: All operations are scoped to an environment (environmentName).
+versioning:
+  style: query-parameter-date
+  parameter: api-version
+  example: '2016-11-01'
+  ref: lifecycle/microsoft-power-automate-lifecycle.yml
+pagination:
+  style: odata-nextlink
+  response_field: value
+  continuation: '@odata.nextLink (absolute URL to the next page, when present)'
+  note: >-
+    List responses return a top-level "value" array. Large collections are paged
+    via an @odata.nextLink continuation URL, consistent with Azure/OData list
+    semantics.
+error_envelope:
+  shape: '{"error": {"code": "string", "message": "string"}}'
+  media_type: application/json
+  ref: errors/microsoft-power-automate-problem-types.yml
+request_tracing:
+  correlation_header: x-ms-correlation-request-id
+  request_id_header: x-ms-request-id
+  note: >-
+    Azure/Power Platform services echo x-ms-request-id and accept/propagate
+    x-ms-correlation-request-id for cross-service tracing.
+rate_limiting:
+  signaling: x-ms-ratelimit / Retry-After headers on throttling (429)
+  ref: rate-limits/microsoft-power-automate-rate-limits.yml
+idempotency:
+  header: null
+  note: >-
+    No dedicated idempotency-key header is documented for the management API;
+    mutations are keyed by resource name (environment/flow) and are effectively
+    idempotent for PATCH/PUT-style updates and DELETE.
+metadata:
+  note: Resources expose name, id, type, and a nested properties object (ARM shape).

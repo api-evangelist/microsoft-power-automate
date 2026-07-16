@@ -1,0 +1,33 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://learn.microsoft.com/en-us/power-platform/admin/programmability-versioning-support
+  and https://learn.microsoft.com/en-us/power-platform/important-changes-coming
+versioning:
+  scheme: query-parameter-date
+  parameter: api-version
+  example: '2016-11-01'
+  current: '2016-11-01'
+  docs: https://learn.microsoft.com/en-us/power-automate/web-api
+  note: >-
+    The Power Automate / Microsoft.ProcessSimple management endpoints select a
+    version with the api-version date-stamped query parameter. Incrementing the
+    api-version value immediately deprecates the prior GA version.
+deprecation:
+  policy_url: https://learn.microsoft.com/en-us/power-platform/admin/programmability-versioning-support
+  changes_url: https://learn.microsoft.com/en-us/power-platform/important-changes-coming
+  min_notice: 12 months
+  sunset_header: false
+  note: >-
+    Microsoft declares a version deprecated at least 12 months before retiring
+    the endpoint. Deprecations are communicated through the "important changes
+    coming" docs and release-wave deprecation lists, not RFC 8594 headers.
+release_cadence:
+  scheme: release-waves
+  waves_per_year: 2
+  docs: https://learn.microsoft.com/en-us/power-platform/release-plan/
+status_page: https://status.powerplatform.microsoft.com/
+sla:
+  url: https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services
+  note: Covered under the Microsoft Online Services SLA for Power Automate.
+deprecated_operations: []

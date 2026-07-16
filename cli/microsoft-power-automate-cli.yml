@@ -1,0 +1,48 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction
+name: Microsoft Power Platform CLI
+binary: pac
+description: >-
+  The Power Platform CLI (pac) is Microsoft's single official command-line tool
+  for developers and ISVs covering environment lifecycle, authentication,
+  Dataverse, solutions/ALM, connectors, and flows. Flow-specific authoring is
+  also available through the npm distribution (@microsoft/power-apps).
+docs: https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/
+install:
+- method: dotnet-tool
+  command: dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+- method: npm
+  command: npm install -g @microsoft/power-apps
+- method: nuget
+  command: nuget install Microsoft.PowerApps.CLI
+- method: vscode
+  command: Install the Power Platform Tools extension for Visual Studio Code.
+command_groups:
+- name: auth
+  description: Manage Microsoft Entra ID authentication profiles for pac.
+- name: env
+  description: Manage Power Platform / Dataverse environments.
+- name: admin
+  description: Administrative operations against environments and tenants.
+- name: solution
+  description: Manage solutions and application lifecycle (ALM).
+- name: connector
+  description: Create, update, and download custom connector definitions.
+- name: connection
+  description: Manage Dataverse connections that link connectors to credentials.
+- name: flow
+  description: >-
+    Flow authoring commands (add-flow, add-dataverse-api, create-connection) via
+    the npm power-apps CLI distribution.
+- name: pipeline
+  description: Manage Power Platform pipelines for deployment.
+- name: copilot
+  description: Manage Copilot Studio / copilot resources.
+key_flows:
+- name: Authenticate
+  command: pac auth create --environment https://org.crm.dynamics.com
+- name: List environments
+  command: pac env list
+- name: Export a solution containing flows
+  command: pac solution export --name MySolution --path ./MySolution.zip

@@ -1,0 +1,37 @@
+generated: '2026-06-20'
+method: derived
+format: microsoft-error-envelope
+source: openapi/microsoft-power-automate-management-api.yaml
+envelope:
+  shape: '{"error": {"code": "string", "message": "string"}}'
+  media_type: application/json
+  note: >-
+    Not RFC 9457 problem+json. The Power Automate Management API returns the
+    standard Azure/Microsoft error envelope with a machine-readable string code
+    and a human-readable message. Example code: FlowNotFound.
+problems:
+- status: 400
+  title: Bad request
+  description: The request payload or parameters were invalid.
+  source_operations:
+  - openapi/microsoft-power-automate-management-api.yaml#createFlow
+  - openapi/microsoft-power-automate-management-api.yaml#updateFlow
+- status: 401
+  title: Unauthorized
+  description: >-
+    Missing, expired, or invalid Microsoft Entra ID (Azure AD) bearer token, or
+    the token lacks access to the requested environment/flow.
+  source_operations:
+  - openapi/microsoft-power-automate-management-api.yaml#listEnvironments
+  - openapi/microsoft-power-automate-management-api.yaml#listFlows
+  - openapi/microsoft-power-automate-management-api.yaml#getFlow
+  - openapi/microsoft-power-automate-management-api.yaml#createFlow
+- status: 404
+  title: Not found
+  example_code: FlowNotFound
+  description: The specified environment, flow, flow run, or connector was not found.
+  source_operations:
+  - openapi/microsoft-power-automate-management-api.yaml#getFlow
+  - openapi/microsoft-power-automate-management-api.yaml#deleteFlow
+  - openapi/microsoft-power-automate-management-api.yaml#getFlowRun
+  - openapi/microsoft-power-automate-management-api.yaml#getConnector

@@ -1,6 +1,12 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/microsoft-power-automate-management-api.yaml
+docs: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+oidc_discovery: well-known/microsoft-power-automate-openid-configuration.json
+notes: >-
+  Authentication is Microsoft Entra ID (Azure AD) OAuth 2.0. The API is a
+  protected resource (https://service.flow.microsoft.com); clients acquire a
+  token via the authorization code flow and present it as a Bearer token.
 summary:
   types:
   - oauth2

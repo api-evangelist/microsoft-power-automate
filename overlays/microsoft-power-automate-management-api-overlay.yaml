@@ -1,0 +1,30 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Microsoft Power Automate Management API
+  version: 1.0.0
+extends: openapi/microsoft-power-automate-management-api.yaml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: microsoft-power-automate
+    x-apievangelist-enriched: '2026-06-20'
+    x-api-version-param: api-version (date-based, e.g. 2016-11-01)
+    x-authentication: authentication/microsoft-power-automate-authentication.yml
+    x-lifecycle: lifecycle/microsoft-power-automate-lifecycle.yml
+    x-conventions: conventions/microsoft-power-automate-conventions.yml
+    x-error-catalog: errors/microsoft-power-automate-problem-types.yml
+- target: $.info
+  update:
+    x-agentic-access: agentic-access/microsoft-power-automate-agentic-access.yml
+- target: "$.paths['/providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/stop']['post']"
+  update:
+    x-agentic-consequence: safety-critical
+    x-agentic-note: Deactivating a production flow can halt business processes.
+- target: "$.paths['/providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}']['delete']"
+  update:
+    x-agentic-consequence: safety-critical
+    x-agentic-note: Flow deletion is irreversible; require human-in-the-loop.
+- target: "$.paths['/providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/owners']['post']"
+  update:
+    x-agentic-consequence: write
+    x-agentic-note: Modifying owners changes flow access; audit required.

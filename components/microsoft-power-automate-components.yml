@@ -1,0 +1,33 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://learn.microsoft.com/en-us/power-automate/developer/embed-flow-dev and
+  https://learn.microsoft.com/en-us/troubleshoot/power-platform/power-automate/flow-creation/flow-embed-sdk
+description: >-
+  Power Automate ships a client-side JavaScript SDK (the Flow JS SDK) for
+  embedding flow widgets in third-party host applications and websites. The host
+  app handles widget events and sends actions back to the widget; the SDK also
+  supplies the required user access token.
+loaders:
+- name: Flow JS SDK
+  library: msflowsdk-1.1.js
+  url: https://flow.microsoft.com/Content/msflowsdk-1.1.js
+  script_tag: '<script src="https://flow.microsoft.com/Content/msflowsdk-1.1.js"></script>'
+  note: Hosted SDK; local copies are discouraged and must be kept current.
+families:
+- name: Flow widgets (authenticated)
+  description: >-
+    Embeddable widgets initialized through the Flow JS SDK with a user access
+    token — e.g. flow creation from a template, flow management, run history,
+    and approvals surfaces embedded in a host application.
+  requires: Flow JS SDK + user access token
+- name: Templates widget (unauthenticated)
+  description: >-
+    Templates browsing widget that can be embedded directly via an iframe with
+    no JS SDK or access token, for simpler read-only scenarios.
+  requires: iframe only
+docs:
+- name: Integrate Power Automate with websites and apps
+  url: https://learn.microsoft.com/en-us/power-automate/developer/embed-flow-dev
+- name: Working with Power Automate's JavaScript SDK
+  url: https://learn.microsoft.com/en-us/troubleshoot/power-platform/power-automate/flow-creation/flow-embed-sdk

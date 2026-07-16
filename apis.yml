@@ -6,7 +6,7 @@ description: Microsoft Power Automate is a cloud-based service that helps you cr
 image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
 url: https://powerautomate.microsoft.com
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 tags:
 - Automation
@@ -63,18 +63,8 @@ apis:
     url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
   - type: APIReference
     url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
-  - type: X-NaftikoCapability
-    url: capabilities/management-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-connectors.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-environments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-flow-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-flow-runs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-flows.yaml
+  - type: Overlay
+    url: overlays/microsoft-power-automate-management-api-overlay.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/microsoft-power-automate-agentic-access.yml
@@ -84,6 +74,36 @@ common:
   url: authentication/microsoft-power-automate-authentication.yml
 - type: OAuthScopes
   url: scopes/microsoft-power-automate-scopes.yml
+- type: Packages
+  url: packages/microsoft-power-automate-packages.yml
+- type: WellKnown
+  url: well-known/microsoft-power-automate-well-known.yml
+- type: SecurityTxt
+  url: well-known/microsoft-power-automate-security.txt
+- type: MCPServer
+  url: mcp/microsoft-power-automate-mcp.yml
+- type: LLMsTxt
+  url: llms/microsoft-power-automate-llms.txt
+- type: Conformance
+  url: conformance/microsoft-power-automate-conformance.yml
+- type: ErrorCatalog
+  url: errors/microsoft-power-automate-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/microsoft-power-automate-lifecycle.yml
+- type: VulnerabilityDisclosure
+  url: security/microsoft-power-automate-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/microsoft-power-automate-trust-center.yml
+- type: Conventions
+  url: conventions/microsoft-power-automate-conventions.yml
+- type: ChangeLog
+  url: changelog/microsoft-power-automate-changelog.yml
+- type: CLI
+  url: cli/microsoft-power-automate-cli.yml
+- type: Components
+  url: components/microsoft-power-automate-components.yml
+- type: DataModel
+  url: data-model/microsoft-power-automate-data-model.yml
 - type: Portal
   url: https://make.powerautomate.com
 - type: DeveloperPortal

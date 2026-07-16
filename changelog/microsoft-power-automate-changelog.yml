@@ -1,0 +1,34 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://learn.microsoft.com/en-us/power-platform/release-plan/ and the
+  Microsoft Power Platform blog "What's new" monthly updates.
+scheme: release-waves
+current_wave: 2026 release wave 1
+cadence: two release waves per year (wave 1 Apr-Sep, wave 2 Oct-Mar) plus monthly feature updates
+docs:
+- name: Power Automate 2026 release wave 1 planned features
+  url: https://learn.microsoft.com/en-us/power-platform/release-plan/2026wave1/power-automate/planned-features
+- name: Power Platform release plans
+  url: https://learn.microsoft.com/en-us/power-platform/release-plan/
+- name: What's new in Power Platform (blog)
+  url: https://www.microsoft.com/en-us/power-platform/blog/
+- name: Power Automate for desktop released versions
+  url: https://learn.microsoft.com/en-us/power-platform/released-versions/power-automate-desktop
+entries:
+- version: 2026 release wave 1
+  date: '2026-04'
+  highlights:
+  - MCP server integration and Copilot Studio agents for AI-powered automation.
+  - Desktop flow self-healing and AI agents for complex scenario handling.
+  - Maker productivity: flowchart views, real-time collaboration, enhanced version control.
+  - Consolidated licensing and usage reporting in the Power Platform admin center.
+  - Object-centric process mining with native Microsoft Fabric integration.
+  additions: true
+  breaking: false
+- version: What's new June 2026
+  date: '2026-06-11'
+  highlights:
+  - Monthly Power Platform feature update rollup.
+  additions: true
+  breaking: false

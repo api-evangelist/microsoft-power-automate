@@ -1,6 +1,13 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/microsoft-power-automate-management-api.yaml
+docs: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+notes: >-
+  The Power Automate Management API is accessed with the resource-level
+  ".default" scope of the Power Automate service application
+  (https://service.flow.microsoft.com/.default). Effective permissions are
+  governed by the caller's Microsoft Entra ID roles and Power Platform
+  environment access, not by fine-grained per-operation OAuth scopes.
 schemes:
 - name: oauth2
   source: openapi/microsoft-power-automate-management-api.yaml

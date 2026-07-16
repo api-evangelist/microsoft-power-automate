@@ -1,0 +1,49 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  npm, NuGet, and Microsoft Learn developer docs. Power Automate flows are
+  managed through the shared Power Platform developer tooling (Power Platform
+  CLI and the Dataverse ServiceClient); there is no separate Power-Automate-only
+  server SDK.
+packages:
+- language: javascript
+  registry: npm
+  name: "@microsoft/power-apps"
+  url: https://www.npmjs.com/package/@microsoft/power-apps
+  install: npm install -g @microsoft/power-apps
+  official: true
+  description: >-
+    npm distribution of the Power Platform CLI. Includes flow-oriented commands
+    (add-flow), Dataverse action wiring (add-dataverse-api), and create-connection.
+- language: dotnet
+  registry: nuget
+  name: Microsoft.PowerApps.CLI
+  url: https://www.nuget.org/packages/Microsoft.PowerApps.CLI
+  install: nuget install Microsoft.PowerApps.CLI
+  official: true
+  description: NuGet package of the Power Platform CLI (pac) binaries.
+- language: dotnet
+  registry: nuget
+  name: Microsoft.PowerApps.CLI.Tool
+  url: https://www.nuget.org/packages/Microsoft.PowerApps.CLI.Tool
+  install: dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+  official: true
+  description: .NET global-tool distribution of the Power Platform CLI (pac).
+- language: dotnet
+  registry: nuget
+  name: Microsoft.PowerPlatform.Dataverse.Client
+  url: https://www.nuget.org/packages/Microsoft.PowerPlatform.Dataverse.Client
+  install: dotnet add package Microsoft.PowerPlatform.Dataverse.Client
+  official: true
+  description: >-
+    .NET Dataverse ServiceClient used to connect to Microsoft Dataverse, the
+    backing store for Power Platform solutions that contain cloud flows.
+- language: javascript
+  registry: cdn
+  name: msflowsdk
+  url: https://flow.microsoft.com/Content/msflowsdk-1.1.js
+  install: '<script src="https://flow.microsoft.com/Content/msflowsdk-1.1.js"></script>'
+  official: true
+  description: >-
+    Power Automate JavaScript (Flow JS) SDK for embedding flow widgets in host
+    applications. See components/microsoft-power-automate-components.yml.

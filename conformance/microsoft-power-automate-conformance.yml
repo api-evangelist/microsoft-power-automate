@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/microsoft-power-automate-management-api.yaml, the Entra ID OIDC
+  discovery document, and Microsoft Power Platform compliance docs.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    OpenAPI securitySchemes declares oauth2 (authorizationCode) via Microsoft
+    Entra ID (login.microsoftonline.com).
+- id: oidc
+  conforms: true
+  evidence: >-
+    Entra ID publishes /.well-known/openid-configuration (saved in well-known/);
+    the token endpoint issues OIDC id_tokens (RS256).
+- id: azure-resource-manager
+  conforms: true
+  evidence: >-
+    Paths use the ARM provider namespace Microsoft.ProcessSimple/environments/...
+    and a date-based api-version query parameter (e.g. 2016-11-01).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use the Microsoft {"error":{"code","message"}} envelope, not
+    application/problem+json.
+- id: odata
+  conforms: partial
+  evidence: >-
+    List responses wrap results in a "value" array (OData collection shape); the
+    broader Power Platform / Dataverse APIs are OData v4, but this management
+    surface exposes only the collection envelope, not full OData query options.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: >-
+    Deprecation is announced via api-version increments and the Power Platform
+    "important changes" docs, not RFC 8594 Sunset/Deprecation headers.
+- id: fhir-r4
+  conforms: false
+- id: fapi
+  conforms: false
+- id: scim
+  conforms: false
+- id: json-api
+  conforms: false

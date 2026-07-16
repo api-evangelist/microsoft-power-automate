@@ -1,0 +1,87 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/microsoft-power-automate-management-api.yaml
+notes: >-
+  Entity-relationship graph derived from the Power Automate Management API
+  OpenAPI schemas and path hierarchy (Microsoft.ProcessSimple ARM resource tree).
+  Environment is the top-level scope; flows, connections, and connectors live
+  inside an environment; flow runs, owners, and connection references hang off a
+  flow.
+entities:
+- name: Environment
+  schema: EnvironmentProperties
+  id_field: name
+  description: A Power Automate environment; the container for flows, connections, and connectors.
+- name: Flow
+  schema: FlowProperties
+  id_field: name
+  description: A cloud flow (automated, instant, or scheduled).
+- name: FlowRun
+  schema: FlowRunProperties
+  id_field: name
+  description: A single execution of a flow.
+- name: Connection
+  schema: Connection
+  id_field: name
+  description: A runtime connection binding a connector to credentials.
+- name: Connector
+  schema: Connector
+  id_field: name
+  description: A connector (built-in or custom) available in an environment.
+- name: FlowPermission
+  schema: FlowPermission
+  id_field: name
+  description: An ownership/role grant on a flow.
+- name: Principal
+  schema: Principal
+  id_field: id
+  description: A user or service principal referenced by a flow permission.
+- name: ConnectionReference
+  schema: ConnectionReference
+  id_field: connectionName
+  description: A reference from a flow to a connection it uses.
+relationships:
+- from: Environment
+  to: Flow
+  type: has_many
+  via: environmentName (path)
+- from: Environment
+  to: Connection
+  type: has_many
+  via: environmentName (path)
+- from: Environment
+  to: Connector
+  type: has_many
+  via: environmentName (path)
+- from: Flow
+  to: FlowRun
+  type: has_many
+  via: flowName (path)
+- from: Flow
+  to: FlowPermission
+  type: has_many
+  via: flowName (path, owners)
+- from: Flow
+  to: ConnectionReference
+  type: has_many
+  via: properties.connectionReferences
+- from: FlowPermission
+  to: Principal
+  type: has_one
+  via: properties.principal
+- from: ConnectionReference
+  to: Connection
+  type: belongs_to
+  via: connectionName
+- from: ConnectionReference
+  to: Connector
+  type: belongs_to
+  via: id (connector id)
+- from: Connection
+  to: Connector
+  type: belongs_to
+  via: properties.apiId
+- from: Flow
+  to: UserIdentity
+  type: has_one
+  via: properties.creator

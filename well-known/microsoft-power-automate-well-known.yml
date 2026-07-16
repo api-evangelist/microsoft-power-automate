@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: searched
+source: probed /.well-known/ on API, website, and Entra ID auth hosts
+notes: >-
+  api.flow.microsoft.com requires authentication and returns 401 for all
+  /.well-known/ paths. powerautomate.microsoft.com returns soft-200 marketing
+  HTML for these paths (no real discovery document). The two real documents are
+  the corporate MSRC security.txt (www.microsoft.com) and the Microsoft Entra ID
+  (Azure AD) OpenID Connect discovery document referenced by the OpenAPI oauth2
+  flows.
+hosts:
+- host: https://www.microsoft.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: microsoft-power-automate-security.txt
+- host: https://login.microsoftonline.com/common
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: microsoft-power-automate-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://api.flow.microsoft.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+- host: https://powerautomate.microsoft.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: soft-200 marketing HTML, not a real RFC 9116 document
