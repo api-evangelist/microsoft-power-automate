@@ -130,6 +130,33 @@ common:
   url: rules/microsoft-power-automate-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/microsoft-power-automate-vocabulary.yaml
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-environment-inventory-workflow.yml
+  name: Microsoft Power Automate Inventory an Environment's Flows, Connections, and Connectors
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-provision-flow-workflow.yml
+  name: Microsoft Power Automate Provision and Activate a Flow
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-safe-update-flow-workflow.yml
+  name: Microsoft Power Automate Safely Update a Live Flow
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-retire-flow-workflow.yml
+  name: Microsoft Power Automate Retire a Flow Safely
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-triage-failed-run-workflow.yml
+  name: Microsoft Power Automate Triage and Resubmit a Failed Run
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-cancel-running-run-workflow.yml
+  name: Microsoft Power Automate Cancel an In-Flight Run
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-manage-flow-owners-workflow.yml
+  name: Microsoft Power Automate Manage Flow Owners
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-connector-dependency-audit-workflow.yml
+  name: Microsoft Power Automate Audit a Flow's Connector Dependencies
+- type: Arazzo
+  url: arazzo/microsoft-power-automate-flow-callback-url-workflow.yml
+  name: Microsoft Power Automate Retrieve a Flow Trigger Callback URL
 - type: Features
   data:
   - name: Automated Cloud Flows

@@ -1,0 +1,125 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Retrieve a Flow Trigger Callback URL
+  summary: Confirm a flow is request-triggered, fetch its callback URL, and observe the resulting run.
+  description: >-
+    To invoke a Power Automate flow from an external system you need its
+    callback URL, and that URL is only meaningful for a flow whose trigger is a
+    request. This workflow reads the flow to confirm it is Started and carries a
+    Request trigger, fetches the callback URL, and then observes the run history
+    so the execution produced by calling that URL can be inspected. Note that
+    the HTTP POST to the returned callback URL is deliberately not a step here:
+    that endpoint is dynamically issued per flow and is not part of the
+    management API this description references, so the caller performs it out of
+    band between the fetch and the observation. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: flow-callback-url
+  summary: Fetch a request-triggered flow's callback URL and observe the run it produces.
+  description: >-
+    Verifies the flow is active and request-triggered, retrieves the callback
+    URL an external system uses to invoke it, and reads the run history and run
+    detail so the invocation can be confirmed.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - flowName
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment holding the flow.
+      flowName:
+        type: string
+        description: The name or ID of the request-triggered flow.
+  steps:
+  - stepId: confirmRequestTrigger
+    description: >-
+      Read the flow and assert it is Started. The definition summary is captured
+      so the caller can confirm the trigger is a Request kind before treating the
+      callback URL as usable.
+    operationId: getFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.properties.state == 'Started'
+      type: jsonpath
+    outputs:
+      displayName: $response.body#/properties/displayName
+      state: $response.body#/properties/state
+      triggers: $response.body#/properties/definitionSummary/triggers
+      flowTriggerUri: $response.body#/properties/flowTriggerUri
+  - stepId: fetchCallbackUrl
+    description: >-
+      Retrieve the callback URL for the flow. This URL embeds its own signature
+      and should be handled as a credential, since anyone holding it can invoke
+      the flow.
+    operationId: listCallbackUrl
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      callbackUrl: $response.body#/response/value
+  - stepId: observeRuns
+    description: >-
+      List the flow's run history after the caller has posted to the callback
+      URL, so the invocation can be tied to a concrete run.
+    operationId: listFlowRuns
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runs: $response.body#/value
+      latestRunId: $response.body#/value/0/name
+  - stepId: readLatestRun
+    description: >-
+      Read the most recent run in detail to confirm the callback invocation
+      produced the expected execution and to surface its status and result code.
+    operationId: getFlowRun
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    - name: runId
+      in: path
+      value: $steps.observeRuns.outputs.latestRunId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runStatus: $response.body#/properties/status
+      resultCode: $response.body#/properties/code
+      triggerName: $response.body#/properties/trigger/name
+      startTime: $response.body#/properties/startTime
+  outputs:
+    callbackUrl: $steps.fetchCallbackUrl.outputs.callbackUrl
+    flowDisplayName: $steps.confirmRequestTrigger.outputs.displayName
+    latestRunId: $steps.observeRuns.outputs.latestRunId
+    latestRunStatus: $steps.readLatestRun.outputs.runStatus

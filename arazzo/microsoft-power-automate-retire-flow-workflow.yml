@@ -1,0 +1,118 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Retire a Flow Safely
+  summary: Check a flow for in-flight runs, deactivate it, and then delete it.
+  description: >-
+    Deleting a flow that still has work in flight destroys run history an
+    operator may need and can strand partially completed business processes.
+    This workflow retires a flow the careful way: read the flow to capture what
+    is about to be removed, list its recent runs to check nothing is still
+    running, deactivate the trigger so no new runs start, and only then delete
+    it. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: retire-flow
+  summary: Deactivate and delete a flow after confirming no runs are in flight.
+  description: >-
+    Captures the flow record for the audit trail, inspects the run history for
+    in-flight executions, stops the flow, and deletes it.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - flowName
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment holding the flow.
+      flowName:
+        type: string
+        description: The name or ID of the flow to retire.
+  steps:
+  - stepId: captureFlowRecord
+    description: >-
+      Read the flow one last time so its display name, creator, and definition
+      summary are captured for the retirement record before deletion removes them.
+    operationId: getFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      displayName: $response.body#/properties/displayName
+      state: $response.body#/properties/state
+      creator: $response.body#/properties/creator
+      definitionSummary: $response.body#/properties/definitionSummary
+  - stepId: checkRunHistory
+    description: >-
+      List the flow's run history and check for executions still in flight. A
+      Running or Waiting run means the flow should not be deleted yet.
+    operationId: listFlowRuns
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runs: $response.body#/value
+      mostRecentRunStatus: $response.body#/value/0/properties/status
+    onSuccess:
+    - name: noRunsInFlight
+      type: goto
+      stepId: deactivateFlow
+      criteria:
+      - context: $response.body
+        condition: $.value[?(@.properties.status == 'Running' || @.properties.status == 'Waiting')].length == 0
+        type: jsonpath
+    - name: runsStillInFlight
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value[?(@.properties.status == 'Running' || @.properties.status == 'Waiting')].length > 0
+        type: jsonpath
+  - stepId: deactivateFlow
+    description: >-
+      Stop the flow so its trigger cannot start a new run between this check and
+      the delete.
+    operationId: turnOffFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: deleteFlow
+    description: >-
+      Delete the now-quiet flow from the environment. This is irreversible; the
+      captured flow record from the first step is the only remaining trace.
+    operationId: deleteFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    retiredFlowDisplayName: $steps.captureFlowRecord.outputs.displayName
+    retiredFlowCreator: $steps.captureFlowRecord.outputs.creator
+    finalRunHistory: $steps.checkRunHistory.outputs.runs

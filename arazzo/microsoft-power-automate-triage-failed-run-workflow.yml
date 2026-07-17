@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Triage and Resubmit a Failed Run
+  summary: Find a failed run in a flow's history, inspect it, and resubmit its trigger.
+  description: >-
+    The everyday recovery loop for a flow operator. The workflow lists a flow's
+    run history and branches on whether a failed run is present; when one is
+    found it fetches the run detail to surface the failure code and, critically,
+    the name of the trigger that started it, because resubmitting requires that
+    trigger name. It then resubmits the run. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: triage-failed-run
+  summary: Locate a failed flow run, inspect its failure, and resubmit it.
+  description: >-
+    Scans the run history for a failed execution, reads the run detail to
+    recover the failure code and originating trigger name, and resubmits that
+    trigger so the work is retried.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - flowName
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment holding the flow.
+      flowName:
+        type: string
+        description: The name or ID of the flow to triage.
+  steps:
+  - stepId: listRuns
+    description: >-
+      List the flow's run history and branch on whether it contains a failed
+      run. When nothing has failed there is nothing to resubmit.
+    operationId: listFlowRuns
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runs: $response.body#/value
+      failedRunId: $response.body#/value/0/name
+    onSuccess:
+    - name: failedRunFound
+      type: goto
+      stepId: inspectFailedRun
+      criteria:
+      - context: $response.body
+        condition: $.value[?(@.properties.status == 'Failed')].length > 0
+        type: jsonpath
+    - name: noFailedRuns
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value[?(@.properties.status == 'Failed')].length == 0
+        type: jsonpath
+  - stepId: inspectFailedRun
+    description: >-
+      Read the failed run in detail. This surfaces the result code behind the
+      failure and the name of the trigger that started the run, which the
+      resubmit request requires.
+    operationId: getFlowRun
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    - name: runId
+      in: path
+      value: $steps.listRuns.outputs.failedRunId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runStatus: $response.body#/properties/status
+      failureCode: $response.body#/properties/code
+      startTime: $response.body#/properties/startTime
+      endTime: $response.body#/properties/endTime
+      triggerName: $response.body#/properties/trigger/name
+  - stepId: resubmitRun
+    description: >-
+      Resubmit the failed run against the trigger recovered from the run detail,
+      retrying the work without recreating the source event by hand.
+    operationId: resubmitFlowRun
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    - name: runId
+      in: path
+      value: $steps.listRuns.outputs.failedRunId
+    - name: triggerName
+      in: query
+      value: $steps.inspectFailedRun.outputs.triggerName
+    successCriteria:
+    - condition: $statusCode == 202
+  outputs:
+    failedRunId: $steps.listRuns.outputs.failedRunId
+    failureCode: $steps.inspectFailedRun.outputs.failureCode
+    triggerName: $steps.inspectFailedRun.outputs.triggerName
+    runHistory: $steps.listRuns.outputs.runs

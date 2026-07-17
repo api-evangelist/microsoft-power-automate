@@ -1,0 +1,125 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Cancel an In-Flight Run
+  summary: Find a run that is still executing, confirm it is live, and cancel it.
+  description: >-
+    When a flow hangs on a stuck approval or a slow downstream call, an operator
+    needs to stop that specific execution without deactivating the flow itself.
+    This workflow lists the run history, branches on whether an execution is
+    still Running or Waiting, re-reads that run to confirm it is genuinely live
+    rather than acting on stale list data, and cancels it. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: cancel-running-run
+  summary: Cancel a flow run that is still in flight.
+  description: >-
+    Scans the run history for an execution in a Running or Waiting state,
+    re-reads it to confirm it is still live, and cancels that single run while
+    leaving the flow itself active.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - flowName
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment holding the flow.
+      flowName:
+        type: string
+        description: The name or ID of the flow whose run should be cancelled.
+  steps:
+  - stepId: listRuns
+    description: >-
+      List the flow's run history and branch on whether any execution is still
+      in flight. A history of only terminal runs means there is nothing to cancel.
+    operationId: listFlowRuns
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runs: $response.body#/value
+      inFlightRunId: $response.body#/value/0/name
+    onSuccess:
+    - name: runInFlight
+      type: goto
+      stepId: confirmRunStillLive
+      criteria:
+      - context: $response.body
+        condition: $.value[?(@.properties.status == 'Running' || @.properties.status == 'Waiting')].length > 0
+        type: jsonpath
+    - name: nothingInFlight
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value[?(@.properties.status == 'Running' || @.properties.status == 'Waiting')].length == 0
+        type: jsonpath
+  - stepId: confirmRunStillLive
+    description: >-
+      Re-read the candidate run immediately before cancelling. A long-running run
+      can complete between the list and the cancel, and cancelling a finished run
+      is a no-op worth avoiding.
+    operationId: getFlowRun
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    - name: runId
+      in: path
+      value: $steps.listRuns.outputs.inFlightRunId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runStatus: $response.body#/properties/status
+      startTime: $response.body#/properties/startTime
+      triggerName: $response.body#/properties/trigger/name
+    onSuccess:
+    - name: stillLive
+      type: goto
+      stepId: cancelRun
+      criteria:
+      - context: $response.body
+        condition: $.properties.status == 'Running' || $.properties.status == 'Waiting'
+        type: jsonpath
+    - name: alreadyFinished
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.properties.status != 'Running' && $.properties.status != 'Waiting'
+        type: jsonpath
+  - stepId: cancelRun
+    description: >-
+      Cancel the confirmed in-flight run. The flow stays active; only this single
+      execution is stopped.
+    operationId: cancelFlowRun
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    - name: runId
+      in: path
+      value: $steps.listRuns.outputs.inFlightRunId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    cancelledRunId: $steps.listRuns.outputs.inFlightRunId
+    statusBeforeCancel: $steps.confirmRunStillLive.outputs.runStatus
+    startTime: $steps.confirmRunStillLive.outputs.startTime

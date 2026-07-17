@@ -1,0 +1,139 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Safely Update a Live Flow
+  summary: Stop a running flow, update its definition, restart it, and verify the result.
+  description: >-
+    Updating a live flow's definition while its trigger is armed risks a run
+    firing against a half-applied definition. This workflow does it the safe way:
+    read the current flow to capture the state to restore, stop the flow, patch
+    the definition or display name, start it again, and read it back to confirm
+    it returned to the Started state. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: safe-update-flow
+  summary: Apply a definition change to a running flow with a stop/update/start cycle.
+  description: >-
+    Captures the flow's current state, deactivates it, applies the update,
+    reactivates it, and verifies the flow is running again with the new
+    definition in place.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - flowName
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment holding the flow.
+      flowName:
+        type: string
+        description: The name or ID of the flow to update.
+      displayName:
+        type: string
+        description: The new display name for the flow.
+      definition:
+        type: object
+        description: The updated workflow definition to apply to the flow.
+  steps:
+  - stepId: readCurrentFlow
+    description: >-
+      Read the flow before touching it, capturing the current state and
+      definition summary so the change can be compared and the prior state
+      restored.
+    operationId: getFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      priorState: $response.body#/properties/state
+      priorDefinitionSummary: $response.body#/properties/definitionSummary
+      lastModifiedTime: $response.body#/properties/lastModifiedTime
+  - stepId: stopFlow
+    description: >-
+      Deactivate the flow so its trigger stops firing while the definition is
+      being replaced.
+    operationId: turnOffFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: applyUpdate
+    description: >-
+      Patch the flow with the new display name and definition. The flow is left
+      Stopped by this request; the next step is what brings it back up.
+    operationId: updateFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          displayName: $inputs.displayName
+          state: Stopped
+          definition: $inputs.definition
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedFlowName: $response.body#/name
+      updatedLastModifiedTime: $response.body#/properties/lastModifiedTime
+  - stepId: startFlow
+    description: >-
+      Reactivate the flow now that the new definition is in place.
+    operationId: turnOnFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: confirmFlowRestarted
+    description: >-
+      Read the flow back and assert it is Started, so the update never silently
+      leaves a production flow deactivated.
+    operationId: getFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.properties.state == 'Started'
+      type: jsonpath
+    outputs:
+      state: $response.body#/properties/state
+      definitionSummary: $response.body#/properties/definitionSummary
+      lastModifiedTime: $response.body#/properties/lastModifiedTime
+  outputs:
+    priorState: $steps.readCurrentFlow.outputs.priorState
+    state: $steps.confirmFlowRestarted.outputs.state
+    definitionSummary: $steps.confirmFlowRestarted.outputs.definitionSummary
+    lastModifiedTime: $steps.confirmFlowRestarted.outputs.lastModifiedTime

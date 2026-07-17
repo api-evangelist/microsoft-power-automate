@@ -1,0 +1,135 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Provision and Activate a Flow
+  summary: Create a new cloud flow in an environment, turn it on, and read back its state.
+  description: >-
+    The canonical create-then-read-back pattern for Power Automate. The workflow
+    confirms the target environment exists, checks that the connections the new
+    flow will reference are actually present in that environment, creates the
+    flow in a Stopped state so nothing fires mid-provision, activates it, and
+    finally re-reads the flow to prove it reached the Started state. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: provision-flow
+  summary: Create a cloud flow, activate it, and verify it is running.
+  description: >-
+    Creates a flow from a supplied workflow definition in a Stopped state,
+    verifies the connections it depends on exist, then starts the flow and
+    reads it back to confirm the state transition took effect.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - displayName
+    - definition
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment to create the flow in.
+      displayName:
+        type: string
+        description: The display name for the new flow (e.g. "Daily Report Automation").
+      definition:
+        type: object
+        description: >-
+          The workflow definition of the flow, containing its triggers and
+          actions.
+      connectionReferences:
+        type: object
+        description: >-
+          The map of connection references the new flow needs, keyed by
+          connection reference logical name.
+  steps:
+  - stepId: listEnvironments
+    description: >-
+      List accessible environments to confirm the caller can provision into the
+      target environment before creating anything.
+    operationId: listEnvironments
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      environments: $response.body#/value
+  - stepId: verifyConnections
+    description: >-
+      List the connections in the environment so the connection references the
+      new flow declares can be checked against what actually exists. Provisioning
+      a flow against a missing connection is the most common cause of a flow that
+      is created but never runs.
+    operationId: listConnections
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      connections: $response.body#/value
+  - stepId: createFlow
+    description: >-
+      Create the flow in a Stopped state so the definition can be provisioned
+      without the trigger firing before activation is intended.
+    operationId: createFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          displayName: $inputs.displayName
+          state: Stopped
+          definition: $inputs.definition
+          connectionReferences: $inputs.connectionReferences
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      flowName: $response.body#/name
+      flowId: $response.body#/id
+      createdState: $response.body#/properties/state
+  - stepId: turnOnFlow
+    description: >-
+      Activate the newly created flow so its trigger begins listening.
+    operationId: turnOnFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $steps.createFlow.outputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: confirmFlowStarted
+    description: >-
+      Read the flow back and confirm it reports the Started state, proving the
+      provision-and-activate sequence completed rather than assuming it did.
+    operationId: getFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $steps.createFlow.outputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.properties.state == 'Started'
+      type: jsonpath
+    outputs:
+      flowName: $response.body#/name
+      state: $response.body#/properties/state
+      createdTime: $response.body#/properties/createdTime
+      definitionSummary: $response.body#/properties/definitionSummary
+  outputs:
+    flowName: $steps.createFlow.outputs.flowName
+    flowId: $steps.createFlow.outputs.flowId
+    state: $steps.confirmFlowStarted.outputs.state
+    createdTime: $steps.confirmFlowStarted.outputs.createdTime

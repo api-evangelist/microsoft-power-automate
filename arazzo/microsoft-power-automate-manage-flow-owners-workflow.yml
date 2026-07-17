@@ -1,0 +1,126 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Manage Flow Owners
+  summary: Read a flow's current owners, add or remove owners, and verify the new roster.
+  description: >-
+    Flow ownership is the access-control surface of Power Automate, and the most
+    common cause of an orphaned business-critical flow is a sole owner who has
+    left. This workflow confirms the flow exists, reads the current owner roster,
+    applies an add and remove set, and reads the roster back to prove the change
+    landed. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: manage-flow-owners
+  summary: Modify the owner list of a flow and verify the resulting roster.
+  description: >-
+    Reads the flow and its existing owners, submits the requested owner
+    additions and removals, then re-reads the owners so the effective roster is
+    confirmed rather than assumed.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - flowName
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment holding the flow.
+      flowName:
+        type: string
+        description: The name or ID of the flow whose owners are being managed.
+      ownersToAdd:
+        type: array
+        description: >-
+          Principals to add as owners, each an object with an id (the principal
+          object ID) and a type.
+        items:
+          type: object
+      ownersToRemove:
+        type: array
+        description: >-
+          Principals to remove as owners, each an object with an id (the
+          principal object ID) and a type.
+        items:
+          type: object
+  steps:
+  - stepId: confirmFlow
+    description: >-
+      Read the flow to confirm it exists and to capture its display name and
+      creator for the ownership audit record.
+    operationId: getFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      displayName: $response.body#/properties/displayName
+      creator: $response.body#/properties/creator
+  - stepId: readCurrentOwners
+    description: >-
+      List the flow's current owners so the roster before the change is captured
+      and the requested modification can be reconciled against it.
+    operationId: listFlowOwners
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ownersBefore: $response.body#/value
+      firstOwnerRole: $response.body#/value/0/properties/roleName
+  - stepId: modifyOwners
+    description: >-
+      Apply the owner additions and removals in a single request so the roster
+      never passes through an intermediate state with no owner.
+    operationId: modifyFlowOwners
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    requestBody:
+      contentType: application/json
+      payload:
+        add: $inputs.ownersToAdd
+        remove: $inputs.ownersToRemove
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: verifyOwners
+    description: >-
+      Re-read the owner list and assert at least one owner remains, catching the
+      dangerous case where a removal leaves the flow orphaned.
+    operationId: listFlowOwners
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value.length > 0
+      type: jsonpath
+    outputs:
+      ownersAfter: $response.body#/value
+  outputs:
+    flowDisplayName: $steps.confirmFlow.outputs.displayName
+    ownersBefore: $steps.readCurrentOwners.outputs.ownersBefore
+    ownersAfter: $steps.verifyOwners.outputs.ownersAfter

@@ -1,0 +1,90 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Environment Inventory
+  summary: Walk every environment and inventory its flows, connections, and connectors.
+  description: >-
+    The read-only audit an administrator runs before any governance, licensing,
+    or migration decision. The workflow lists the environments the caller can
+    reach, selects one, and then pulls the three inventories that define that
+    environment's automation footprint: the flows that run in it, the
+    connections that authenticate them, and the connectors those connections
+    are built on. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: environment-inventory
+  summary: Inventory the flows, connections, and connectors of a Power Automate environment.
+  description: >-
+    Lists accessible environments, then collects the flow, connection, and
+    connector inventory for the target environment so the footprint can be
+    reported on or reconciled against an expected baseline.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    properties:
+      environmentName:
+        type: string
+        description: >-
+          The name of the environment to inventory (e.g.
+          Default-a1b2c3d4-e5f6-7890-abcd-ef1234567890).
+  steps:
+  - stepId: listEnvironments
+    description: >-
+      List every environment the calling identity has access to, confirming the
+      target environment is reachable before inventorying it.
+    operationId: listEnvironments
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      environments: $response.body#/value
+      firstEnvironmentName: $response.body#/value/0/name
+  - stepId: listEnvironmentFlows
+    description: >-
+      List the cloud flows the caller created in the target environment. This is
+      the core of the automation footprint.
+    operationId: listFlows
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      flows: $response.body#/value
+      firstFlowName: $response.body#/value/0/name
+  - stepId: listEnvironmentConnections
+    description: >-
+      List the connections in the environment. Connections carry the credentials
+      that flows use, so they are the authentication surface of the environment.
+    operationId: listConnections
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      connections: $response.body#/value
+  - stepId: listEnvironmentConnectors
+    description: >-
+      List the connectors available in the environment, including custom and
+      built-in connectors, to establish what the environment is allowed to reach.
+    operationId: listConnectors
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      connectors: $response.body#/value
+  outputs:
+    environments: $steps.listEnvironments.outputs.environments
+    flows: $steps.listEnvironmentFlows.outputs.flows
+    connections: $steps.listEnvironmentConnections.outputs.connections
+    connectors: $steps.listEnvironmentConnectors.outputs.connectors

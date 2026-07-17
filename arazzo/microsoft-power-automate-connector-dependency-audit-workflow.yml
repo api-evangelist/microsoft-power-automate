@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Power Automate Audit a Flow's Connector Dependencies
+  summary: Resolve the connectors and connections a single flow depends on.
+  description: >-
+    Before migrating a flow between environments, or answering whether a flow
+    touches a premium or custom connector, an operator has to resolve what the
+    flow actually depends on. This workflow reads the flow to surface its
+    connection references and action-level connector usage, lists the connectors
+    registered in the environment, resolves one connector in detail to establish
+    its tier and whether it is a custom API, and lists the environment's
+    connections to confirm the flow's references are backed by real credentials.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerAutomateManagementApi
+  url: ../openapi/microsoft-power-automate-management-api.yaml
+  type: openapi
+workflows:
+- workflowId: connector-dependency-audit
+  summary: Resolve a flow's connector and connection dependencies for migration or licensing review.
+  description: >-
+    Reads a flow's connection references and definition summary, then resolves
+    the environment's connector catalog, a specific connector's detail, and the
+    environment's connections so the flow's true dependency set is known.
+  inputs:
+    type: object
+    required:
+    - environmentName
+    - flowName
+    - apiName
+    properties:
+      environmentName:
+        type: string
+        description: The name of the environment holding the flow.
+      flowName:
+        type: string
+        description: The name or ID of the flow to audit.
+      apiName:
+        type: string
+        description: >-
+          The name of the connector to resolve in detail (e.g.
+          shared_commondataserviceforapps).
+  steps:
+  - stepId: readFlow
+    description: >-
+      Read the flow to surface the connection references it declares and the
+      definition summary listing the connector each action calls.
+    operationId: getFlow
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: flowName
+      in: path
+      value: $inputs.flowName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      displayName: $response.body#/properties/displayName
+      connectionReferences: $response.body#/properties/connectionReferences
+      definitionSummary: $response.body#/properties/definitionSummary
+      actions: $response.body#/properties/definitionSummary/actions
+  - stepId: listEnvironmentConnectors
+    description: >-
+      List the connectors registered in the environment so the flow's declared
+      dependencies can be checked against what the environment actually offers.
+    operationId: listConnectors
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      connectors: $response.body#/value
+  - stepId: resolveConnector
+    description: >-
+      Resolve the connector in detail to establish its display name, tier, and
+      whether it is a custom API. Tier is what determines premium licensing, and
+      custom APIs are what break an environment-to-environment migration.
+    operationId: getConnector
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    - name: apiName
+      in: path
+      value: $inputs.apiName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      connectorDisplayName: $response.body#/properties/displayName
+      tier: $response.body#/properties/tier
+      isCustomApi: $response.body#/properties/isCustomApi
+  - stepId: listEnvironmentConnections
+    description: >-
+      List the environment's connections so each connection reference the flow
+      declares can be matched to a real, authenticated connection.
+    operationId: listConnections
+    parameters:
+    - name: environmentName
+      in: path
+      value: $inputs.environmentName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      connections: $response.body#/value
+  outputs:
+    flowDisplayName: $steps.readFlow.outputs.displayName
+    connectionReferences: $steps.readFlow.outputs.connectionReferences
+    connectors: $steps.listEnvironmentConnectors.outputs.connectors
+    connectorTier: $steps.resolveConnector.outputs.tier
+    connectorIsCustom: $steps.resolveConnector.outputs.isCustomApi
+    connections: $steps.listEnvironmentConnections.outputs.connections
