@@ -1,0 +1,302 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Power Automate Management Connections Flow Runs API
+  description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
+  version: v1
+  contact:
+    name: Microsoft
+    url: https://powerautomate.microsoft.com
+  license:
+    name: Microsoft API Terms
+    url: https://www.microsoft.com/en-us/servicesagreement
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://api.flow.microsoft.com
+  description: Power Automate Management API server
+security:
+- oauth2: []
+tags:
+- name: Flow Runs
+  description: Operations for managing flow run history
+paths:
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs:
+    get:
+      operationId: listFlowRuns
+      summary: Microsoft Power Automate List Flow Runs
+      description: List the run history for a specific flow.
+      tags:
+      - Flow Runs
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      - name: flowName
+        in: path
+        required: true
+        description: The name or ID of the flow.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of flow runs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowRunList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}:
+    get:
+      operationId: getFlowRun
+      summary: Microsoft Power Automate Get Flow Run
+      description: Get the details of a specific flow run.
+      tags:
+      - Flow Runs
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      - name: flowName
+        in: path
+        required: true
+        description: The name or ID of the flow.
+        schema:
+          type: string
+      - name: runId
+        in: path
+        required: true
+        description: The ID of the flow run.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with flow run details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowRun'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow run not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}/cancel:
+    post:
+      operationId: cancelFlowRun
+      summary: Microsoft Power Automate Cancel Flow Run
+      description: Cancel a currently running flow run.
+      tags:
+      - Flow Runs
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      - name: flowName
+        in: path
+        required: true
+        description: The name or ID of the flow.
+        schema:
+          type: string
+      - name: runId
+        in: path
+        required: true
+        description: The ID of the flow run to cancel.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Flow run cancelled successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow run not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/runs/{runId}/resubmit:
+    post:
+      operationId: resubmitFlowRun
+      summary: Microsoft Power Automate Resubmit Flow Run
+      description: Resubmit a previously executed flow run.
+      tags:
+      - Flow Runs
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      - name: flowName
+        in: path
+        required: true
+        description: The name or ID of the flow.
+        schema:
+          type: string
+      - name: runId
+        in: path
+        required: true
+        description: The ID of the flow run to resubmit.
+        schema:
+          type: string
+      - name: triggerName
+        in: query
+        required: true
+        description: Name of the flow trigger to resubmit.
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Flow run resubmitted successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Flow run not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FlowRunProperties:
+      type: object
+      description: Properties of a flow run.
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          description: The start time of the flow run.
+          example: '2026-04-15T10:00:00Z'
+        endTime:
+          type: string
+          format: date-time
+          description: The end time of the flow run.
+          example: '2026-04-15T10:00:05Z'
+        status:
+          type: string
+          description: The status of the flow run.
+          enum:
+          - Running
+          - Succeeded
+          - Failed
+          - Cancelled
+          - Waiting
+          - Suspended
+          example: Succeeded
+        code:
+          type: string
+          description: The result code.
+          example: OK
+        trigger:
+          $ref: '#/components/schemas/TriggerInfo'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
+    TriggerInfo:
+      type: object
+      description: Information about the trigger that started the flow run.
+      properties:
+        name:
+          type: string
+          description: The name of the trigger.
+          example: manual
+        outputsLink:
+          type: object
+          description: Link to the trigger outputs.
+          properties:
+            uri:
+              type: string
+              description: URI to the trigger outputs.
+            contentVersion:
+              type: string
+              description: Content version.
+    FlowRun:
+      type: object
+      description: A flow run representing a single execution of a flow.
+      properties:
+        name:
+          type: string
+          description: The unique ID of the flow run.
+          example: 08585132316362410016778943264CU43
+        id:
+          type: string
+          description: The full resource ID of the flow run.
+        type:
+          type: string
+          description: The resource type.
+          example: Microsoft.ProcessSimple/environments/flows/runs
+        properties:
+          $ref: '#/components/schemas/FlowRunProperties'
+    FlowRunList:
+      type: object
+      description: A list of flow runs.
+      properties:
+        value:
+          type: array
+          description: The array of flow runs.
+          items:
+            $ref: '#/components/schemas/FlowRun'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft Entra ID (Azure AD) OAuth 2.0 authentication.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/token
+          scopes:
+            https://service.flow.microsoft.com/.default: Access Power Automate Management API

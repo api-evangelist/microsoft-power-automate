@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Power Automate Management Connections API
+  description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
+  version: v1
+  contact:
+    name: Microsoft
+    url: https://powerautomate.microsoft.com
+  license:
+    name: Microsoft API Terms
+    url: https://www.microsoft.com/en-us/servicesagreement
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://api.flow.microsoft.com
+  description: Power Automate Management API server
+security:
+- oauth2: []
+tags:
+- name: Connections
+  description: Operations for managing connections
+paths:
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/connections:
+    get:
+      operationId: listConnections
+      summary: Microsoft Power Automate List Connections
+      description: List all connections available in the given environment.
+      tags:
+      - Connections
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of connections.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Connection:
+      type: object
+      description: A Power Automate connection.
+      properties:
+        name:
+          type: string
+          description: The connection name.
+          example: shared-commondataserviceforapps-abc123
+        properties:
+          type: object
+          properties:
+            displayName:
+              type: string
+              description: The display name.
+              example: Dataverse Connection
+            apiId:
+              type: string
+              description: The connector ID.
+              example: /providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps
+            createdTime:
+              type: string
+              format: date-time
+              description: Creation time.
+              example: '2025-06-15T08:00:00Z'
+            lastModifiedTime:
+              type: string
+              format: date-time
+              description: Last modification time.
+              example: '2026-04-10T14:30:00Z'
+    ConnectionList:
+      type: object
+      description: A list of connections.
+      properties:
+        value:
+          type: array
+          description: The array of connections.
+          items:
+            $ref: '#/components/schemas/Connection'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft Entra ID (Azure AD) OAuth 2.0 authentication.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/token
+          scopes:
+            https://service.flow.microsoft.com/.default: Access Power Automate Management API

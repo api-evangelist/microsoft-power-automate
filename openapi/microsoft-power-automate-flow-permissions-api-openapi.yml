@@ -1,0 +1,205 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Power Automate Management Connections Flow Permissions API
+  description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
+  version: v1
+  contact:
+    name: Microsoft
+    url: https://powerautomate.microsoft.com
+  license:
+    name: Microsoft API Terms
+    url: https://www.microsoft.com/en-us/servicesagreement
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://api.flow.microsoft.com
+  description: Power Automate Management API server
+security:
+- oauth2: []
+tags:
+- name: Flow Permissions
+  description: Operations for managing flow sharing and ownership
+paths:
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/flows/{flowName}/owners:
+    get:
+      operationId: listFlowOwners
+      summary: Microsoft Power Automate List Flow Owners
+      description: List all owners of a specific flow in an environment.
+      tags:
+      - Flow Permissions
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      - name: flowName
+        in: path
+        required: true
+        description: The name or ID of the flow.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of flow owners.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowPermissionList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: modifyFlowOwners
+      summary: Microsoft Power Automate Modify Flow Owners
+      description: Add or remove owners of a specific flow in an environment.
+      tags:
+      - Flow Permissions
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      - name: flowName
+        in: path
+        required: true
+        description: The name or ID of the flow.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowOwnerModifyRequest'
+      responses:
+        '200':
+          description: Flow owners modified successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
+    FlowOwnerModifyRequest:
+      type: object
+      description: Request to modify flow owners.
+      properties:
+        add:
+          type: array
+          description: Users to add as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to add.
+              type:
+                type: string
+                description: The type of the user.
+        remove:
+          type: array
+          description: Users to remove as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to remove.
+              type:
+                type: string
+                description: The type of the user.
+    Principal:
+      type: object
+      description: A user or service principal.
+      properties:
+        id:
+          type: string
+          description: The object ID of the principal.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        displayName:
+          type: string
+          description: The display name.
+          example: Jane Smith
+        email:
+          type: string
+          format: email
+          description: The email address.
+          example: jane.smith@contoso.com
+        type:
+          type: string
+          description: The principal type.
+          example: User
+        tenantId:
+          type: string
+          description: The tenant ID.
+          example: tenant-a1b2c3d4
+        userPrincipalName:
+          type: string
+          description: The user principal name.
+          example: jane.smith@contoso.com
+    FlowPermission:
+      type: object
+      description: A flow permission entry.
+      properties:
+        name:
+          type: string
+          description: The permission name.
+          example: permission-abc123
+        properties:
+          type: object
+          properties:
+            roleName:
+              type: string
+              description: The role name.
+              example: Owner
+            principal:
+              $ref: '#/components/schemas/Principal'
+    FlowPermissionList:
+      type: object
+      description: A list of flow permissions.
+      properties:
+        value:
+          type: array
+          description: The array of permissions.
+          items:
+            $ref: '#/components/schemas/FlowPermission'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft Entra ID (Azure AD) OAuth 2.0 authentication.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/token
+          scopes:
+            https://service.flow.microsoft.com/.default: Access Power Automate Management API

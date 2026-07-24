@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Power Automate Management Connections Connectors API
+  description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
+  version: v1
+  contact:
+    name: Microsoft
+    url: https://powerautomate.microsoft.com
+  license:
+    name: Microsoft API Terms
+    url: https://www.microsoft.com/en-us/servicesagreement
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://api.flow.microsoft.com
+  description: Power Automate Management API server
+security:
+- oauth2: []
+tags:
+- name: Connectors
+  description: Operations for managing connectors
+paths:
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis:
+    get:
+      operationId: listConnectors
+      summary: Microsoft Power Automate List Connectors
+      description: List all connectors available in the given environment including custom and built-in connectors.
+      tags:
+      - Connectors
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of connectors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /providers/Microsoft.ProcessSimple/environments/{environmentName}/apis/{apiName}:
+    get:
+      operationId: getConnector
+      summary: Microsoft Power Automate Get Connector
+      description: Get the details of a specific connector in an environment.
+      tags:
+      - Connectors
+      parameters:
+      - name: environmentName
+        in: path
+        required: true
+        description: The name of the environment.
+        schema:
+          type: string
+      - name: apiName
+        in: path
+        required: true
+        description: The name of the connector.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with connector details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connector'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Connector not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ConnectorList:
+      type: object
+      description: A list of connectors.
+      properties:
+        value:
+          type: array
+          description: The array of connectors.
+          items:
+            $ref: '#/components/schemas/Connector'
+    Connector:
+      type: object
+      description: A Power Automate connector.
+      properties:
+        name:
+          type: string
+          description: The connector name.
+          example: shared_commondataserviceforapps
+        properties:
+          type: object
+          properties:
+            displayName:
+              type: string
+              description: The display name of the connector.
+              example: Microsoft Dataverse
+            iconUri:
+              type: string
+              description: The icon URI.
+              example: https://connectoricons-prod.azureedge.net/...
+            isCustomApi:
+              type: boolean
+              description: Whether this is a custom API.
+              example: false
+            tier:
+              type: string
+              description: The tier of the connector.
+              example: Standard
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft Entra ID (Azure AD) OAuth 2.0 authentication.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/token
+          scopes:
+            https://service.flow.microsoft.com/.default: Access Power Automate Management API

@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Power Automate Management Connections Environments API
+  description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
+  version: v1
+  contact:
+    name: Microsoft
+    url: https://powerautomate.microsoft.com
+  license:
+    name: Microsoft API Terms
+    url: https://www.microsoft.com/en-us/servicesagreement
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://api.flow.microsoft.com
+  description: Power Automate Management API server
+security:
+- oauth2: []
+tags:
+- name: Environments
+  description: Operations for managing Power Automate environments
+paths:
+  /providers/Microsoft.ProcessSimple/environments:
+    get:
+      operationId: listEnvironments
+      summary: Microsoft Power Automate List Environments
+      description: List all the environments the current user has access to.
+      tags:
+      - Environments
+      responses:
+        '200':
+          description: Successful response with list of environments.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentList'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EnvironmentList:
+      type: object
+      description: A list of environments.
+      properties:
+        value:
+          type: array
+          description: The array of environments.
+          items:
+            $ref: '#/components/schemas/Environment'
+    Environment:
+      type: object
+      description: A Power Automate environment.
+      properties:
+        name:
+          type: string
+          description: The unique name of the environment.
+          example: Default-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        location:
+          type: string
+          description: The geographic location of the environment.
+          example: unitedstates
+        properties:
+          $ref: '#/components/schemas/EnvironmentProperties'
+    EnvironmentProperties:
+      type: object
+      description: Properties of an environment.
+      properties:
+        displayName:
+          type: string
+          description: The display name of the environment.
+          example: Production Environment
+        description:
+          type: string
+          description: The description of the environment.
+          example: Main production environment for business flows.
+        createdTime:
+          type: string
+          format: date-time
+          description: The date and time the environment was created.
+          example: '2025-01-15T10:00:00Z'
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: The last modification time.
+          example: '2026-04-10T14:30:00Z'
+        provisioningState:
+          type: string
+          description: The provisioning state of the environment.
+          example: Succeeded
+        environmentSku:
+          type: string
+          description: The SKU of the environment.
+          example: Production
+        environmentType:
+          type: string
+          description: The type of the environment.
+          example: Production
+        isDefault:
+          type: boolean
+          description: Whether this is the default environment.
+          example: false
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft Entra ID (Azure AD) OAuth 2.0 authentication.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/token
+          scopes:
+            https://service.flow.microsoft.com/.default: Access Power Automate Management API
