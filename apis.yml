@@ -3,6 +3,19 @@ name: Microsoft Power Automate
 description: Microsoft Power Automate is a cloud-based service that helps you create automated workflows between your favorite
   apps and services to synchronize files, get notifications, collect data, and automate business processes. It supports automated,
   instant, and scheduled cloud flows, as well as desktop flows for robotic process automation.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
 url: https://powerautomate.microsoft.com
 created: '2024'
@@ -18,23 +31,18 @@ tags:
 - RPA
 - Workflow
 apis:
-- name: Power Automate Management API
-  description: REST API for managing flows, environments, connections, connectors, and flow permissions in Power Automate.
-    Enables programmatic creation, update, deletion, and lifecycle management of cloud flows.
-  image: https://powerautomate.microsoft.com/images/application-logos/svg/powerautomate.svg
+- aid: microsoft-power-automate:microsoft-power-automate-connections-api
+  name: Microsoft Power Automate Connections API
+  description: Operations for managing connections
   humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
   baseURL: https://api.flow.microsoft.com
   tags:
-  - Automation
-  - Connectors
-  - Environments
-  - Flow Management
-  - Flows
+  - Connections
   properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-automate-connections-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-automate/web-api
-  - type: OpenAPI
-    url: openapi/microsoft-power-automate-management-api.yaml
   - type: JSONSchema
     url: json-schema/power-automate-management-api-flow-schema.json
   - type: JSONSchema
@@ -63,9 +71,209 @@ apis:
     url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
   - type: APIReference
     url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
-  - type: Overlay
-    url: overlays/microsoft-power-automate-management-api-overlay.yaml
+- aid: microsoft-power-automate:microsoft-power-automate-connectors-api
+  name: Microsoft Power Automate Connectors API
+  description: Operations for managing connectors
+  humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
+  baseURL: https://api.flow.microsoft.com
+  tags:
+  - Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-automate-connectors-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/web-api
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-environment-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-run-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-connector-schema.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-environment-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-run-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-connector-structure.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-environment-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-run-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-connector-example.json
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
+- aid: microsoft-power-automate:microsoft-power-automate-environments-api
+  name: Microsoft Power Automate Environments API
+  description: Operations for managing Power Automate environments
+  humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
+  baseURL: https://api.flow.microsoft.com
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-automate-environments-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/web-api
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-environment-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-run-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-connector-schema.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-environment-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-run-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-connector-structure.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-environment-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-run-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-connector-example.json
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
+- aid: microsoft-power-automate:microsoft-power-automate-flow-permissions-api
+  name: Microsoft Power Automate Flow Permissions API
+  description: Operations for managing flow sharing and ownership
+  humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
+  baseURL: https://api.flow.microsoft.com
+  tags:
+  - Flow Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-automate-flow-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/web-api
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-environment-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-run-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-connector-schema.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-environment-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-run-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-connector-structure.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-environment-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-run-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-connector-example.json
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
+- aid: microsoft-power-automate:microsoft-power-automate-flow-runs-api
+  name: Microsoft Power Automate Flow Runs API
+  description: Operations for managing flow run history
+  humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
+  baseURL: https://api.flow.microsoft.com
+  tags:
+  - Flow Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-automate-flow-runs-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/web-api
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-environment-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-run-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-connector-schema.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-environment-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-run-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-connector-structure.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-environment-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-run-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-connector-example.json
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
+- aid: microsoft-power-automate:microsoft-power-automate-flows-api
+  name: Microsoft Power Automate Flows API
+  description: Operations for managing cloud flows
+  humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
+  baseURL: https://api.flow.microsoft.com
+  tags:
+  - Flows
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-automate-flows-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/web-api
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-environment-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-flow-run-schema.json
+  - type: JSONSchema
+    url: json-schema/power-automate-management-api-connector-schema.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-environment-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-flow-run-structure.json
+  - type: JSONStructure
+    url: json-structure/power-automate-management-api-connector-structure.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-environment-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-flow-run-example.json
+  - type: Examples
+    url: examples/power-automate-management-api-connector-example.json
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/microsoft-power-automate/overview
 - type: AgenticAccess
   url: agentic-access/microsoft-power-automate-agentic-access.yml
 - type: DomainSecurity
