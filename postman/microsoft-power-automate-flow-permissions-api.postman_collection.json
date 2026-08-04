@@ -1,0 +1,467 @@
+{
+  "info": {
+    "_postman_id": "a7563425-521c-4b87-a1ff-03303cb36547",
+    "name": "Microsoft Power Automate Management Connections Flow Permissions API",
+    "description": "The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:12:02.000Z",
+    "updatedAt": "2026-07-28T02:12:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a7563425-521c-4b87-a1ff-03303cb36547"
+  },
+  "item": [
+    {
+      "name": "providers",
+      "item": [
+        {
+          "name": "Microsoft.ProcessSimple",
+          "item": [
+            {
+              "name": "environments",
+              "item": [
+                {
+                  "name": "{environmentName}",
+                  "item": [
+                    {
+                      "name": "flows",
+                      "item": [
+                        {
+                          "name": "{flowName}",
+                          "item": [
+                            {
+                              "name": "owners",
+                              "item": [
+                                {
+                                  "name": "Microsoft Power Automate List Flow Owners",
+                                  "id": "88d0520e-92c0-46a2-9c15-ce9edb8f9a82",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/owners",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName",
+                                        "owners"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "69283fc8-95db-4f30-9083-54496a4a3475",
+                                          "key": "environmentName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the environment."
+                                        },
+                                        {
+                                          "id": "d95fdaac-8b36-426a-b9de-e1ffb5f9aec8",
+                                          "key": "flowName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name or ID of the flow."
+                                        }
+                                      ]
+                                    },
+                                    "description": "List all owners of a specific flow in an environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "be3d0e18-eb14-4db9-90d5-bd6bc84988ff",
+                                      "name": "Successful response with list of flow owners.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/owners",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "owners"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": [\n    {\n      \"name\": \"<string>\",\n      \"properties\": {\n        \"roleName\": \"<string>\",\n        \"principal\": {\n          \"id\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"email\": \"<email>\",\n          \"type\": \"<string>\",\n          \"tenantId\": \"<string>\",\n          \"userPrincipalName\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"properties\": {\n        \"roleName\": \"<string>\",\n        \"principal\": {\n          \"id\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"email\": \"<email>\",\n          \"type\": \"<string>\",\n          \"tenantId\": \"<string>\",\n          \"userPrincipalName\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T02:12:02.000Z",
+                                      "updatedAt": "2026-07-28T02:12:02.000Z",
+                                      "uid": "35240-be3d0e18-eb14-4db9-90d5-bd6bc84988ff"
+                                    },
+                                    {
+                                      "id": "261732e5-3f38-454f-bce6-51ab98401be9",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/owners",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "owners"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:02.000Z",
+                                      "updatedAt": "2026-07-28T02:12:02.000Z",
+                                      "uid": "35240-261732e5-3f38-454f-bce6-51ab98401be9"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:12:02.000Z",
+                                  "updatedAt": "2026-07-28T02:12:02.000Z",
+                                  "uid": "35240-88d0520e-92c0-46a2-9c15-ce9edb8f9a82"
+                                },
+                                {
+                                  "name": "Microsoft Power Automate Modify Flow Owners",
+                                  "id": "01610978-ea59-4f51-9b64-e694561b4030",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"add\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/owners",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName",
+                                        "owners"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "91dd3b59-f9db-4b4f-ba07-b367898c09cd",
+                                          "key": "environmentName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the environment."
+                                        },
+                                        {
+                                          "id": "11c93dfd-e739-41a2-8e1b-c1c88fa1a012",
+                                          "key": "flowName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name or ID of the flow."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Add or remove owners of a specific flow in an environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "f3e01d92-aac2-4653-a826-939f78ac7aeb",
+                                      "name": "Flow owners modified successfully.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"add\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/owners",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "owners"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:12:02.000Z",
+                                      "updatedAt": "2026-07-28T02:12:02.000Z",
+                                      "uid": "35240-f3e01d92-aac2-4653-a826-939f78ac7aeb"
+                                    },
+                                    {
+                                      "id": "9b91cbd6-a52a-407f-aae0-d1784bdc1908",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"add\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/owners",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "owners"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:02.000Z",
+                                      "updatedAt": "2026-07-28T02:12:02.000Z",
+                                      "uid": "35240-9b91cbd6-a52a-407f-aae0-d1784bdc1908"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:12:02.000Z",
+                                  "updatedAt": "2026-07-28T02:12:02.000Z",
+                                  "uid": "35240-01610978-ea59-4f51-9b64-e694561b4030"
+                                }
+                              ],
+                              "id": "cc62e71b-8d4c-47ae-8130-c6fe28d1d0da",
+                              "createdAt": "2026-07-28T02:12:02.000Z",
+                              "updatedAt": "2026-07-28T02:12:02.000Z",
+                              "uid": "35240-cc62e71b-8d4c-47ae-8130-c6fe28d1d0da"
+                            }
+                          ],
+                          "id": "e08debb6-19c4-487a-a952-b8d04ea930e5",
+                          "createdAt": "2026-07-28T02:12:02.000Z",
+                          "updatedAt": "2026-07-28T02:12:02.000Z",
+                          "uid": "35240-e08debb6-19c4-487a-a952-b8d04ea930e5"
+                        }
+                      ],
+                      "id": "a477c547-a68a-45a7-8b4b-629280bd6a83",
+                      "createdAt": "2026-07-28T02:12:02.000Z",
+                      "updatedAt": "2026-07-28T02:12:02.000Z",
+                      "uid": "35240-a477c547-a68a-45a7-8b4b-629280bd6a83"
+                    }
+                  ],
+                  "id": "4b970d5c-49ad-4d9f-9b9c-acf806827f30",
+                  "createdAt": "2026-07-28T02:12:02.000Z",
+                  "updatedAt": "2026-07-28T02:12:02.000Z",
+                  "uid": "35240-4b970d5c-49ad-4d9f-9b9c-acf806827f30"
+                }
+              ],
+              "id": "1564bf24-1010-4676-9d67-f26945832147",
+              "createdAt": "2026-07-28T02:12:02.000Z",
+              "updatedAt": "2026-07-28T02:12:02.000Z",
+              "uid": "35240-1564bf24-1010-4676-9d67-f26945832147"
+            }
+          ],
+          "id": "3f6b14ca-27f8-48dc-aaa0-c7aab6b4c3e8",
+          "createdAt": "2026-07-28T02:12:02.000Z",
+          "updatedAt": "2026-07-28T02:12:02.000Z",
+          "uid": "35240-3f6b14ca-27f8-48dc-aaa0-c7aab6b4c3e8"
+        }
+      ],
+      "id": "f4d5245d-ce73-42d4-b78f-bf35463f9f65",
+      "createdAt": "2026-07-28T02:12:02.000Z",
+      "updatedAt": "2026-07-28T02:12:02.000Z",
+      "uid": "35240-f4d5245d-ce73-42d4-b78f-bf35463f9f65"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://service.flow.microsoft.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.flow.microsoft.com"
+    }
+  ]
+}

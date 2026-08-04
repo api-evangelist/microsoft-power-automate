@@ -1,0 +1,24 @@
+{
+  "provider": "microsoft-power-automate",
+  "sources": [
+    "microsoft-power-automate-connections-api-openapi.yml",
+    "microsoft-power-automate-connectors-api-openapi.yml",
+    "microsoft-power-automate-environments-api-openapi.yml",
+    "microsoft-power-automate-flow-permissions-api-openapi.yml",
+    "microsoft-power-automate-flow-runs-api-openapi.yml",
+    "microsoft-power-automate-flows-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-power-automate-connections-api-openapi.yml",
+    "microsoft-power-automate-connectors-api-openapi.yml",
+    "microsoft-power-automate-environments-api-openapi.yml",
+    "microsoft-power-automate-flow-permissions-api-openapi.yml",
+    "microsoft-power-automate-flow-runs-api-openapi.yml",
+    "microsoft-power-automate-flows-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

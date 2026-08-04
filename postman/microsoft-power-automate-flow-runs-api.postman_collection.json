@@ -1,0 +1,1030 @@
+{
+  "info": {
+    "_postman_id": "40209264-293e-44da-8563-ad97e77ea380",
+    "name": "Microsoft Power Automate Management Connections Flow Runs API",
+    "description": "The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:12:05.000Z",
+    "updatedAt": "2026-07-28T02:12:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-40209264-293e-44da-8563-ad97e77ea380"
+  },
+  "item": [
+    {
+      "name": "providers",
+      "item": [
+        {
+          "name": "Microsoft.ProcessSimple",
+          "item": [
+            {
+              "name": "environments",
+              "item": [
+                {
+                  "name": "{environmentName}",
+                  "item": [
+                    {
+                      "name": "flows",
+                      "item": [
+                        {
+                          "name": "{flowName}",
+                          "item": [
+                            {
+                              "name": "runs",
+                              "item": [
+                                {
+                                  "name": "{runId}",
+                                  "item": [
+                                    {
+                                      "name": "cancel",
+                                      "item": [
+                                        {
+                                          "name": "Microsoft Power Automate Cancel Flow Run",
+                                          "id": "5a2fa763-c257-4278-bceb-05d5024d0ef2",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/cancel",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "providers",
+                                                "Microsoft.ProcessSimple",
+                                                "environments",
+                                                ":environmentName",
+                                                "flows",
+                                                ":flowName",
+                                                "runs",
+                                                ":runId",
+                                                "cancel"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "460848ef-c3fc-4b32-93ba-7c33186f9b0c",
+                                                  "key": "environmentName",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The name of the environment."
+                                                },
+                                                {
+                                                  "id": "6e20ff30-6ef5-4dbb-8bab-be55f9cb01a8",
+                                                  "key": "flowName",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The name or ID of the flow."
+                                                },
+                                                {
+                                                  "id": "c408de0e-8688-4fa8-9ab4-e23f9ae5bb60",
+                                                  "key": "runId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The ID of the flow run to cancel."
+                                                }
+                                              ]
+                                            },
+                                            "description": "Cancel a currently running flow run."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "10652c5d-c333-4a95-a9c6-353d95c855ad",
+                                              "name": "Flow run cancelled successfully.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/cancel",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "providers",
+                                                    "Microsoft.ProcessSimple",
+                                                    "environments",
+                                                    ":environmentName",
+                                                    "flows",
+                                                    ":flowName",
+                                                    "runs",
+                                                    ":runId",
+                                                    "cancel"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "environmentName"
+                                                    },
+                                                    {
+                                                      "key": "flowName"
+                                                    },
+                                                    {
+                                                      "key": "runId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-07-28T02:12:05.000Z",
+                                              "updatedAt": "2026-07-28T02:12:05.000Z",
+                                              "uid": "35240-10652c5d-c333-4a95-a9c6-353d95c855ad"
+                                            },
+                                            {
+                                              "id": "901e04c9-ebdb-4059-95ab-4f7e38a907d0",
+                                              "name": "Unauthorized.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/cancel",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "providers",
+                                                    "Microsoft.ProcessSimple",
+                                                    "environments",
+                                                    ":environmentName",
+                                                    "flows",
+                                                    ":flowName",
+                                                    "runs",
+                                                    ":runId",
+                                                    "cancel"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "environmentName"
+                                                    },
+                                                    {
+                                                      "key": "flowName"
+                                                    },
+                                                    {
+                                                      "key": "runId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Unauthorized",
+                                              "code": 401,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                              "createdAt": "2026-07-28T02:12:05.000Z",
+                                              "updatedAt": "2026-07-28T02:12:05.000Z",
+                                              "uid": "35240-901e04c9-ebdb-4059-95ab-4f7e38a907d0"
+                                            },
+                                            {
+                                              "id": "111baefc-7a34-4a68-827a-a0a2bb8412b7",
+                                              "name": "Flow run not found.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/cancel",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "providers",
+                                                    "Microsoft.ProcessSimple",
+                                                    "environments",
+                                                    ":environmentName",
+                                                    "flows",
+                                                    ":flowName",
+                                                    "runs",
+                                                    ":runId",
+                                                    "cancel"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "environmentName"
+                                                    },
+                                                    {
+                                                      "key": "flowName"
+                                                    },
+                                                    {
+                                                      "key": "runId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                              "createdAt": "2026-07-28T02:12:05.000Z",
+                                              "updatedAt": "2026-07-28T02:12:05.000Z",
+                                              "uid": "35240-111baefc-7a34-4a68-827a-a0a2bb8412b7"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T02:12:05.000Z",
+                                          "updatedAt": "2026-07-28T02:12:05.000Z",
+                                          "uid": "35240-5a2fa763-c257-4278-bceb-05d5024d0ef2"
+                                        }
+                                      ],
+                                      "id": "bd597150-cfd0-40f8-ad78-f450b8d1c2af",
+                                      "createdAt": "2026-07-28T02:12:05.000Z",
+                                      "updatedAt": "2026-07-28T02:12:05.000Z",
+                                      "uid": "35240-bd597150-cfd0-40f8-ad78-f450b8d1c2af"
+                                    },
+                                    {
+                                      "name": "resubmit",
+                                      "item": [
+                                        {
+                                          "name": "Microsoft Power Automate Resubmit Flow Run",
+                                          "id": "23704e87-6eb7-432b-b3b8-ba1f131ea46a",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/resubmit?triggerName=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "providers",
+                                                "Microsoft.ProcessSimple",
+                                                "environments",
+                                                ":environmentName",
+                                                "flows",
+                                                ":flowName",
+                                                "runs",
+                                                ":runId",
+                                                "resubmit"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Name of the flow trigger to resubmit.",
+                                                  "key": "triggerName",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "a4fa2e75-b190-4bd3-824f-766f685ba4f1",
+                                                  "key": "environmentName",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The name of the environment."
+                                                },
+                                                {
+                                                  "id": "c8075389-02d0-41c5-966b-2900166e6723",
+                                                  "key": "flowName",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The name or ID of the flow."
+                                                },
+                                                {
+                                                  "id": "43fc2573-44f7-4d87-9be6-8a65fd9c1c40",
+                                                  "key": "runId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The ID of the flow run to resubmit."
+                                                }
+                                              ]
+                                            },
+                                            "description": "Resubmit a previously executed flow run."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "ed530e63-7a68-49da-bf8a-f01b2f8817b1",
+                                              "name": "Flow run resubmitted successfully.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/resubmit?triggerName=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "providers",
+                                                    "Microsoft.ProcessSimple",
+                                                    "environments",
+                                                    ":environmentName",
+                                                    "flows",
+                                                    ":flowName",
+                                                    "runs",
+                                                    ":runId",
+                                                    "resubmit"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "(Required) Name of the flow trigger to resubmit.",
+                                                      "key": "triggerName",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "environmentName"
+                                                    },
+                                                    {
+                                                      "key": "flowName"
+                                                    },
+                                                    {
+                                                      "key": "runId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Accepted",
+                                              "code": 202,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-07-28T02:12:05.000Z",
+                                              "updatedAt": "2026-07-28T02:12:05.000Z",
+                                              "uid": "35240-ed530e63-7a68-49da-bf8a-f01b2f8817b1"
+                                            },
+                                            {
+                                              "id": "535a7601-126e-4e39-9ecc-c7e9386e07b6",
+                                              "name": "Unauthorized.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/resubmit?triggerName=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "providers",
+                                                    "Microsoft.ProcessSimple",
+                                                    "environments",
+                                                    ":environmentName",
+                                                    "flows",
+                                                    ":flowName",
+                                                    "runs",
+                                                    ":runId",
+                                                    "resubmit"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "(Required) Name of the flow trigger to resubmit.",
+                                                      "key": "triggerName",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "environmentName"
+                                                    },
+                                                    {
+                                                      "key": "flowName"
+                                                    },
+                                                    {
+                                                      "key": "runId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Unauthorized",
+                                              "code": 401,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                              "createdAt": "2026-07-28T02:12:05.000Z",
+                                              "updatedAt": "2026-07-28T02:12:05.000Z",
+                                              "uid": "35240-535a7601-126e-4e39-9ecc-c7e9386e07b6"
+                                            },
+                                            {
+                                              "id": "a5b806f7-992f-4a76-abc5-a6765bd80e96",
+                                              "name": "Flow run not found.",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/resubmit?triggerName=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "providers",
+                                                    "Microsoft.ProcessSimple",
+                                                    "environments",
+                                                    ":environmentName",
+                                                    "flows",
+                                                    ":flowName",
+                                                    "runs",
+                                                    ":runId",
+                                                    "resubmit"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "(Required) Name of the flow trigger to resubmit.",
+                                                      "key": "triggerName",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "environmentName"
+                                                    },
+                                                    {
+                                                      "key": "flowName"
+                                                    },
+                                                    {
+                                                      "key": "runId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                              "createdAt": "2026-07-28T02:12:05.000Z",
+                                              "updatedAt": "2026-07-28T02:12:05.000Z",
+                                              "uid": "35240-a5b806f7-992f-4a76-abc5-a6765bd80e96"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T02:12:05.000Z",
+                                          "updatedAt": "2026-07-28T02:12:05.000Z",
+                                          "uid": "35240-23704e87-6eb7-432b-b3b8-ba1f131ea46a"
+                                        }
+                                      ],
+                                      "id": "ffabf466-ed70-4e5a-aeb1-b0f6af0345fb",
+                                      "createdAt": "2026-07-28T02:12:05.000Z",
+                                      "updatedAt": "2026-07-28T02:12:05.000Z",
+                                      "uid": "35240-ffabf466-ed70-4e5a-aeb1-b0f6af0345fb"
+                                    },
+                                    {
+                                      "name": "Microsoft Power Automate Get Flow Run",
+                                      "id": "386762c0-e794-488d-9eef-fbf08ecd2a34",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "runs",
+                                            ":runId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "74048cbb-8ba9-4c4c-a59f-36fe5662bea7",
+                                              "key": "environmentName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the environment."
+                                            },
+                                            {
+                                              "id": "b335f89f-29f0-49eb-a812-afdbfed3be35",
+                                              "key": "flowName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name or ID of the flow."
+                                            },
+                                            {
+                                              "id": "d84a5c3d-2eb0-4c0e-a111-39214f577bcb",
+                                              "key": "runId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the flow run."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Get the details of a specific flow run."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "296d9258-9c75-488e-b779-054471e2ba27",
+                                          "name": "Successful response with flow run details.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "providers",
+                                                "Microsoft.ProcessSimple",
+                                                "environments",
+                                                ":environmentName",
+                                                "flows",
+                                                ":flowName",
+                                                "runs",
+                                                ":runId"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "environmentName"
+                                                },
+                                                {
+                                                  "key": "flowName"
+                                                },
+                                                {
+                                                  "key": "runId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"status\": \"Running\",\n    \"code\": \"<string>\",\n    \"trigger\": {\n      \"name\": \"<string>\",\n      \"outputsLink\": {\n        \"uri\": \"<string>\",\n        \"contentVersion\": \"<string>\"\n      }\n    }\n  }\n}",
+                                          "createdAt": "2026-07-28T02:12:05.000Z",
+                                          "updatedAt": "2026-07-28T02:12:05.000Z",
+                                          "uid": "35240-296d9258-9c75-488e-b779-054471e2ba27"
+                                        },
+                                        {
+                                          "id": "9612608d-7fd5-4e54-a8ad-9a60aabb160c",
+                                          "name": "Unauthorized.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "providers",
+                                                "Microsoft.ProcessSimple",
+                                                "environments",
+                                                ":environmentName",
+                                                "flows",
+                                                ":flowName",
+                                                "runs",
+                                                ":runId"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "environmentName"
+                                                },
+                                                {
+                                                  "key": "flowName"
+                                                },
+                                                {
+                                                  "key": "runId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                          "createdAt": "2026-07-28T02:12:05.000Z",
+                                          "updatedAt": "2026-07-28T02:12:05.000Z",
+                                          "uid": "35240-9612608d-7fd5-4e54-a8ad-9a60aabb160c"
+                                        },
+                                        {
+                                          "id": "ee5dd56a-19ec-4229-a81d-3199bae59541",
+                                          "name": "Flow run not found.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "providers",
+                                                "Microsoft.ProcessSimple",
+                                                "environments",
+                                                ":environmentName",
+                                                "flows",
+                                                ":flowName",
+                                                "runs",
+                                                ":runId"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "environmentName"
+                                                },
+                                                {
+                                                  "key": "flowName"
+                                                },
+                                                {
+                                                  "key": "runId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                          "createdAt": "2026-07-28T02:12:05.000Z",
+                                          "updatedAt": "2026-07-28T02:12:05.000Z",
+                                          "uid": "35240-ee5dd56a-19ec-4229-a81d-3199bae59541"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T02:12:05.000Z",
+                                      "updatedAt": "2026-07-28T02:12:05.000Z",
+                                      "uid": "35240-386762c0-e794-488d-9eef-fbf08ecd2a34"
+                                    }
+                                  ],
+                                  "id": "d4cada99-24e6-4c5a-85c2-1a03107a849c",
+                                  "createdAt": "2026-07-28T02:12:05.000Z",
+                                  "updatedAt": "2026-07-28T02:12:05.000Z",
+                                  "uid": "35240-d4cada99-24e6-4c5a-85c2-1a03107a849c"
+                                },
+                                {
+                                  "name": "Microsoft Power Automate List Flow Runs",
+                                  "id": "3a049ed3-13e5-4fbb-b10d-f86400ce4275",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName",
+                                        "runs"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "552b9fcc-63c5-4af0-9227-491c030817af",
+                                          "key": "environmentName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the environment."
+                                        },
+                                        {
+                                          "id": "8f2a0e26-1281-4f92-ad65-169f1c7995b7",
+                                          "key": "flowName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name or ID of the flow."
+                                        }
+                                      ]
+                                    },
+                                    "description": "List the run history for a specific flow."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "e60ca863-31d3-454e-b7ef-1d8cf80a2f8d",
+                                      "name": "Successful response with list of flow runs.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "runs"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"properties\": {\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"status\": \"Succeeded\",\n        \"code\": \"<string>\",\n        \"trigger\": {\n          \"name\": \"<string>\",\n          \"outputsLink\": {\n            \"uri\": \"<string>\",\n            \"contentVersion\": \"<string>\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"properties\": {\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"status\": \"Succeeded\",\n        \"code\": \"<string>\",\n        \"trigger\": {\n          \"name\": \"<string>\",\n          \"outputsLink\": {\n            \"uri\": \"<string>\",\n            \"contentVersion\": \"<string>\"\n          }\n        }\n      }\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T02:12:05.000Z",
+                                      "updatedAt": "2026-07-28T02:12:05.000Z",
+                                      "uid": "35240-e60ca863-31d3-454e-b7ef-1d8cf80a2f8d"
+                                    },
+                                    {
+                                      "id": "1bd3fbb4-2f2e-44fe-8566-e3fd2b87d23b",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "runs"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:05.000Z",
+                                      "updatedAt": "2026-07-28T02:12:05.000Z",
+                                      "uid": "35240-1bd3fbb4-2f2e-44fe-8566-e3fd2b87d23b"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:12:05.000Z",
+                                  "updatedAt": "2026-07-28T02:12:05.000Z",
+                                  "uid": "35240-3a049ed3-13e5-4fbb-b10d-f86400ce4275"
+                                }
+                              ],
+                              "id": "98a84d30-bf7a-45db-b5cf-bc2874bd956f",
+                              "createdAt": "2026-07-28T02:12:05.000Z",
+                              "updatedAt": "2026-07-28T02:12:05.000Z",
+                              "uid": "35240-98a84d30-bf7a-45db-b5cf-bc2874bd956f"
+                            }
+                          ],
+                          "id": "c6530474-da04-4fc1-91cd-db785cc6b598",
+                          "createdAt": "2026-07-28T02:12:05.000Z",
+                          "updatedAt": "2026-07-28T02:12:05.000Z",
+                          "uid": "35240-c6530474-da04-4fc1-91cd-db785cc6b598"
+                        }
+                      ],
+                      "id": "465d8cd8-c3ff-4eb1-9212-531579740506",
+                      "createdAt": "2026-07-28T02:12:05.000Z",
+                      "updatedAt": "2026-07-28T02:12:05.000Z",
+                      "uid": "35240-465d8cd8-c3ff-4eb1-9212-531579740506"
+                    }
+                  ],
+                  "id": "9425407c-4653-4201-8b0e-d6f00b209891",
+                  "createdAt": "2026-07-28T02:12:05.000Z",
+                  "updatedAt": "2026-07-28T02:12:05.000Z",
+                  "uid": "35240-9425407c-4653-4201-8b0e-d6f00b209891"
+                }
+              ],
+              "id": "dff64e73-5749-48de-b3cd-b9d67eac91b0",
+              "createdAt": "2026-07-28T02:12:05.000Z",
+              "updatedAt": "2026-07-28T02:12:05.000Z",
+              "uid": "35240-dff64e73-5749-48de-b3cd-b9d67eac91b0"
+            }
+          ],
+          "id": "16aafad5-7405-4b22-b51f-204ae39a6f4f",
+          "createdAt": "2026-07-28T02:12:05.000Z",
+          "updatedAt": "2026-07-28T02:12:05.000Z",
+          "uid": "35240-16aafad5-7405-4b22-b51f-204ae39a6f4f"
+        }
+      ],
+      "id": "84a853d4-1b59-48dd-8cd4-85937785a500",
+      "createdAt": "2026-07-28T02:12:05.000Z",
+      "updatedAt": "2026-07-28T02:12:05.000Z",
+      "uid": "35240-84a853d4-1b59-48dd-8cd4-85937785a500"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://service.flow.microsoft.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.flow.microsoft.com"
+    }
+  ]
+}

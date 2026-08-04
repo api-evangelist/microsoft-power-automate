@@ -1,0 +1,1867 @@
+{
+  "info": {
+    "_postman_id": "ed2dcd7b-5d74-4a46-ac84-2981a16d13c2",
+    "name": "Microsoft Power Automate Management Connections Flows API",
+    "description": "The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:12:06.000Z",
+    "updatedAt": "2026-07-28T02:12:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed2dcd7b-5d74-4a46-ac84-2981a16d13c2"
+  },
+  "item": [
+    {
+      "name": "providers",
+      "item": [
+        {
+          "name": "Microsoft.ProcessSimple",
+          "item": [
+            {
+              "name": "environments",
+              "item": [
+                {
+                  "name": "{environmentName}",
+                  "item": [
+                    {
+                      "name": "flows",
+                      "item": [
+                        {
+                          "name": "{flowName}",
+                          "item": [
+                            {
+                              "name": "start",
+                              "item": [
+                                {
+                                  "name": "Microsoft Power Automate Turn on Flow",
+                                  "id": "d04ba2b5-5727-4aed-861b-d4fa2e47cdb5",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/start",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName",
+                                        "start"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "2e2bf09a-3189-4d36-8d15-707e7682fba4",
+                                          "key": "environmentName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the environment."
+                                        },
+                                        {
+                                          "id": "3b317b1e-c5ff-455a-bccf-240c8237eed4",
+                                          "key": "flowName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name or ID of the flow."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Start (activate) a specific flow in an environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "07217eaa-7d8e-4d7f-8165-25c67206a0e2",
+                                      "name": "Flow turned on successfully.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/start",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "start"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-07217eaa-7d8e-4d7f-8165-25c67206a0e2"
+                                    },
+                                    {
+                                      "id": "f68e5f34-9cae-49a0-afd9-25feb5a9ecd8",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/start",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "start"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-f68e5f34-9cae-49a0-afd9-25feb5a9ecd8"
+                                    },
+                                    {
+                                      "id": "7d965082-42d1-4378-96d1-d04572e26971",
+                                      "name": "Flow not found.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/start",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "start"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-7d965082-42d1-4378-96d1-d04572e26971"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-d04ba2b5-5727-4aed-861b-d4fa2e47cdb5"
+                                }
+                              ],
+                              "id": "f8703111-15a3-409b-9831-03fd1cd4d83e",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-f8703111-15a3-409b-9831-03fd1cd4d83e"
+                            },
+                            {
+                              "name": "stop",
+                              "item": [
+                                {
+                                  "name": "Microsoft Power Automate Turn off Flow",
+                                  "id": "c4603618-0719-4db7-897e-89a7e07032cf",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/stop",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName",
+                                        "stop"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "2f814b7e-1abb-46e8-946f-d0b4a4920b53",
+                                          "key": "environmentName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the environment."
+                                        },
+                                        {
+                                          "id": "fc770c5d-d1be-49ca-aaae-9e45487383ee",
+                                          "key": "flowName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name or ID of the flow."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Stop (deactivate) a specific flow in an environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "37e5ba41-77cb-409e-800d-12e9466c940e",
+                                      "name": "Flow turned off successfully.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/stop",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "stop"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-37e5ba41-77cb-409e-800d-12e9466c940e"
+                                    },
+                                    {
+                                      "id": "08a14fe5-72c8-4bca-962f-b820dbef1b64",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/stop",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "stop"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-08a14fe5-72c8-4bca-962f-b820dbef1b64"
+                                    },
+                                    {
+                                      "id": "afbbf6c8-8316-461d-b4bb-3b640f7b1e94",
+                                      "name": "Flow not found.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/stop",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "stop"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-afbbf6c8-8316-461d-b4bb-3b640f7b1e94"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-c4603618-0719-4db7-897e-89a7e07032cf"
+                                }
+                              ],
+                              "id": "736c48b4-942e-4238-be7b-60c5caec2398",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-736c48b4-942e-4238-be7b-60c5caec2398"
+                            },
+                            {
+                              "name": "listCallbackUrl",
+                              "item": [
+                                {
+                                  "name": "Microsoft Power Automate List Callback URL",
+                                  "id": "9fce80e7-99e3-4492-9416-20cfc1d70453",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/listCallbackUrl",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName",
+                                        "listCallbackUrl"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "034571ad-5d08-4349-9a09-f20d16ca07b0",
+                                          "key": "environmentName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the environment."
+                                        },
+                                        {
+                                          "id": "526f9c48-21c0-472a-927c-5f749bfb4465",
+                                          "key": "flowName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name or ID of the flow."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Get the callback URL for a specific flow in an environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "d8bda6f8-9c7c-4fbc-bfc8-dab16c6039cd",
+                                      "name": "Successful response with callback URL.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/listCallbackUrl",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "listCallbackUrl"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"response\": {\n    \"value\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-d8bda6f8-9c7c-4fbc-bfc8-dab16c6039cd"
+                                    },
+                                    {
+                                      "id": "37592e5e-7815-41d1-953e-d4bc82a9fd36",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/listCallbackUrl",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "providers",
+                                            "Microsoft.ProcessSimple",
+                                            "environments",
+                                            ":environmentName",
+                                            "flows",
+                                            ":flowName",
+                                            "listCallbackUrl"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "environmentName"
+                                            },
+                                            {
+                                              "key": "flowName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:12:07.000Z",
+                                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                                      "uid": "35240-37592e5e-7815-41d1-953e-d4bc82a9fd36"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-9fce80e7-99e3-4492-9416-20cfc1d70453"
+                                }
+                              ],
+                              "id": "9cfe7818-664f-4413-8fa6-aa42d00bc247",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-9cfe7818-664f-4413-8fa6-aa42d00bc247"
+                            },
+                            {
+                              "name": "Microsoft Power Automate Get Flow",
+                              "id": "7202c0ed-704f-4c55-b5bd-0539930525c3",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows",
+                                    ":flowName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "cf5dfb13-9173-46b5-b66b-c60c43a63884",
+                                      "key": "environmentName",
+                                      "value": "<string>",
+                                      "description": "(Required) The name of the environment."
+                                    },
+                                    {
+                                      "id": "e35e2638-6de5-4194-8a1e-b49355e2b889",
+                                      "key": "flowName",
+                                      "value": "<string>",
+                                      "description": "(Required) The name or ID of the flow."
+                                    }
+                                  ]
+                                },
+                                "description": "Get the details of a specific flow in an environment."
+                              },
+                              "response": [
+                                {
+                                  "id": "c8a36a40-2ef0-4ec3-951e-3694eabf0a27",
+                                  "name": "Successful response with flow details.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"Started\",\n    \"createdTime\": \"<dateTime>\",\n    \"lastModifiedTime\": \"<dateTime>\",\n    \"templateName\": \"<string>\",\n    \"flowTriggerUri\": \"<string>\",\n    \"installationStatus\": \"<string>\",\n    \"connectionReferences\": {\n      \"laborumad\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"voluptate_101\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"sit__b\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    },\n    \"creator\": {\n      \"tenantId\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"userType\": \"<string>\"\n    },\n    \"definitionSummary\": {\n      \"triggers\": [\n        {\n          \"type\": \"<string>\",\n          \"kind\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"kind\": \"<string>\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"<string>\",\n          \"swaggerOperationId\": \"<string>\",\n          \"api\": {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"swaggerOperationId\": \"<string>\",\n          \"api\": {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-c8a36a40-2ef0-4ec3-951e-3694eabf0a27"
+                                },
+                                {
+                                  "id": "8fe7d366-7903-4153-9c69-fcb45f50c065",
+                                  "name": "Unauthorized.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-8fe7d366-7903-4153-9c69-fcb45f50c065"
+                                },
+                                {
+                                  "id": "dcfa9814-79e5-4435-bc5d-be445b65cc45",
+                                  "name": "Flow not found.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-dcfa9814-79e5-4435-bc5d-be445b65cc45"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-7202c0ed-704f-4c55-b5bd-0539930525c3"
+                            },
+                            {
+                              "name": "Microsoft Power Automate Update Flow",
+                              "id": "76d0dc63-b28e-4ab7-b905-181fb46da0b2",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {}\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows",
+                                    ":flowName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b34a4337-074b-4e80-b366-649506d867c4",
+                                      "key": "environmentName",
+                                      "value": "<string>",
+                                      "description": "(Required) The name of the environment."
+                                    },
+                                    {
+                                      "id": "579f48bb-149a-445a-8385-d59ee5775c5d",
+                                      "key": "flowName",
+                                      "value": "<string>",
+                                      "description": "(Required) The name or ID of the flow."
+                                    }
+                                  ]
+                                },
+                                "description": "Update the properties of a specific flow in an environment."
+                              },
+                              "response": [
+                                {
+                                  "id": "265eae23-6ee4-40ff-aa91-335053de29d6",
+                                  "name": "Flow updated successfully.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {}\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"Started\",\n    \"createdTime\": \"<dateTime>\",\n    \"lastModifiedTime\": \"<dateTime>\",\n    \"templateName\": \"<string>\",\n    \"flowTriggerUri\": \"<string>\",\n    \"installationStatus\": \"<string>\",\n    \"connectionReferences\": {\n      \"laborumad\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"voluptate_101\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"sit__b\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    },\n    \"creator\": {\n      \"tenantId\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"userType\": \"<string>\"\n    },\n    \"definitionSummary\": {\n      \"triggers\": [\n        {\n          \"type\": \"<string>\",\n          \"kind\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"kind\": \"<string>\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"<string>\",\n          \"swaggerOperationId\": \"<string>\",\n          \"api\": {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"swaggerOperationId\": \"<string>\",\n          \"api\": {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-265eae23-6ee4-40ff-aa91-335053de29d6"
+                                },
+                                {
+                                  "id": "f0cfc298-11d9-4c20-96b8-dff98dcbde7b",
+                                  "name": "Bad request.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {}\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-f0cfc298-11d9-4c20-96b8-dff98dcbde7b"
+                                },
+                                {
+                                  "id": "97163bda-23c1-4198-99c8-c50e2504d834",
+                                  "name": "Unauthorized.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {}\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-97163bda-23c1-4198-99c8-c50e2504d834"
+                                },
+                                {
+                                  "id": "cc330ce5-02c1-4dde-9c2d-b09c22f91b84",
+                                  "name": "Flow not found.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {}\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-cc330ce5-02c1-4dde-9c2d-b09c22f91b84"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-76d0dc63-b28e-4ab7-b905-181fb46da0b2"
+                            },
+                            {
+                              "name": "Microsoft Power Automate Delete Flow",
+                              "id": "3432d701-8cc9-431b-860b-ee589281139a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows",
+                                    ":flowName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "03538b99-6973-4c0f-914a-6f5c563a2a8e",
+                                      "key": "environmentName",
+                                      "value": "<string>",
+                                      "description": "(Required) The name of the environment."
+                                    },
+                                    {
+                                      "id": "5833a9b2-e689-4f83-8c17-9ea37e217b4a",
+                                      "key": "flowName",
+                                      "value": "<string>",
+                                      "description": "(Required) The name or ID of the flow."
+                                    }
+                                  ]
+                                },
+                                "description": "Delete a specific flow from an environment."
+                              },
+                              "response": [
+                                {
+                                  "id": "b8534fc7-fe99-459d-b1c3-c41a815ffcba",
+                                  "name": "Flow deleted successfully.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-b8534fc7-fe99-459d-b1c3-c41a815ffcba"
+                                },
+                                {
+                                  "id": "b565cbc0-6e45-4572-b56a-ce955d91fc00",
+                                  "name": "Unauthorized.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-b565cbc0-6e45-4572-b56a-ce955d91fc00"
+                                },
+                                {
+                                  "id": "69a6f43d-5fe5-4b9b-9ab7-da7586db7e90",
+                                  "name": "Flow not found.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "providers",
+                                        "Microsoft.ProcessSimple",
+                                        "environments",
+                                        ":environmentName",
+                                        "flows",
+                                        ":flowName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "environmentName"
+                                        },
+                                        {
+                                          "key": "flowName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T02:12:07.000Z",
+                                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                                  "uid": "35240-69a6f43d-5fe5-4b9b-9ab7-da7586db7e90"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-3432d701-8cc9-431b-860b-ee589281139a"
+                            }
+                          ],
+                          "id": "01b334dc-a430-4ad6-8c2d-b97a3627de07",
+                          "createdAt": "2026-07-28T02:12:07.000Z",
+                          "updatedAt": "2026-07-28T02:12:07.000Z",
+                          "uid": "35240-01b334dc-a430-4ad6-8c2d-b97a3627de07"
+                        },
+                        {
+                          "name": "Microsoft Power Automate List Flows",
+                          "id": "77b7b804-a6ea-4f2f-b963-0c2be236d2bc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "providers",
+                                "Microsoft.ProcessSimple",
+                                "environments",
+                                ":environmentName",
+                                "flows"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a303e860-609f-4e6c-a00a-f48e943caab3",
+                                  "key": "environmentName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the environment."
+                                }
+                              ]
+                            },
+                            "description": "List all flows the current user created in the given environment."
+                          },
+                          "response": [
+                            {
+                              "id": "7d9fd98d-d37d-4177-a136-f370ce3dfd92",
+                              "name": "Successful response with list of flows.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"properties\": {\n        \"displayName\": \"<string>\",\n        \"state\": \"Suspended\",\n        \"createdTime\": \"<dateTime>\",\n        \"lastModifiedTime\": \"<dateTime>\",\n        \"templateName\": \"<string>\",\n        \"flowTriggerUri\": \"<string>\",\n        \"installationStatus\": \"<string>\",\n        \"connectionReferences\": {\n          \"irure_e\": {\n            \"connectionName\": \"<string>\",\n            \"displayName\": \"<string>\",\n            \"id\": \"<string>\",\n            \"source\": \"<string>\",\n            \"connectionReferenceLogicalName\": \"<string>\"\n          },\n          \"sed83\": {\n            \"connectionName\": \"<string>\",\n            \"displayName\": \"<string>\",\n            \"id\": \"<string>\",\n            \"source\": \"<string>\",\n            \"connectionReferenceLogicalName\": \"<string>\"\n          }\n        },\n        \"creator\": {\n          \"tenantId\": \"<string>\",\n          \"objectId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"userType\": \"<string>\"\n        },\n        \"definitionSummary\": {\n          \"triggers\": [\n            {\n              \"type\": \"<string>\",\n              \"kind\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"kind\": \"<string>\"\n            }\n          ],\n          \"actions\": [\n            {\n              \"type\": \"<string>\",\n              \"swaggerOperationId\": \"<string>\",\n              \"api\": {\n                \"name\": \"<string>\",\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"swaggerOperationId\": \"<string>\",\n              \"api\": {\n                \"name\": \"<string>\",\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"properties\": {\n        \"displayName\": \"<string>\",\n        \"state\": \"Suspended\",\n        \"createdTime\": \"<dateTime>\",\n        \"lastModifiedTime\": \"<dateTime>\",\n        \"templateName\": \"<string>\",\n        \"flowTriggerUri\": \"<string>\",\n        \"installationStatus\": \"<string>\",\n        \"connectionReferences\": {\n          \"Ut48c\": {\n            \"connectionName\": \"<string>\",\n            \"displayName\": \"<string>\",\n            \"id\": \"<string>\",\n            \"source\": \"<string>\",\n            \"connectionReferenceLogicalName\": \"<string>\"\n          },\n          \"ex65\": {\n            \"connectionName\": \"<string>\",\n            \"displayName\": \"<string>\",\n            \"id\": \"<string>\",\n            \"source\": \"<string>\",\n            \"connectionReferenceLogicalName\": \"<string>\"\n          }\n        },\n        \"creator\": {\n          \"tenantId\": \"<string>\",\n          \"objectId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"userType\": \"<string>\"\n        },\n        \"definitionSummary\": {\n          \"triggers\": [\n            {\n              \"type\": \"<string>\",\n              \"kind\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"kind\": \"<string>\"\n            }\n          ],\n          \"actions\": [\n            {\n              \"type\": \"<string>\",\n              \"swaggerOperationId\": \"<string>\",\n              \"api\": {\n                \"name\": \"<string>\",\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"swaggerOperationId\": \"<string>\",\n              \"api\": {\n                \"name\": \"<string>\",\n                \"id\": \"<string>\",\n                \"type\": \"<string>\"\n              }\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-7d9fd98d-d37d-4177-a136-f370ce3dfd92"
+                            },
+                            {
+                              "id": "16c00eba-9380-4a24-95c1-dec8788e6c47",
+                              "name": "Unauthorized.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-16c00eba-9380-4a24-95c1-dec8788e6c47"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:12:07.000Z",
+                          "updatedAt": "2026-07-28T02:12:07.000Z",
+                          "uid": "35240-77b7b804-a6ea-4f2f-b963-0c2be236d2bc"
+                        },
+                        {
+                          "name": "Microsoft Power Automate Create Flow",
+                          "id": "c4e569c1-afe3-406e-83e5-a9c8ec208e2f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {},\n    \"connectionReferences\": {\n      \"consequat_4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"nisiff4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"eu_7\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "providers",
+                                "Microsoft.ProcessSimple",
+                                "environments",
+                                ":environmentName",
+                                "flows"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c73c9fc6-0922-4cf4-918c-8b31bc99d12a",
+                                  "key": "environmentName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the environment."
+                                }
+                              ]
+                            },
+                            "description": "Create a new flow in the given environment."
+                          },
+                          "response": [
+                            {
+                              "id": "21e53612-6107-4b56-a56e-962eff187c22",
+                              "name": "Flow created successfully.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {},\n    \"connectionReferences\": {\n      \"consequat_4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"nisiff4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"eu_7\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    }\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"Started\",\n    \"createdTime\": \"<dateTime>\",\n    \"lastModifiedTime\": \"<dateTime>\",\n    \"templateName\": \"<string>\",\n    \"flowTriggerUri\": \"<string>\",\n    \"installationStatus\": \"<string>\",\n    \"connectionReferences\": {\n      \"laborumad\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"voluptate_101\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"sit__b\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    },\n    \"creator\": {\n      \"tenantId\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"userType\": \"<string>\"\n    },\n    \"definitionSummary\": {\n      \"triggers\": [\n        {\n          \"type\": \"<string>\",\n          \"kind\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"kind\": \"<string>\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"<string>\",\n          \"swaggerOperationId\": \"<string>\",\n          \"api\": {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"swaggerOperationId\": \"<string>\",\n          \"api\": {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-21e53612-6107-4b56-a56e-962eff187c22"
+                            },
+                            {
+                              "id": "058c1e35-d097-4771-ac50-b6ed4d87624c",
+                              "name": "Bad request.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {},\n    \"connectionReferences\": {\n      \"consequat_4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"nisiff4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"eu_7\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    }\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-058c1e35-d097-4771-ac50-b6ed4d87624c"
+                            },
+                            {
+                              "id": "5b7437e1-dba9-41c8-8554-62272145b7a4",
+                              "name": "Unauthorized.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": {},\n    \"connectionReferences\": {\n      \"consequat_4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"nisiff4\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"eu_7\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    }\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "flows"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:12:07.000Z",
+                              "updatedAt": "2026-07-28T02:12:07.000Z",
+                              "uid": "35240-5b7437e1-dba9-41c8-8554-62272145b7a4"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:12:07.000Z",
+                          "updatedAt": "2026-07-28T02:12:07.000Z",
+                          "uid": "35240-c4e569c1-afe3-406e-83e5-a9c8ec208e2f"
+                        }
+                      ],
+                      "id": "5d324907-95b1-40e4-9e67-a054c5cfccab",
+                      "createdAt": "2026-07-28T02:12:07.000Z",
+                      "updatedAt": "2026-07-28T02:12:07.000Z",
+                      "uid": "35240-5d324907-95b1-40e4-9e67-a054c5cfccab"
+                    }
+                  ],
+                  "id": "16a5f1f3-c238-4c2d-9b2d-c12dfd0ddca2",
+                  "createdAt": "2026-07-28T02:12:07.000Z",
+                  "updatedAt": "2026-07-28T02:12:07.000Z",
+                  "uid": "35240-16a5f1f3-c238-4c2d-9b2d-c12dfd0ddca2"
+                }
+              ],
+              "id": "1cee6427-bcea-4e23-beb6-a72c43aed559",
+              "createdAt": "2026-07-28T02:12:07.000Z",
+              "updatedAt": "2026-07-28T02:12:07.000Z",
+              "uid": "35240-1cee6427-bcea-4e23-beb6-a72c43aed559"
+            }
+          ],
+          "id": "78707c56-de4f-4eea-9d6d-6370599a2e7c",
+          "createdAt": "2026-07-28T02:12:07.000Z",
+          "updatedAt": "2026-07-28T02:12:07.000Z",
+          "uid": "35240-78707c56-de4f-4eea-9d6d-6370599a2e7c"
+        }
+      ],
+      "id": "9267c4ed-b687-429e-8190-a7d6bee89092",
+      "createdAt": "2026-07-28T02:12:07.000Z",
+      "updatedAt": "2026-07-28T02:12:07.000Z",
+      "uid": "35240-9267c4ed-b687-429e-8190-a7d6bee89092"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://service.flow.microsoft.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.flow.microsoft.com"
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "info": {
+    "_postman_id": "e14d2251-097a-47c2-ab2e-74fff3013f73",
+    "name": "Microsoft Power Automate Management Connections API",
+    "description": "The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.\n\nContact Support:\n Name: Microsoft",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:11:59.000Z",
+    "updatedAt": "2026-07-28T02:11:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e14d2251-097a-47c2-ab2e-74fff3013f73"
+  },
+  "item": [
+    {
+      "name": "providers",
+      "item": [
+        {
+          "name": "Microsoft.ProcessSimple",
+          "item": [
+            {
+              "name": "environments",
+              "item": [
+                {
+                  "name": "{environmentName}",
+                  "item": [
+                    {
+                      "name": "connections",
+                      "item": [
+                        {
+                          "name": "Microsoft Power Automate List Connections",
+                          "id": "d6ed4131-b364-4634-b325-69badf4b5dee",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/connections",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "providers",
+                                "Microsoft.ProcessSimple",
+                                "environments",
+                                ":environmentName",
+                                "connections"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e21a14f8-46ca-451d-9d16-0d8cb9c4edc8",
+                                  "key": "environmentName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the environment."
+                                }
+                              ]
+                            },
+                            "description": "List all connections available in the given environment."
+                          },
+                          "response": [
+                            {
+                              "id": "6dc085a7-d1b4-49f2-a31b-e5160f289139",
+                              "name": "Successful response with list of connections.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/connections",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "connections"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": [\n    {\n      \"name\": \"<string>\",\n      \"properties\": {\n        \"displayName\": \"<string>\",\n        \"apiId\": \"<string>\",\n        \"createdTime\": \"<dateTime>\",\n        \"lastModifiedTime\": \"<dateTime>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"properties\": {\n        \"displayName\": \"<string>\",\n        \"apiId\": \"<string>\",\n        \"createdTime\": \"<dateTime>\",\n        \"lastModifiedTime\": \"<dateTime>\"\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:11:59.000Z",
+                              "updatedAt": "2026-07-28T02:11:59.000Z",
+                              "uid": "35240-6dc085a7-d1b4-49f2-a31b-e5160f289139"
+                            },
+                            {
+                              "id": "a8f91363-0524-4288-8439-527f16788c92",
+                              "name": "Unauthorized.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/providers/Microsoft.ProcessSimple/environments/:environmentName/connections",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "providers",
+                                    "Microsoft.ProcessSimple",
+                                    "environments",
+                                    ":environmentName",
+                                    "connections"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:11:59.000Z",
+                              "updatedAt": "2026-07-28T02:11:59.000Z",
+                              "uid": "35240-a8f91363-0524-4288-8439-527f16788c92"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:11:59.000Z",
+                          "updatedAt": "2026-07-28T02:11:59.000Z",
+                          "uid": "35240-d6ed4131-b364-4634-b325-69badf4b5dee"
+                        }
+                      ],
+                      "id": "7ec931b7-4c80-4e7e-aedf-d51b19848042",
+                      "createdAt": "2026-07-28T02:11:59.000Z",
+                      "updatedAt": "2026-07-28T02:11:59.000Z",
+                      "uid": "35240-7ec931b7-4c80-4e7e-aedf-d51b19848042"
+                    }
+                  ],
+                  "id": "a84d60a3-50e6-4937-bb4f-323ad0403de4",
+                  "createdAt": "2026-07-28T02:11:59.000Z",
+                  "updatedAt": "2026-07-28T02:11:59.000Z",
+                  "uid": "35240-a84d60a3-50e6-4937-bb4f-323ad0403de4"
+                }
+              ],
+              "id": "20adcd75-c9b1-44f5-aff9-3ad29f601e9f",
+              "createdAt": "2026-07-28T02:11:59.000Z",
+              "updatedAt": "2026-07-28T02:11:59.000Z",
+              "uid": "35240-20adcd75-c9b1-44f5-aff9-3ad29f601e9f"
+            }
+          ],
+          "id": "80798f11-bacc-4d49-b9bf-b4f943173077",
+          "createdAt": "2026-07-28T02:11:59.000Z",
+          "updatedAt": "2026-07-28T02:11:59.000Z",
+          "uid": "35240-80798f11-bacc-4d49-b9bf-b4f943173077"
+        }
+      ],
+      "id": "3fd04e95-d55a-4c99-a90b-22fb31531d1c",
+      "createdAt": "2026-07-28T02:11:59.000Z",
+      "updatedAt": "2026-07-28T02:11:59.000Z",
+      "uid": "35240-3fd04e95-d55a-4c99-a90b-22fb31531d1c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://service.flow.microsoft.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.flow.microsoft.com"
+    }
+  ]
+}
