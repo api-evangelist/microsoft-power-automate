@@ -272,6 +272,8 @@ apis:
   - type: APIReference
     url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
 common:
+- type: Overlay
+  url: overlays/microsoft-power-automate-management-api-overlay.yaml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/microsoft-power-automate/overview
 - type: AgenticAccess
