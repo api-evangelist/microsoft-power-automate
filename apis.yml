@@ -20,7 +20,7 @@ image: https://powerautomate.microsoft.com/images/application-logos/svg/poweraut
 url: https://powerautomate.microsoft.com
 created: '2024'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
 - Automation
 - Business Process
