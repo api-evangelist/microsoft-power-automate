@@ -6,5 +6,14 @@
     "source_type": "Portal",
     "file": "microsoft-power-automate-2026-06-20T185521.png",
     "bytes": 5595
+  },
+  {
+    "repo": "microsoft-power-automate",
+    "captured_at": "2026-08-17T083607",
+    "source_url": "https://learn.microsoft.com/en-us/power-automate/",
+    "source_type": "DeveloperPortal",
+    "file": "microsoft-power-automate-2026-08-17T083607.png",
+    "bytes": 110122,
+    "capture": "playwright-local"
   }
 ]

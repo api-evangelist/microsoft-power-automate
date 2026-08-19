@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Power Automate Management Connections Connectors API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Power Automate List Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/apis",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              }
+            ]
+          },
+          "docs": "List all connectors available in the given environment including custom and built-in connectors."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Get Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/apis/:apiName",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "apiName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the connector."
+              }
+            ]
+          },
+          "docs": "Get the details of a specific connector in an environment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

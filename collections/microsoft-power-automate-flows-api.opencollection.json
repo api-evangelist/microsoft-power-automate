@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Power Automate Management Connections Flows API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Power Automate List Flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              }
+            ]
+          },
+          "docs": "List all flows the current user created in the given environment."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Create Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new flow in the given environment."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Get Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              }
+            ]
+          },
+          "docs": "Get the details of a specific flow in an environment."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Update Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a specific flow in an environment."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Delete Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              }
+            ]
+          },
+          "docs": "Delete a specific flow from an environment."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Turn on Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/start",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              }
+            ]
+          },
+          "docs": "Start (activate) a specific flow in an environment."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Turn off Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/stop",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              }
+            ]
+          },
+          "docs": "Stop (deactivate) a specific flow in an environment."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate List Callback URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/listCallbackUrl",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              }
+            ]
+          },
+          "docs": "Get the callback URL for a specific flow in an environment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

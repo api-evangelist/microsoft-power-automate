@@ -2,11 +2,9 @@ generated: '2026-06-20'
 method: derived
 status: candidate
 source: openapi/microsoft-power-automate-management-api.yaml
-notes: >-
-  Microsoft does not publish a dedicated MCP server for the Power Automate
-  Management API. Microsoft's official Power Platform MCP server exposes
-  Dataverse (tables/records/prompts), not flow management. The tools below are a
-  candidate list derived one-per-operation from the Power Automate Management API
+notes: Microsoft does not publish a dedicated MCP server for the Power Automate Management API. Microsoft's
+  official Power Platform MCP server exposes Dataverse (tables/records/prompts), not flow management.
+  The tools below are a candidate list derived one-per-operation from the Power Automate Management API
   OpenAPI; they are a governance starting point, not a shipped server.
 related_servers:
 - name: Microsoft Dataverse MCP Server
@@ -14,10 +12,9 @@ related_servers:
   status: published
   transport: http
   docs: https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-mcp
-  description: >-
-    Official Power Platform MCP server exposing Dataverse data and schema to MCP
-    clients (Copilot Studio, VS Code / GitHub Copilot, Claude). Tools include
-    search, read_query, create_record, update_record, delete_record.
+  description: Official Power Platform MCP server exposing Dataverse data and schema to MCP clients (Copilot
+    Studio, VS Code / GitHub Copilot, Claude). Tools include search, read_query, create_record, update_record,
+    delete_record.
 server:
   name: microsoft-power-automate-management
   transport: http
@@ -76,3 +73,9 @@ tools:
 - name: list_connections
   description: List all connections available in the given environment.
   source_operation: openapi/microsoft-power-automate-management-api.yaml#listConnections
+deployment:
+  mode: none
+  verified: derived
+  tools: 18
+  checked: '2026-08-12'
+  source: catalog MCP census

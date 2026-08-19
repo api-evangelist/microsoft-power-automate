@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Power Automate Management Connections Flow Runs API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flow Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Power Automate List Flow Runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              }
+            ]
+          },
+          "docs": "List the run history for a specific flow."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Get Flow Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              },
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the flow run."
+              }
+            ]
+          },
+          "docs": "Get the details of a specific flow run."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Cancel Flow Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/cancel",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              },
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the flow run to cancel."
+              }
+            ]
+          },
+          "docs": "Cancel a currently running flow run."
+        },
+        {
+          "info": {
+            "name": "Microsoft Power Automate Resubmit Flow Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/:environmentName/flows/:flowName/runs/:runId/resubmit",
+            "params": [
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the environment."
+              },
+              {
+                "name": "flowName",
+                "value": "",
+                "type": "path",
+                "description": "The name or ID of the flow."
+              },
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the flow run to resubmit."
+              },
+              {
+                "name": "triggerName",
+                "value": "",
+                "type": "query",
+                "description": "Name of the flow trigger to resubmit."
+              }
+            ]
+          },
+          "docs": "Resubmit a previously executed flow run."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

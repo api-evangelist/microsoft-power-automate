@@ -1,0 +1,1967 @@
+{
+  "item": [
+    {
+      "id": "09445695-af89-4b01-bb73-90227385ecf7",
+      "name": "Flows",
+      "description": {
+        "content": "Operations for managing cloud flows",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4cbaf724-d8f4-48ef-9102-129f18e83c20",
+          "name": "Microsoft Power Automate List Flows",
+          "request": {
+            "name": "Microsoft Power Automate List Flows",
+            "description": {
+              "content": "List all flows the current user created in the given environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1911b306-b09d-4afe-934e-504c588b6e09",
+              "name": "Successful response with list of flows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"name\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"id\": \"/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4\",\n      \"type\": \"Microsoft.ProcessSimple/environments/flows\",\n      \"properties\": {\n        \"displayName\": \"Daily Report Automation\",\n        \"state\": \"Started\",\n        \"createdTime\": \"2025-06-15T08:00:00Z\",\n        \"lastModifiedTime\": \"2026-04-10T14:30:00Z\",\n        \"templateName\": \"blank\",\n        \"flowTriggerUri\": \"https://prod-01.westus.logic.azure.com/...\",\n        \"installationStatus\": \"Installed\",\n        \"connectionReferences\": {\n          \"key_0\": {\n            \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n            \"displayName\": \"Dataverse\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"source\": \"embedded\",\n            \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n          },\n          \"key_1\": {\n            \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n            \"displayName\": \"Dataverse\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"source\": \"embedded\",\n            \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n          }\n        },\n        \"creator\": {\n          \"tenantId\": \"tenant-a1b2c3d4\",\n          \"objectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n          \"userId\": \"user-abc123\",\n          \"userType\": \"ActiveDirectory\"\n        },\n        \"definitionSummary\": {\n          \"triggers\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"kind\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"kind\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"actions\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"swaggerOperationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"api\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"swaggerOperationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"api\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"name\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"id\": \"/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4\",\n      \"type\": \"Microsoft.ProcessSimple/environments/flows\",\n      \"properties\": {\n        \"displayName\": \"Daily Report Automation\",\n        \"state\": \"Started\",\n        \"createdTime\": \"2025-06-15T08:00:00Z\",\n        \"lastModifiedTime\": \"2026-04-10T14:30:00Z\",\n        \"templateName\": \"blank\",\n        \"flowTriggerUri\": \"https://prod-01.westus.logic.azure.com/...\",\n        \"installationStatus\": \"Installed\",\n        \"connectionReferences\": {\n          \"key_0\": {\n            \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n            \"displayName\": \"Dataverse\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"source\": \"embedded\",\n            \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n          },\n          \"key_1\": {\n            \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n            \"displayName\": \"Dataverse\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"source\": \"embedded\",\n            \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n          }\n        },\n        \"creator\": {\n          \"tenantId\": \"tenant-a1b2c3d4\",\n          \"objectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n          \"userId\": \"user-abc123\",\n          \"userType\": \"ActiveDirectory\"\n        },\n        \"definitionSummary\": {\n          \"triggers\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"kind\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"kind\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"actions\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"swaggerOperationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"api\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"swaggerOperationId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"api\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92ff19c9-1590-410a-bdf5-3f8638501e8a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a83a0bb7-8ad5-4dd5-b363-7f8c8a54f7f1",
+          "name": "Microsoft Power Automate Create Flow",
+          "request": {
+            "name": "Microsoft Power Automate Create Flow",
+            "description": {
+              "content": "Create a new flow in the given environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": \"<object>\",\n    \"connectionReferences\": {\n      \"key_0\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      },\n      \"key_1\": {\n        \"connectionName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"id\": \"<string>\",\n        \"source\": \"<string>\",\n        \"connectionReferenceLogicalName\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c27b117-20fe-48ad-b651-86e998cf8e9e",
+              "name": "Flow created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"My New Automation\",\n    \"state\": \"Stopped\",\n    \"definition\": \"<object>\",\n    \"connectionReferences\": {\n      \"key_0\": {\n        \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n        \"displayName\": \"Dataverse\",\n        \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n        \"source\": \"embedded\",\n        \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"id\": \"/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4\",\n  \"type\": \"Microsoft.ProcessSimple/environments/flows\",\n  \"properties\": {\n    \"displayName\": \"Daily Report Automation\",\n    \"state\": \"Started\",\n    \"createdTime\": \"2025-06-15T08:00:00Z\",\n    \"lastModifiedTime\": \"2026-04-10T14:30:00Z\",\n    \"templateName\": \"blank\",\n    \"flowTriggerUri\": \"https://prod-01.westus.logic.azure.com/...\",\n    \"installationStatus\": \"Installed\",\n    \"connectionReferences\": {\n      \"key_0\": {\n        \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n        \"displayName\": \"Dataverse\",\n        \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n        \"source\": \"embedded\",\n        \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n      }\n    },\n    \"creator\": {\n      \"tenantId\": \"tenant-a1b2c3d4\",\n      \"objectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"userId\": \"user-abc123\",\n      \"userType\": \"ActiveDirectory\"\n    },\n    \"definitionSummary\": {\n      \"triggers\": [\n        {\n          \"type\": \"Request\",\n          \"kind\": \"Button\"\n        },\n        {\n          \"type\": \"Request\",\n          \"kind\": \"Button\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"OpenApiConnection\",\n          \"swaggerOperationId\": \"ListRecords\",\n          \"api\": {\n            \"name\": \"shared_commondataserviceforapps\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"type\": \"Microsoft.PowerApps/apis\"\n          }\n        },\n        {\n          \"type\": \"OpenApiConnection\",\n          \"swaggerOperationId\": \"ListRecords\",\n          \"api\": {\n            \"name\": \"shared_commondataserviceforapps\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"type\": \"Microsoft.PowerApps/apis\"\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f3327c4-6e51-4638-91c3-3278bcbdd539",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"My New Automation\",\n    \"state\": \"Stopped\",\n    \"definition\": \"<object>\",\n    \"connectionReferences\": {\n      \"key_0\": {\n        \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n        \"displayName\": \"Dataverse\",\n        \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n        \"source\": \"embedded\",\n        \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a65ac98-6c30-4c33-9639-f186b703b93e",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"My New Automation\",\n    \"state\": \"Stopped\",\n    \"definition\": \"<object>\",\n    \"connectionReferences\": {\n      \"key_0\": {\n        \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n        \"displayName\": \"Dataverse\",\n        \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n        \"source\": \"embedded\",\n        \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1bbe8bc-1621-490f-9f04-f2629dde767a",
+          "name": "Microsoft Power Automate Get Flow",
+          "request": {
+            "name": "Microsoft Power Automate Get Flow",
+            "description": {
+              "content": "Get the details of a specific flow in an environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows",
+                ":flowName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowName",
+                  "description": "(Required) The name or ID of the flow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58f1000f-1a37-4ea6-b4f0-4ee1bd0ad265",
+              "name": "Successful response with flow details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"id\": \"/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4\",\n  \"type\": \"Microsoft.ProcessSimple/environments/flows\",\n  \"properties\": {\n    \"displayName\": \"Daily Report Automation\",\n    \"state\": \"Started\",\n    \"createdTime\": \"2025-06-15T08:00:00Z\",\n    \"lastModifiedTime\": \"2026-04-10T14:30:00Z\",\n    \"templateName\": \"blank\",\n    \"flowTriggerUri\": \"https://prod-01.westus.logic.azure.com/...\",\n    \"installationStatus\": \"Installed\",\n    \"connectionReferences\": {\n      \"key_0\": {\n        \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n        \"displayName\": \"Dataverse\",\n        \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n        \"source\": \"embedded\",\n        \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n      }\n    },\n    \"creator\": {\n      \"tenantId\": \"tenant-a1b2c3d4\",\n      \"objectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"userId\": \"user-abc123\",\n      \"userType\": \"ActiveDirectory\"\n    },\n    \"definitionSummary\": {\n      \"triggers\": [\n        {\n          \"type\": \"Request\",\n          \"kind\": \"Button\"\n        },\n        {\n          \"type\": \"Request\",\n          \"kind\": \"Button\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"OpenApiConnection\",\n          \"swaggerOperationId\": \"ListRecords\",\n          \"api\": {\n            \"name\": \"shared_commondataserviceforapps\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"type\": \"Microsoft.PowerApps/apis\"\n          }\n        },\n        {\n          \"type\": \"OpenApiConnection\",\n          \"swaggerOperationId\": \"ListRecords\",\n          \"api\": {\n            \"name\": \"shared_commondataserviceforapps\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"type\": \"Microsoft.PowerApps/apis\"\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7fe2d35-a0d8-4e11-9a4f-c9a34489aae2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f360b85-5ad9-482c-861b-f00007f000b9",
+              "name": "Flow not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6049f9d-add0-47ca-b743-186cce6b47c9",
+          "name": "Microsoft Power Automate Update Flow",
+          "request": {
+            "name": "Microsoft Power Automate Update Flow",
+            "description": {
+              "content": "Update the properties of a specific flow in an environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows",
+                ":flowName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowName",
+                  "description": "(Required) The name or ID of the flow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"displayName\": \"<string>\",\n    \"state\": \"<string>\",\n    \"definition\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e5a237b-28be-4992-910f-eda2d50d893a",
+              "name": "Flow updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"Updated Flow Name\",\n    \"state\": \"Started\",\n    \"definition\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"id\": \"/providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4\",\n  \"type\": \"Microsoft.ProcessSimple/environments/flows\",\n  \"properties\": {\n    \"displayName\": \"Daily Report Automation\",\n    \"state\": \"Started\",\n    \"createdTime\": \"2025-06-15T08:00:00Z\",\n    \"lastModifiedTime\": \"2026-04-10T14:30:00Z\",\n    \"templateName\": \"blank\",\n    \"flowTriggerUri\": \"https://prod-01.westus.logic.azure.com/...\",\n    \"installationStatus\": \"Installed\",\n    \"connectionReferences\": {\n      \"key_0\": {\n        \"connectionName\": \"shared-commondataserviceforapps-abc123\",\n        \"displayName\": \"Dataverse\",\n        \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n        \"source\": \"embedded\",\n        \"connectionReferenceLogicalName\": \"crdcb_sharedcommondataserviceforapps_109ea\"\n      }\n    },\n    \"creator\": {\n      \"tenantId\": \"tenant-a1b2c3d4\",\n      \"objectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"userId\": \"user-abc123\",\n      \"userType\": \"ActiveDirectory\"\n    },\n    \"definitionSummary\": {\n      \"triggers\": [\n        {\n          \"type\": \"Request\",\n          \"kind\": \"Button\"\n        },\n        {\n          \"type\": \"Request\",\n          \"kind\": \"Button\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"OpenApiConnection\",\n          \"swaggerOperationId\": \"ListRecords\",\n          \"api\": {\n            \"name\": \"shared_commondataserviceforapps\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"type\": \"Microsoft.PowerApps/apis\"\n          }\n        },\n        {\n          \"type\": \"OpenApiConnection\",\n          \"swaggerOperationId\": \"ListRecords\",\n          \"api\": {\n            \"name\": \"shared_commondataserviceforapps\",\n            \"id\": \"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps\",\n            \"type\": \"Microsoft.PowerApps/apis\"\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87d069a7-f532-4f84-b043-d83849b53017",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"Updated Flow Name\",\n    \"state\": \"Started\",\n    \"definition\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d536e97-fab9-4c2d-8c02-b1b45c567e2b",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"Updated Flow Name\",\n    \"state\": \"Started\",\n    \"definition\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6488a295-579a-4ba4-9d59-3c562d865e44",
+              "name": "Flow not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"displayName\": \"Updated Flow Name\",\n    \"state\": \"Started\",\n    \"definition\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "525cb598-b295-4aff-b5cd-ae3842d8c507",
+          "name": "Microsoft Power Automate Delete Flow",
+          "request": {
+            "name": "Microsoft Power Automate Delete Flow",
+            "description": {
+              "content": "Delete a specific flow from an environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows",
+                ":flowName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowName",
+                  "description": "(Required) The name or ID of the flow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87bd8f31-8201-47ee-9759-d907b7a99fdd",
+              "name": "Flow deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6fdf51d0-99bf-4a58-b4d9-4805db362803",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2507104d-52d5-46e4-82f5-9317b61ee106",
+              "name": "Flow not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c25e8b2b-c30e-4525-baec-94d99a235fe7",
+          "name": "Microsoft Power Automate Turn on Flow",
+          "request": {
+            "name": "Microsoft Power Automate Turn on Flow",
+            "description": {
+              "content": "Start (activate) a specific flow in an environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows",
+                ":flowName",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowName",
+                  "description": "(Required) The name or ID of the flow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19266bda-d15e-4e8c-bfc0-2bf7a9af2a9d",
+              "name": "Flow turned on successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6655c322-5cc8-4360-9235-78f24cd62c06",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65a2a932-b70d-43a3-8ed0-df6b90e80482",
+              "name": "Flow not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b46dafc7-344a-4d1b-9065-b0779a60a690",
+          "name": "Microsoft Power Automate Turn off Flow",
+          "request": {
+            "name": "Microsoft Power Automate Turn off Flow",
+            "description": {
+              "content": "Stop (deactivate) a specific flow in an environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows",
+                ":flowName",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowName",
+                  "description": "(Required) The name or ID of the flow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06617258-1a36-4195-b772-cde9305f3fa5",
+              "name": "Flow turned off successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c49193b-2f96-4330-afc5-4bee29fc692c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8a2e07b-7ce8-4592-8aed-84bd0842de35",
+              "name": "Flow not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93c7cfca-2e2a-48c8-b1cd-4e9ae49dfcf1",
+          "name": "Microsoft Power Automate List Callback URL",
+          "request": {
+            "name": "Microsoft Power Automate List Callback URL",
+            "description": {
+              "content": "Get the callback URL for a specific flow in an environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "Microsoft.ProcessSimple",
+                "environments",
+                ":environmentName",
+                "flows",
+                ":flowName",
+                "listCallbackUrl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentName",
+                  "description": "(Required) The name of the environment."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flowName",
+                  "description": "(Required) The name or ID of the flow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "044d069e-73c4-4a87-bba4-aae60d69bcf4",
+              "name": "Successful response with callback URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "listCallbackUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"value\": \"https://prod-01.westus.logic.azure.com/workflows/...\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c806d7e-5839-4fec-af72-d9a622f66e99",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "Microsoft.ProcessSimple",
+                    "environments",
+                    ":environmentName",
+                    "flows",
+                    ":flowName",
+                    "listCallbackUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentName",
+                      "description": "(Required) The name of the environment."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flowName",
+                      "description": "(Required) The name or ID of the flow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"FlowNotFound\",\n    \"message\": \"The specified flow was not found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.flow.microsoft.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://service.flow.microsoft.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ea611c8-7816-4ec0-83b8-311d76df1c7e",
+    "name": "Microsoft Power Automate Management Connections Flows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}
