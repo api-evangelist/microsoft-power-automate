@@ -29,6 +29,15 @@ tags:
 - Microsoft
 - Power Platform
 - RPA
+- Workflows
+tags_raw:
+- Automation
+- Business Process
+- Integration
+- Low-Code
+- Microsoft
+- Power Platform
+- RPA
 - Workflow
 apis:
 - aid: microsoft-power-automate:microsoft-power-automate-connections-api
