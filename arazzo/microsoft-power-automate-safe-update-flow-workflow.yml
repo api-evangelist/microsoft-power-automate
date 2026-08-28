@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: powerAutomateManagementApi
-  url: ../openapi/microsoft-power-automate-management-api.yaml
+- name: flowsApi
+  url: ../openapi/microsoft-power-automate-flows-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: safe-update-flow

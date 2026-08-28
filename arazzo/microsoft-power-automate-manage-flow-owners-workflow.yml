@@ -11,8 +11,11 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: powerAutomateManagementApi
-  url: ../openapi/microsoft-power-automate-management-api.yaml
+- name: flowPermissionsApi
+  url: ../openapi/microsoft-power-automate-flow-permissions-api-openapi.yml
+  type: openapi
+- name: flowsApi
+  url: ../openapi/microsoft-power-automate-flows-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: manage-flow-owners

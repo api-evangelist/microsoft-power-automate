@@ -14,8 +14,14 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: powerAutomateManagementApi
-  url: ../openapi/microsoft-power-automate-management-api.yaml
+- name: connectionsApi
+  url: ../openapi/microsoft-power-automate-connections-api-openapi.yml
+  type: openapi
+- name: connectorsApi
+  url: ../openapi/microsoft-power-automate-connectors-api-openapi.yml
+  type: openapi
+- name: flowsApi
+  url: ../openapi/microsoft-power-automate-flows-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: connector-dependency-audit
