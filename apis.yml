@@ -3,6 +3,18 @@ name: Microsoft Power Automate
 description: Microsoft Power Automate is a cloud-based service that helps you create automated workflows between your favorite
   apps and services to synchronize files, get notifications, collect data, and automate business processes. It supports automated,
   instant, and scheduled cloud flows, as well as desktop flows for robotic process automation.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
