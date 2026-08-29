@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Microsoft Power Automate Management Connections Environments API
   description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
@@ -68,6 +68,21 @@ components:
           example: unitedstates
         properties:
           $ref: '#/components/schemas/EnvironmentProperties'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
     EnvironmentProperties:
       type: object
       description: Properties of an environment.
@@ -106,21 +121,6 @@ components:
           type: boolean
           description: Whether this is the default environment.
           example: false
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
   securitySchemes:
     oauth2:
       type: oauth2

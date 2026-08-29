@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Microsoft Power Automate Management Connections API
   description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
@@ -52,6 +52,30 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ConnectionList:
+      type: object
+      description: A list of connections.
+      properties:
+        value:
+          type: array
+          description: The array of connections.
+          items:
+            $ref: '#/components/schemas/Connection'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
     Connection:
       type: object
       description: A Power Automate connection.
@@ -81,30 +105,6 @@ components:
               format: date-time
               description: Last modification time.
               example: '2026-04-10T14:30:00Z'
-    ConnectionList:
-      type: object
-      description: A list of connections.
-      properties:
-        value:
-          type: array
-          description: The array of connections.
-          items:
-            $ref: '#/components/schemas/Connection'
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
   securitySchemes:
     oauth2:
       type: oauth2

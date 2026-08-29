@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Microsoft Power Automate Management Connections Flow Runs API
   description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
@@ -200,52 +200,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FlowRunProperties:
-      type: object
-      description: Properties of a flow run.
-      properties:
-        startTime:
-          type: string
-          format: date-time
-          description: The start time of the flow run.
-          example: '2026-04-15T10:00:00Z'
-        endTime:
-          type: string
-          format: date-time
-          description: The end time of the flow run.
-          example: '2026-04-15T10:00:05Z'
-        status:
-          type: string
-          description: The status of the flow run.
-          enum:
-          - Running
-          - Succeeded
-          - Failed
-          - Cancelled
-          - Waiting
-          - Suspended
-          example: Succeeded
-        code:
-          type: string
-          description: The result code.
-          example: OK
-        trigger:
-          $ref: '#/components/schemas/TriggerInfo'
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
     TriggerInfo:
       type: object
       description: Information about the trigger that started the flow run.
@@ -281,6 +235,37 @@ components:
           example: Microsoft.ProcessSimple/environments/flows/runs
         properties:
           $ref: '#/components/schemas/FlowRunProperties'
+    FlowRunProperties:
+      type: object
+      description: Properties of a flow run.
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          description: The start time of the flow run.
+          example: '2026-04-15T10:00:00Z'
+        endTime:
+          type: string
+          format: date-time
+          description: The end time of the flow run.
+          example: '2026-04-15T10:00:05Z'
+        status:
+          type: string
+          description: The status of the flow run.
+          enum:
+          - Running
+          - Succeeded
+          - Failed
+          - Cancelled
+          - Waiting
+          - Suspended
+          example: Succeeded
+        code:
+          type: string
+          description: The result code.
+          example: OK
+        trigger:
+          $ref: '#/components/schemas/TriggerInfo'
     FlowRunList:
       type: object
       description: A list of flow runs.
@@ -290,6 +275,21 @@ components:
           description: The array of flow runs.
           items:
             $ref: '#/components/schemas/FlowRun'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
   securitySchemes:
     oauth2:
       type: oauth2
