@@ -1,8 +1,6 @@
 aid: microsoft-power-automate
 name: Microsoft Power Automate
-description: Microsoft Power Automate is a cloud-based service that helps you create automated workflows between your favorite
-  apps and services to synchronize files, get notifications, collect data, and automate business processes. It supports automated,
-  instant, and scheduled cloud flows, as well as desktop flows for robotic process automation.
+description: Microsoft Power Automate is a cloud-based service that helps you create automated workflows between your favorite apps and services to synchronize files, get notifications, collect data, and automate business processes. It supports automated, instant, and scheduled cloud flows, as well as desktop flows for robotic process automation.
 deliveryModel:
   model: saas
   open_source: false
@@ -292,7 +290,79 @@ apis:
     url: https://learn.microsoft.com/en-us/power-automate/web-api#authentication
   - type: APIReference
     url: https://learn.microsoft.com/en-us/connectors/flowmanagement/
+- aid: power-automate:power-automate
+  name: Microsoft Power Automate
+  description: Microsoft Power Automate is a cloud-based workflow automation platform that lets organizations build automated workflows, robotic process automation, business process flows, and AI-assisted automations across hundreds of connectors.
+  humanURL: https://powerautomate.microsoft.com
+  tags:
+  - Workflow-Automation
+  - Cloud Flows
+  - Desktop Flows
+  - Connectors
+  tags_raw:
+  - Workflow Automation
+  - Cloud Flows
+  - Desktop Flows
+  - Connectors
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/power-automate/getting-started
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/developer/dev-enterprise-intro
+  - type: Signup
+    url: https://make.powerautomate.com/
+- aid: power-automate:desktop-flows-api
+  name: Power Automate Desktop Flows Public API
+  description: The Desktop Flows public API enables developers to programmatically manage, run, and monitor desktop flow automations as part of robotic process automation scenarios.
+  humanURL: https://learn.microsoft.com/en-us/power-automate/developer/desktop-flow-public-apis
+  tags:
+  - Desktop Flows
+  - RPA
+  - Automation
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/developer/desktop-flow-public-apis
+- aid: power-automate:cloud-flows-api
+  name: Power Automate Cloud Flows API
+  description: Programmatic access for managing cloud flows in Power Automate including creating, updating, and running flows using Dataverse and the Power Platform APIs.
+  humanURL: https://learn.microsoft.com/en-us/power-automate/manage-flows-with-code
+  tags:
+  - Cloud Flows
+  - Dataverse
+  - Automation
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/manage-flows-with-code
+- aid: power-automate:custom-connectors-api
+  name: Power Automate Custom Connectors
+  description: Build, register, and certify custom connectors that extend Power Automate to communicate with any REST or SOAP API across the Power Platform.
+  humanURL: https://learn.microsoft.com/en-us/power-automate/developer/register-custom-api
+  tags:
+  - Custom Connectors
+  - Integration
+  - Extensibility
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-automate/developer/register-custom-api
 common:
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-automate/
+- type: GettingStarted
+  url: https://learn.microsoft.com/en-us/power-automate/getting-started
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-automate/developer/dev-enterprise-intro
+- type: Signup
+  url: https://make.powerautomate.com/
+- type: Community
+  url: https://powerusers.microsoft.com/t5/Power-Automate-Community/ct-p/MPACommunity
+- type: Ideas
+  url: https://ideas.powerautomate.com/
+- type: Templates
+  url: https://make.powerautomate.com/templates/
+- type: Trust
+  url: https://www.microsoft.com/en-us/trust-center
 - type: Website
   url: https://www.microsoft.com/
 - type: Overlay
@@ -452,5 +522,5 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-x-parent: microsoft
+x-parent: power-platform
 x-relationship: product
