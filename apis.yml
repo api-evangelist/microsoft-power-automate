@@ -136,6 +136,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
   baseURL: https://api.flow.microsoft.com
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
@@ -256,6 +258,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/power-automate/web-api
   baseURL: https://api.flow.microsoft.com
   tags:
+  - Flow
+  tags_raw:
   - Flows
   properties:
   - type: OpenAPI
