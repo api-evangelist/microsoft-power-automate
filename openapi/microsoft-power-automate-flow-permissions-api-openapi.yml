@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Power Automate Management Connections Flow Permissions API
+  title: Microsoft Power Automate Management Flow Permissions API
   description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
   version: v1
   contact:
@@ -95,51 +95,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FlowOwnerModifyRequest:
+    FlowPermissionList:
       type: object
-      description: Request to modify flow owners.
+      description: A list of flow permissions.
       properties:
-        add:
+        value:
           type: array
-          description: Users to add as owners.
+          description: The array of permissions.
           items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: The object ID of the user to add.
-              type:
-                type: string
-                description: The type of the user.
-        remove:
-          type: array
-          description: Users to remove as owners.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: The object ID of the user to remove.
-              type:
-                type: string
-                description: The type of the user.
-    FlowPermission:
-      type: object
-      description: A flow permission entry.
-      properties:
-        name:
-          type: string
-          description: The permission name.
-          example: permission-abc123
-        properties:
-          type: object
-          properties:
-            roleName:
-              type: string
-              description: The role name.
-              example: Owner
-            principal:
-              $ref: '#/components/schemas/Principal'
+            $ref: '#/components/schemas/FlowPermission'
     Principal:
       type: object
       description: A user or service principal.
@@ -169,15 +133,6 @@ components:
           type: string
           description: The user principal name.
           example: jane.smith@contoso.com
-    FlowPermissionList:
-      type: object
-      description: A list of flow permissions.
-      properties:
-        value:
-          type: array
-          description: The array of permissions.
-          items:
-            $ref: '#/components/schemas/FlowPermission'
     Error:
       type: object
       description: An error response from the API.
@@ -193,6 +148,51 @@ components:
               type: string
               description: A human-readable error message.
               example: The specified flow was not found.
+    FlowPermission:
+      type: object
+      description: A flow permission entry.
+      properties:
+        name:
+          type: string
+          description: The permission name.
+          example: permission-abc123
+        properties:
+          type: object
+          properties:
+            roleName:
+              type: string
+              description: The role name.
+              example: Owner
+            principal:
+              $ref: '#/components/schemas/Principal'
+    FlowOwnerModifyRequest:
+      type: object
+      description: Request to modify flow owners.
+      properties:
+        add:
+          type: array
+          description: Users to add as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to add.
+              type:
+                type: string
+                description: The type of the user.
+        remove:
+          type: array
+          description: Users to remove as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to remove.
+              type:
+                type: string
+                description: The type of the user.
   securitySchemes:
     oauth2:
       type: oauth2

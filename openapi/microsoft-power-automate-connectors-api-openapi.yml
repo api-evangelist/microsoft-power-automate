@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Power Automate Management Connections Connectors API
+  title: Microsoft Power Automate Management Connectors API
   description: The Power Automate Management API enables interaction with the Power Automate Management service for creating, editing, updating, and managing flows, environments, connections, and connectors programmatically.
   version: v1
   contact:
