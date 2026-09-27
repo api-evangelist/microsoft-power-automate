@@ -45,29 +45,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Environment:
-      type: object
-      description: A Power Automate environment.
-      properties:
-        name:
-          type: string
-          description: The unique name of the environment.
-          example: Default-a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        location:
-          type: string
-          description: The geographic location of the environment.
-          example: unitedstates
-        properties:
-          $ref: '#/components/schemas/EnvironmentProperties'
-    EnvironmentList:
-      type: object
-      description: A list of environments.
-      properties:
-        value:
-          type: array
-          description: The array of environments.
-          items:
-            $ref: '#/components/schemas/Environment'
     EnvironmentProperties:
       type: object
       description: Properties of an environment.
@@ -121,6 +98,29 @@ components:
               type: string
               description: A human-readable error message.
               example: The specified flow was not found.
+    EnvironmentList:
+      type: object
+      description: A list of environments.
+      properties:
+        value:
+          type: array
+          description: The array of environments.
+          items:
+            $ref: '#/components/schemas/Environment'
+    Environment:
+      type: object
+      description: A Power Automate environment.
+      properties:
+        name:
+          type: string
+          description: The unique name of the environment.
+          example: Default-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        location:
+          type: string
+          description: The geographic location of the environment.
+          example: unitedstates
+        properties:
+          $ref: '#/components/schemas/EnvironmentProperties'
   securitySchemes:
     oauth2:
       type: oauth2

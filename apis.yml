@@ -3,15 +3,19 @@ name: Microsoft Power Automate
 description: Microsoft Power Automate is a cloud-based service that helps you create automated workflows between your favorite apps and services to synchronize files, get notifications, collect data, and automate business processes. It supports automated, instant, and scheduled cloud flows, as well as desktop flows for robotic process automation.
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - microsoft/powerapps-samples
+  open_source: unknown
   commercial: true
   callable_host: true
   label: Hosted service · you call their endpoint
-  confidence: high
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -40,6 +44,7 @@ tags:
 - Power Platform
 - RPA
 - Workflows
+- Workflow Automation
 tags_raw:
 - Automation
 - Business Process
@@ -49,6 +54,7 @@ tags_raw:
 - Power Platform
 - RPA
 - Workflow
+- Workflow-Automation
 apis:
 - aid: microsoft-power-automate:microsoft-power-automate-connections-api
   name: Microsoft Power Automate Connections API
@@ -299,7 +305,7 @@ apis:
   description: Microsoft Power Automate is a cloud-based workflow automation platform that lets organizations build automated workflows, robotic process automation, business process flows, and AI-assisted automations across hundreds of connectors.
   humanURL: https://powerautomate.microsoft.com
   tags:
-  - Workflow-Automation
+  - Workflow Automation
   - Cloud Flows
   - Desktop Flows
   - Connectors
@@ -308,6 +314,7 @@ apis:
   - Cloud Flows
   - Desktop Flows
   - Connectors
+  - Workflow-Automation
   properties:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/power-automate/

@@ -95,15 +95,38 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FlowPermissionList:
+    FlowPermission:
       type: object
-      description: A list of flow permissions.
+      description: A flow permission entry.
       properties:
-        value:
-          type: array
-          description: The array of permissions.
-          items:
-            $ref: '#/components/schemas/FlowPermission'
+        name:
+          type: string
+          description: The permission name.
+          example: permission-abc123
+        properties:
+          type: object
+          properties:
+            roleName:
+              type: string
+              description: The role name.
+              example: Owner
+            principal:
+              $ref: '#/components/schemas/Principal'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
     Principal:
       type: object
       description: A user or service principal.
@@ -133,38 +156,6 @@ components:
           type: string
           description: The user principal name.
           example: jane.smith@contoso.com
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
-    FlowPermission:
-      type: object
-      description: A flow permission entry.
-      properties:
-        name:
-          type: string
-          description: The permission name.
-          example: permission-abc123
-        properties:
-          type: object
-          properties:
-            roleName:
-              type: string
-              description: The role name.
-              example: Owner
-            principal:
-              $ref: '#/components/schemas/Principal'
     FlowOwnerModifyRequest:
       type: object
       description: Request to modify flow owners.
@@ -193,6 +184,15 @@ components:
               type:
                 type: string
                 description: The type of the user.
+    FlowPermissionList:
+      type: object
+      description: A list of flow permissions.
+      properties:
+        value:
+          type: array
+          description: The array of permissions.
+          items:
+            $ref: '#/components/schemas/FlowPermission'
   securitySchemes:
     oauth2:
       type: oauth2

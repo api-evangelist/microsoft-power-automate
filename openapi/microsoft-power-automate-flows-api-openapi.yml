@@ -337,128 +337,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UserIdentity:
-      type: object
-      description: Identity of a user.
-      properties:
-        tenantId:
-          type: string
-          description: The tenant ID.
-          example: tenant-a1b2c3d4
-        objectId:
-          type: string
-          description: The object ID.
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        userId:
-          type: string
-          description: The user ID.
-          example: user-abc123
-        userType:
-          type: string
-          description: The user type.
-          example: ActiveDirectory
-    Flow:
-      type: object
-      description: A Power Automate cloud flow.
-      properties:
-        name:
-          type: string
-          description: The unique name or ID of the flow.
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        id:
-          type: string
-          description: The full resource ID of the flow.
-          example: /providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4
-        type:
-          type: string
-          description: The resource type.
-          example: Microsoft.ProcessSimple/environments/flows
-        properties:
-          $ref: '#/components/schemas/FlowProperties'
-    FlowList:
-      type: object
-      description: A list of flows.
-      properties:
-        value:
-          type: array
-          description: The array of flows.
-          items:
-            $ref: '#/components/schemas/Flow'
-    CallbackUrlResponse:
-      type: object
-      description: Response containing a callback URL.
-      properties:
-        response:
-          type: object
-          properties:
-            value:
-              type: string
-              description: The callback URL.
-              example: https://prod-01.westus.logic.azure.com/workflows/...
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
-    FlowCreateRequest:
-      type: object
-      description: Request to create a new flow.
-      required:
-      - properties
-      properties:
-        properties:
-          type: object
-          properties:
-            displayName:
-              type: string
-              description: The display name for the new flow.
-              example: My New Automation
-            state:
-              type: string
-              description: The initial state of the flow.
-              example: Stopped
-            definition:
-              type: object
-              description: The workflow definition of the flow.
-            connectionReferences:
-              type: object
-              description: Connection references needed by the flow.
-              additionalProperties:
-                $ref: '#/components/schemas/ConnectionReference'
-    ConnectionReference:
-      type: object
-      description: A reference to a connection used by a flow.
-      properties:
-        connectionName:
-          type: string
-          description: The name of the connection.
-          example: shared-commondataserviceforapps-abc123
-        displayName:
-          type: string
-          description: The display name of the connection.
-          example: Dataverse
-        id:
-          type: string
-          description: The connector ID.
-          example: /providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps
-        source:
-          type: string
-          description: The connection source type.
-          example: embedded
-        connectionReferenceLogicalName:
-          type: string
-          description: Logical name of the connection reference.
-          example: crdcb_sharedcommondataserviceforapps_109ea
     FlowUpdateRequest:
       type: object
       description: Request to update an existing flow.
@@ -524,6 +402,21 @@ components:
           $ref: '#/components/schemas/UserIdentity'
         definitionSummary:
           $ref: '#/components/schemas/DefinitionSummary'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
     DefinitionSummary:
       type: object
       description: Summary of the flow definition.
@@ -568,6 +461,113 @@ components:
                   type:
                     type: string
                     example: Microsoft.PowerApps/apis
+    Flow:
+      type: object
+      description: A Power Automate cloud flow.
+      properties:
+        name:
+          type: string
+          description: The unique name or ID of the flow.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        id:
+          type: string
+          description: The full resource ID of the flow.
+          example: /providers/Microsoft.ProcessSimple/environments/Default/flows/a1b2c3d4
+        type:
+          type: string
+          description: The resource type.
+          example: Microsoft.ProcessSimple/environments/flows
+        properties:
+          $ref: '#/components/schemas/FlowProperties'
+    FlowList:
+      type: object
+      description: A list of flows.
+      properties:
+        value:
+          type: array
+          description: The array of flows.
+          items:
+            $ref: '#/components/schemas/Flow'
+    UserIdentity:
+      type: object
+      description: Identity of a user.
+      properties:
+        tenantId:
+          type: string
+          description: The tenant ID.
+          example: tenant-a1b2c3d4
+        objectId:
+          type: string
+          description: The object ID.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        userId:
+          type: string
+          description: The user ID.
+          example: user-abc123
+        userType:
+          type: string
+          description: The user type.
+          example: ActiveDirectory
+    CallbackUrlResponse:
+      type: object
+      description: Response containing a callback URL.
+      properties:
+        response:
+          type: object
+          properties:
+            value:
+              type: string
+              description: The callback URL.
+              example: https://prod-01.westus.logic.azure.com/workflows/...
+    FlowCreateRequest:
+      type: object
+      description: Request to create a new flow.
+      required:
+      - properties
+      properties:
+        properties:
+          type: object
+          properties:
+            displayName:
+              type: string
+              description: The display name for the new flow.
+              example: My New Automation
+            state:
+              type: string
+              description: The initial state of the flow.
+              example: Stopped
+            definition:
+              type: object
+              description: The workflow definition of the flow.
+            connectionReferences:
+              type: object
+              description: Connection references needed by the flow.
+              additionalProperties:
+                $ref: '#/components/schemas/ConnectionReference'
+    ConnectionReference:
+      type: object
+      description: A reference to a connection used by a flow.
+      properties:
+        connectionName:
+          type: string
+          description: The name of the connection.
+          example: shared-commondataserviceforapps-abc123
+        displayName:
+          type: string
+          description: The display name of the connection.
+          example: Dataverse
+        id:
+          type: string
+          description: The connector ID.
+          example: /providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps
+        source:
+          type: string
+          description: The connection source type.
+          example: embedded
+        connectionReferenceLogicalName:
+          type: string
+          description: Logical name of the connection reference.
+          example: crdcb_sharedcommondataserviceforapps_109ea
   securitySchemes:
     oauth2:
       type: oauth2
