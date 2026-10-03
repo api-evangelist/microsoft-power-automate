@@ -95,6 +95,72 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Principal:
+      type: object
+      description: A user or service principal.
+      properties:
+        id:
+          type: string
+          description: The object ID of the principal.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        displayName:
+          type: string
+          description: The display name.
+          example: Jane Smith
+        email:
+          type: string
+          format: email
+          description: The email address.
+          example: jane.smith@contoso.com
+        type:
+          type: string
+          description: The principal type.
+          example: User
+        tenantId:
+          type: string
+          description: The tenant ID.
+          example: tenant-a1b2c3d4
+        userPrincipalName:
+          type: string
+          description: The user principal name.
+          example: jane.smith@contoso.com
+    FlowPermissionList:
+      type: object
+      description: A list of flow permissions.
+      properties:
+        value:
+          type: array
+          description: The array of permissions.
+          items:
+            $ref: '#/components/schemas/FlowPermission'
+    FlowOwnerModifyRequest:
+      type: object
+      description: Request to modify flow owners.
+      properties:
+        add:
+          type: array
+          description: Users to add as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to add.
+              type:
+                type: string
+                description: The type of the user.
+        remove:
+          type: array
+          description: Users to remove as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to remove.
+              type:
+                type: string
+                description: The type of the user.
     FlowPermission:
       type: object
       description: A flow permission entry.
@@ -127,72 +193,6 @@ components:
               type: string
               description: A human-readable error message.
               example: The specified flow was not found.
-    Principal:
-      type: object
-      description: A user or service principal.
-      properties:
-        id:
-          type: string
-          description: The object ID of the principal.
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        displayName:
-          type: string
-          description: The display name.
-          example: Jane Smith
-        email:
-          type: string
-          format: email
-          description: The email address.
-          example: jane.smith@contoso.com
-        type:
-          type: string
-          description: The principal type.
-          example: User
-        tenantId:
-          type: string
-          description: The tenant ID.
-          example: tenant-a1b2c3d4
-        userPrincipalName:
-          type: string
-          description: The user principal name.
-          example: jane.smith@contoso.com
-    FlowOwnerModifyRequest:
-      type: object
-      description: Request to modify flow owners.
-      properties:
-        add:
-          type: array
-          description: Users to add as owners.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: The object ID of the user to add.
-              type:
-                type: string
-                description: The type of the user.
-        remove:
-          type: array
-          description: Users to remove as owners.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: The object ID of the user to remove.
-              type:
-                type: string
-                description: The type of the user.
-    FlowPermissionList:
-      type: object
-      description: A list of flow permissions.
-      properties:
-        value:
-          type: array
-          description: The array of permissions.
-          items:
-            $ref: '#/components/schemas/FlowPermission'
   securitySchemes:
     oauth2:
       type: oauth2

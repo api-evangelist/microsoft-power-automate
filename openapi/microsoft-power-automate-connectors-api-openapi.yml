@@ -109,6 +109,15 @@ components:
               type: string
               description: A human-readable error message.
               example: The specified flow was not found.
+    ConnectorList:
+      type: object
+      description: A list of connectors.
+      properties:
+        value:
+          type: array
+          description: The array of connectors.
+          items:
+            $ref: '#/components/schemas/Connector'
     Connector:
       type: object
       description: A Power Automate connector.
@@ -136,15 +145,6 @@ components:
               type: string
               description: The tier of the connector.
               example: Standard
-    ConnectorList:
-      type: object
-      description: A list of connectors.
-      properties:
-        value:
-          type: array
-          description: The array of connectors.
-          items:
-            $ref: '#/components/schemas/Connector'
   securitySchemes:
     oauth2:
       type: oauth2
