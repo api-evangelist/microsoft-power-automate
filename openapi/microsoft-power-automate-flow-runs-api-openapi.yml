@@ -200,15 +200,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FlowRunList:
-      type: object
-      description: A list of flow runs.
-      properties:
-        value:
-          type: array
-          description: The array of flow runs.
-          items:
-            $ref: '#/components/schemas/FlowRun'
     TriggerInfo:
       type: object
       description: Information about the trigger that started the flow run.
@@ -227,38 +218,15 @@ components:
             contentVersion:
               type: string
               description: Content version.
-    FlowRun:
+    FlowRunList:
       type: object
-      description: A flow run representing a single execution of a flow.
+      description: A list of flow runs.
       properties:
-        name:
-          type: string
-          description: The unique ID of the flow run.
-          example: 08585132316362410016778943264CU43
-        id:
-          type: string
-          description: The full resource ID of the flow run.
-        type:
-          type: string
-          description: The resource type.
-          example: Microsoft.ProcessSimple/environments/flows/runs
-        properties:
-          $ref: '#/components/schemas/FlowRunProperties'
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
+        value:
+          type: array
+          description: The array of flow runs.
+          items:
+            $ref: '#/components/schemas/FlowRun'
     FlowRunProperties:
       type: object
       description: Properties of a flow run.
@@ -290,6 +258,38 @@ components:
           example: OK
         trigger:
           $ref: '#/components/schemas/TriggerInfo'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
+    FlowRun:
+      type: object
+      description: A flow run representing a single execution of a flow.
+      properties:
+        name:
+          type: string
+          description: The unique ID of the flow run.
+          example: 08585132316362410016778943264CU43
+        id:
+          type: string
+          description: The full resource ID of the flow run.
+        type:
+          type: string
+          description: The resource type.
+          example: Microsoft.ProcessSimple/environments/flows/runs
+        properties:
+          $ref: '#/components/schemas/FlowRunProperties'
   securitySchemes:
     oauth2:
       type: oauth2

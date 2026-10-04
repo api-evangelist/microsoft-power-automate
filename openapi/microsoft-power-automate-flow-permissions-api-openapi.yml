@@ -95,6 +95,60 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    FlowPermissionList:
+      type: object
+      description: A list of flow permissions.
+      properties:
+        value:
+          type: array
+          description: The array of permissions.
+          items:
+            $ref: '#/components/schemas/FlowPermission'
+    FlowPermission:
+      type: object
+      description: A flow permission entry.
+      properties:
+        name:
+          type: string
+          description: The permission name.
+          example: permission-abc123
+        properties:
+          type: object
+          properties:
+            roleName:
+              type: string
+              description: The role name.
+              example: Owner
+            principal:
+              $ref: '#/components/schemas/Principal'
+    FlowOwnerModifyRequest:
+      type: object
+      description: Request to modify flow owners.
+      properties:
+        add:
+          type: array
+          description: Users to add as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to add.
+              type:
+                type: string
+                description: The type of the user.
+        remove:
+          type: array
+          description: Users to remove as owners.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The object ID of the user to remove.
+              type:
+                type: string
+                description: The type of the user.
     Principal:
       type: object
       description: A user or service principal.
@@ -124,60 +178,6 @@ components:
           type: string
           description: The user principal name.
           example: jane.smith@contoso.com
-    FlowPermissionList:
-      type: object
-      description: A list of flow permissions.
-      properties:
-        value:
-          type: array
-          description: The array of permissions.
-          items:
-            $ref: '#/components/schemas/FlowPermission'
-    FlowOwnerModifyRequest:
-      type: object
-      description: Request to modify flow owners.
-      properties:
-        add:
-          type: array
-          description: Users to add as owners.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: The object ID of the user to add.
-              type:
-                type: string
-                description: The type of the user.
-        remove:
-          type: array
-          description: Users to remove as owners.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: The object ID of the user to remove.
-              type:
-                type: string
-                description: The type of the user.
-    FlowPermission:
-      type: object
-      description: A flow permission entry.
-      properties:
-        name:
-          type: string
-          description: The permission name.
-          example: permission-abc123
-        properties:
-          type: object
-          properties:
-            roleName:
-              type: string
-              description: The role name.
-              example: Owner
-            principal:
-              $ref: '#/components/schemas/Principal'
     Error:
       type: object
       description: An error response from the API.

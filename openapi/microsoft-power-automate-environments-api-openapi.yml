@@ -45,30 +45,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    EnvironmentList:
-      type: object
-      description: A list of environments.
-      properties:
-        value:
-          type: array
-          description: The array of environments.
-          items:
-            $ref: '#/components/schemas/Environment'
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
     Environment:
       type: object
       description: A Power Automate environment.
@@ -121,6 +97,30 @@ components:
           type: boolean
           description: Whether this is the default environment.
           example: false
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
+    EnvironmentList:
+      type: object
+      description: A list of environments.
+      properties:
+        value:
+          type: array
+          description: The array of environments.
+          items:
+            $ref: '#/components/schemas/Environment'
   securitySchemes:
     oauth2:
       type: oauth2
