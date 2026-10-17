@@ -103,6 +103,21 @@ components:
           description: The array of connectors.
           items:
             $ref: '#/components/schemas/Connector'
+    Error:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
     Connector:
       type: object
       description: A Power Automate connector.
@@ -130,21 +145,6 @@ components:
               type: string
               description: The tier of the connector.
               example: Standard
-    Error:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
   securitySchemes:
     oauth2:
       type: oauth2

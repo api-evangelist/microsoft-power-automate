@@ -95,15 +95,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FlowPermissionList:
+    Error:
       type: object
-      description: A list of flow permissions.
+      description: An error response from the API.
       properties:
-        value:
-          type: array
-          description: The array of permissions.
-          items:
-            $ref: '#/components/schemas/FlowPermission'
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
     FlowPermission:
       type: object
       description: A flow permission entry.
@@ -178,21 +184,15 @@ components:
           type: string
           description: The user principal name.
           example: jane.smith@contoso.com
-    Error:
+    FlowPermissionList:
       type: object
-      description: An error response from the API.
+      description: A list of flow permissions.
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
+        value:
+          type: array
+          description: The array of permissions.
+          items:
+            $ref: '#/components/schemas/FlowPermission'
   securitySchemes:
     oauth2:
       type: oauth2

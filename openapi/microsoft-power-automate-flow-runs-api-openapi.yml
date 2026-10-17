@@ -218,15 +218,21 @@ components:
             contentVersion:
               type: string
               description: Content version.
-    FlowRunList:
+    Error:
       type: object
-      description: A list of flow runs.
+      description: An error response from the API.
       properties:
-        value:
-          type: array
-          description: The array of flow runs.
-          items:
-            $ref: '#/components/schemas/FlowRun'
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code.
+              example: FlowNotFound
+            message:
+              type: string
+              description: A human-readable error message.
+              example: The specified flow was not found.
     FlowRunProperties:
       type: object
       description: Properties of a flow run.
@@ -258,21 +264,15 @@ components:
           example: OK
         trigger:
           $ref: '#/components/schemas/TriggerInfo'
-    Error:
+    FlowRunList:
       type: object
-      description: An error response from the API.
+      description: A list of flow runs.
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code.
-              example: FlowNotFound
-            message:
-              type: string
-              description: A human-readable error message.
-              example: The specified flow was not found.
+        value:
+          type: array
+          description: The array of flow runs.
+          items:
+            $ref: '#/components/schemas/FlowRun'
     FlowRun:
       type: object
       description: A flow run representing a single execution of a flow.
