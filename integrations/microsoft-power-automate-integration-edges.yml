@@ -1,0 +1,16 @@
+generated: '2026-10-20'
+method: none
+source:
+- https://zapier.com/apps/microsoft-power-automate/integrations
+- https://n8n.io/integrations/microsoft-power-automate/
+- https://composio.dev/toolkits/microsoft-power-automate
+- https://monid.ai/tools/microsoft-power-automate
+checked:
+- https://composio.dev/toolkits/microsoft-power-automate
+- https://monid.ai/tools/microsoft-power-automate
+- https://n8n.io/integrations/microsoft-power-automate/
+- https://zapier.com/apps/microsoft-power-automate/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
