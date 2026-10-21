@@ -1,5 +1,5 @@
 generated: '2026-10-20'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/microsoft-power-automate/integrations
 - https://n8n.io/integrations/microsoft-power-automate/
@@ -10,7 +10,483 @@ checked:
 - https://monid.ai/tools/microsoft-power-automate
 - https://n8n.io/integrations/microsoft-power-automate/
 - https://zapier.com/apps/microsoft-power-automate/integrations
+- https://learn.microsoft.com/en-us/connectors/connector-reference/
 summary: null
-marketplace_apps: []
-edges: []
+marketplace_apps:
+- marketplace: power-platform-connectors
+  channel: partner-built
+  app: microsoft-power-automate
+  url: https://learn.microsoft.com/en-us/connectors/connector-reference/
+  app_count: 1597
+  adapter: sweep-rpa-document-ai.py:ms
+  listed: 11
+  note: 'Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps): only domain-linked, in-market
+    vendors are written'
+edges:
+- partner_name: Feathery
+  partner: feathery
+  partner_match: domain
+  partner_url: https://feathery.io
+  type: coverage
+  marketplace: coverage
+  channel: provider-built
+  relationship: connector-coverage
+  direction: provider-built
+  evidence: https://learn.microsoft.com/en-us/connectors/featheryip/
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-connector:independent
+    registered_name: Feathery
+    matched_domain: feathery.io
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    connectors:
+    - Feathery
+    publishers:
+    - Troy Taylor
+    builder: independent publisher (not the vendor; individual or SI)
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Alkymi
+  partner: alkymi
+  partner_match: domain
+  partner_url: https://alkymi.io
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/alkymi/
+  app: Alkymi
+  category: Content and Files
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Alkymi
+    matched_domain: alkymi.io
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Alkymi
+    publisher: Alkymi
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Cloudmersive
+  partner: cloudmersive
+  partner_match: domain+name-among-holders
+  partner_url: https://cloudmersive.com
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/cloudmersivebarcode/
+  app: Cloudmersive Barcode
+  category: Data;Content and Files
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Cloudmersive Barcode
+    matched_domain: cloudmersive.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Cloudmersive Barcode
+    - Cloudmersive CDR
+    - Cloudmersive Currency
+    - Cloudmersive Data Validation
+    - Cloudmersive Document Conversion
+    - Cloudmersive File Processing
+    - Cloudmersive Image Processing
+    - Cloudmersive NLP
+    - Cloudmersive PDF
+    - Cloudmersive Security
+    publisher: Cloudmersive, LLC
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    - Preview
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Docparser
+  partner: docparser
+  partner_match: domain
+  partner_url: https://docparser.com
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/docparser/
+  app: Docparser
+  category: connector
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Docparser
+    matched_domain: docparser.com
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Docparser
+    publisher: Docparser
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Eden AI
+  partner: eden-ai
+  partner_match: domain
+  partner_url: https://edenai.co
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/edenai/
+  app: Eden AI
+  category: AI;Website
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Eden AI
+    matched_domain: edenai.co
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Eden AI
+    publisher: Eden AI
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Feathery
+  partner: feathery
+  partner_match: domain
+  partner_url: https://feathery.io
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/featheryforms/
+  app: Feathery Forms
+  category: Productivity;Collaboration
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Feathery Forms
+    matched_domain: feathery.io
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Feathery Forms
+    publisher: Feathery
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Nitro Software
+  partner: nitro-software
+  partner_match: domain+name-among-holders
+  partner_url: https://gonitro.com
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/nitro/
+  app: Nitro
+  category: Productivity
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Nitro
+    matched_domain: gonitro.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Nitro
+    - Nitro Sign Enterprise Verified
+    publisher: Nitro Software, Inc.
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Nutrient.io
+  partner: nutrient-io
+  partner_match: domain+verified
+  partner_url: https://nutrient.io
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/muhimbipdf/
+  app: Muhimbi PDF
+  category: Collaboration;Content and Files
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Muhimbi PDF
+    matched_domain: nutrient.io
+    matched_by: domain+verified
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Muhimbi PDF
+    - Nutrient - Convert to PDF
+    - Nutrient - Extract from PDF
+    - Nutrient - PDF OCR
+    - Nutrient - Watermark to PDF
+    - Nutrient Document Converter
+    - Nutrient Workflow Automation
+    publisher: Muhimbi trading as Nutrient
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    - Preview
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Parseur
+  partner: parseur
+  partner_match: domain
+  partner_url: https://parseur.com
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/parseur/
+  app: Parseur
+  category: connector
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Parseur
+    matched_domain: parseur.com
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Parseur
+    publisher: Parseur
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: PDF.co
+  partner: pdf-co
+  partner_match: domain
+  partner_url: https://pdf.co
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/pdfco/
+  app: PDFco
+  category: Productivity;Data
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: PDFco
+    matched_domain: pdf.co
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - PDFco
+    publisher: PDF.co
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
+- partner_name: Zuva
+  partner: zuva
+  partner_match: domain
+  partner_url: https://zuva.ai
+  type: marketplace
+  marketplace: power-platform-connectors
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/connectors/zuvadocai/
+  app: Zuva DocAI
+  category: AI
+  badges:
+  - Power Platform certified connector
+  contract_reference:
+    register: Microsoft Power Platform connectors (Power Automate / Power Apps / Logic Apps)
+    spec_file: null
+    role: power-platform-certified-connector-publisher
+    registered_name: Zuva DocAI
+    matched_domain: zuva.ai
+    matched_by: domain
+    detected_by: sweep-rpa-document-ai.py
+    detected: '2026-10-20'
+    signal_note: one edge per (provider, platform); listing alone = participation. Listing, download and connector
+      counts are context, never counted
+    standard: Microsoft Power Platform certified connector
+    connectors:
+    - Zuva DocAI
+    publisher: Zuva Inc.
+    badges_context:
+    - Logic Apps
+    - Power Apps
+    - Power Automate
+    - Premium
+    builder: provider (published by the vendor through Microsoft's connector certification)
+    certified_products:
+    - product: Power Platform certified connector
+      product_type: Power Platform certified connector
+      lapsed: false
+      preview: false
+  detected_by: sweep-rpa-document-ai.py
+  first_seen: '2026-10-20'
 templates: []
