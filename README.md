@@ -1,4 +1,4 @@
-# Microsoft Power Automate (microsoft-power-automate)
+# Microsoft Power Automate
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,164 +66,222 @@
 
 Microsoft Power Automate is a cloud-based service that helps you create automated workflows between your favorite apps and services to synchronize files, get notifications, collect data, and automate business processes. It supports automated, instant, and scheduled cloud flows, as well as desktop flows for robotic process automation.
 
-**URL:** [Visit APIs.json URL](https://powerautomate.microsoft.com)
+**Areas:** Automation · Business Process · Integration · Low-Code · Microsoft · Power Platform · RPA · Workflows · Workflow Automation
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Microsoft Power Automate on APIs.io
 
-## Tags:
+Everything profiled for Microsoft Power Automate is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/microsoft-power-automate/](https://apis.io/providers/microsoft-power-automate/)** — or go straight to one of the APIs or properties below.
 
- - Automation, Business Process, Integration, Low-Code, Microsoft, Power Platform, RPA, Workflow
+### APIs (10)
 
-## Timestamps
+- [Microsoft Power Automate Connections API](https://apis.io/apis/microsoft-power-automate/microsoft-power-automate-connections-api/) — Operations for managing connections
+- [Microsoft Power Automate Connectors API](https://apis.io/apis/microsoft-power-automate/microsoft-power-automate-connectors-api/) — Operations for managing connectors
+- [Microsoft Power Automate Environments API](https://apis.io/apis/microsoft-power-automate/microsoft-power-automate-environments-api/) — Operations for managing Power Automate environments
+- [Microsoft Power Automate Flow Permissions API](https://apis.io/apis/microsoft-power-automate/microsoft-power-automate-flow-permissions-api/) — Operations for managing flow sharing and ownership
+- [Microsoft Power Automate Flow Runs API](https://apis.io/apis/microsoft-power-automate/microsoft-power-automate-flow-runs-api/) — Operations for managing flow run history
+- [Microsoft Power Automate Flows API](https://apis.io/apis/microsoft-power-automate/microsoft-power-automate-flows-api/) — Operations for managing cloud flows
+- [Microsoft Power Automate](https://apis.io/apis/microsoft-power-automate/power-automate/) — Microsoft Power Automate is a cloud-based workflow automation platform that lets organizations build automated workflows, robotic process automation,…
+- [Power Automate Desktop Flows Public API](https://apis.io/apis/microsoft-power-automate/desktop-flows-api/) — The Desktop Flows public API enables developers to programmatically manage, run, and monitor desktop flow automations as part of robotic process automation…
+- [Power Automate Cloud Flows API](https://apis.io/apis/microsoft-power-automate/cloud-flows-api/) — Programmatic access for managing cloud flows in Power Automate including creating, updating, and running flows using Dataverse and the Power Platform APIs.
+- [Power Automate Custom Connectors](https://apis.io/apis/microsoft-power-automate/custom-connectors-api/) — Build, register, and certify custom connectors that extend Power Automate to communicate with any REST or SOAP API across the Power Platform.
 
-- **Created:** 2024
-- **Modified:** 2026-04-18
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Power Automate Management API
-REST API for managing flows, environments, connections, connectors, and flow permissions in Power Automate. Enables programmatic creation, update, deletion, and lifecycle management of cloud flows.
+#### Arazzo workflows (9)
 
-**Human URL:** [https://learn.microsoft.com/en-us/power-automate/web-api](https://learn.microsoft.com/en-us/power-automate/web-api)
+Multi-step workflows that chain operations into a business task.
 
-#### Tags:
+- [Microsoft Power Automate Cancel an In-Flight Run](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-cancel-running-run-workflow/)
+- [Microsoft Power Automate Audit a Flow's Connector Dependencies](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-connector-dependency-audit-workflow/)
+- [Microsoft Power Automate Environment Inventory](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-environment-inventory-workflow/)
+- [Microsoft Power Automate Retrieve a Flow Trigger Callback URL](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-flow-callback-url-workflow/)
+- [Microsoft Power Automate Manage Flow Owners](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-manage-flow-owners-workflow/)
+- [Microsoft Power Automate Provision and Activate a Flow](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-provision-flow-workflow/)
+- [Microsoft Power Automate Retire a Flow Safely](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-retire-flow-workflow/)
+- [Microsoft Power Automate Safely Update a Live Flow](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-safe-update-flow-workflow/)
+- [Microsoft Power Automate Triage and Resubmit a Failed Run](https://apis.io/arazzos/microsoft-power-automate/microsoft-power-automate-triage-failed-run-workflow/)
 
- - Automation, Connectors, Environments, Flow Management, Flows
+#### MCP servers (1)
 
-#### Properties
+Model Context Protocol servers that expose the API to agents.
 
-- [Documentation](https://learn.microsoft.com/en-us/power-automate/web-api)
-- [OpenAPI](openapi/microsoft-power-automate-management-api.yaml)
-- [JSONSchema](json-schema/power-automate-management-api-flow-schema.json)
-- [JSONSchema](json-schema/power-automate-management-api-environment-schema.json)
-- [JSONSchema](json-schema/power-automate-management-api-flow-run-schema.json)
-- [JSONSchema](json-schema/power-automate-management-api-connector-schema.json)
-- [JSONStructure](json-structure/power-automate-management-api-flow-structure.json)
-- [JSONStructure](json-structure/power-automate-management-api-environment-structure.json)
-- [JSONStructure](json-structure/power-automate-management-api-flow-run-structure.json)
-- [JSONStructure](json-structure/power-automate-management-api-connector-structure.json)
-- [Example](examples/power-automate-management-api-flow-example.json)
-- [Example](examples/power-automate-management-api-environment-example.json)
-- [Example](examples/power-automate-management-api-flow-run-example.json)
-- [Example](examples/power-automate-management-api-connector-example.json)
-- [Authentication](https://learn.microsoft.com/en-us/power-automate/web-api#authentication)
-- [APIReference](https://learn.microsoft.com/en-us/connectors/flowmanagement/)
+- [microsoft-power-automate-management](https://apis.io/servers/microsoft-power-automate/microsoft-power-automate-management/)
 
-## Common Properties
+#### Agentic access (1)
 
-- [Portal](https://make.powerautomate.com)
-- [DeveloperPortal](https://learn.microsoft.com/en-us/power-automate/)
-- [Blog](https://powerautomate.microsoft.com/en-us/blog/)
-- [Support](https://powerautomate.microsoft.com/en-us/support/)
-- [StatusPage](https://status.powerplatform.microsoft.com/)
-- [Training](https://learn.microsoft.com/en-us/training/powerplatform/power-automate)
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Microsoft Power Automate Agentic Access](https://apis.io/agentic-access/microsoft-power-automate/microsoft-power-automate-agentic-access/)
+
+#### JSON Schema (4)
+
+The data models the API reads and writes.
+
+- [Connector](https://apis.io/schemas/microsoft-power-automate/power-automate-management-api-connector/)
+- [Environment](https://apis.io/schemas/microsoft-power-automate/power-automate-management-api-environment/)
+- [Flow](https://apis.io/schemas/microsoft-power-automate/power-automate-management-api-flow/)
+- [FlowRun](https://apis.io/schemas/microsoft-power-automate/power-automate-management-api-flow-run/)
+
+#### JSON Structure (4)
+
+Data models expressed in JSON Structure.
+
+- [Power Automate Management Api Connector Structure](https://apis.io/json-structure/microsoft-power-automate/power-automate-management-api-connector-structure/)
+- [Power Automate Management Api Environment Structure](https://apis.io/json-structure/microsoft-power-automate/power-automate-management-api-environment-structure/)
+- [Power Automate Management Api Flow Run Structure](https://apis.io/json-structure/microsoft-power-automate/power-automate-management-api-flow-run-structure/)
+- [Power Automate Management Api Flow Structure](https://apis.io/json-structure/microsoft-power-automate/power-automate-management-api-flow-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Microsoft Power Automate Management Api Context](https://apis.io/jsonld/microsoft-power-automate/microsoft-power-automate-management-api-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Microsoft Power Automate Vocabulary](https://apis.io/vocabularies/microsoft-power-automate/microsoft-power-automate-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Power Automate Management Api Connector Example](https://apis.io/examples/microsoft-power-automate/power-automate-management-api-connector-example/)
+- [Power Automate Management Api Environment Example](https://apis.io/examples/microsoft-power-automate/power-automate-management-api-environment-example/)
+- [Power Automate Management Api Flow Example](https://apis.io/examples/microsoft-power-automate/power-automate-management-api-flow-example/)
+- [Power Automate Management Api Flow Run Example](https://apis.io/examples/microsoft-power-automate/power-automate-management-api-flow-run-example/)
+
+#### Collections (12)
+
+Postman and Open Collection request collections.
+
+- [Microsoft Power Automate Management Connections API](https://apis.io/collections/microsoft-power-automate/open-microsoft-power-automate-connections-api/)
+- [Microsoft Power Automate Management Connections Connectors API](https://apis.io/collections/microsoft-power-automate/open-microsoft-power-automate-connectors-api/)
+- [Microsoft Power Automate Management Connections Environments API](https://apis.io/collections/microsoft-power-automate/open-microsoft-power-automate-environments-api/)
+- [Microsoft Power Automate Management Connections Flow Permissions API](https://apis.io/collections/microsoft-power-automate/open-microsoft-power-automate-flow-permissions-api/)
+- [Microsoft Power Automate Management Connections Flow Runs API](https://apis.io/collections/microsoft-power-automate/open-microsoft-power-automate-flow-runs-api/)
+- [Microsoft Power Automate Management Connections Flows API](https://apis.io/collections/microsoft-power-automate/open-microsoft-power-automate-flows-api/)
+- [Microsoft Power Automate Management Connections API](https://apis.io/collections/microsoft-power-automate/postman-microsoft-power-automate-connections-api/)
+- [Microsoft Power Automate Management Connections Connectors API](https://apis.io/collections/microsoft-power-automate/postman-microsoft-power-automate-connectors-api/)
+- [Microsoft Power Automate Management Connections Environments API](https://apis.io/collections/microsoft-power-automate/postman-microsoft-power-automate-environments-api/)
+- [Microsoft Power Automate Management Connections Flow Permissions API](https://apis.io/collections/microsoft-power-automate/postman-microsoft-power-automate-flow-permissions-api/)
+- [Microsoft Power Automate Management Connections Flow Runs API](https://apis.io/collections/microsoft-power-automate/postman-microsoft-power-automate-flow-runs-api/)
+- [Microsoft Power Automate Management Connections Flows API](https://apis.io/collections/microsoft-power-automate/postman-microsoft-power-automate-flows-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Microsoft Power Automate Management Api Overlay](https://apis.io/overlays/microsoft-power-automate/microsoft-power-automate-management-api-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Microsoft Power Automate — jsonschema rules](https://apis.io/rules/microsoft-power-automate/microsoft-power-automate-jsonschema-spectral-rules/)
+- [Microsoft Power Automate API Rules](https://apis.io/rules/microsoft-power-automate/microsoft-power-automate-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Microsoft Power Automate Authentication](https://apis.io/security/microsoft-power-automate/microsoft-power-automate-authentication/)
+- [Microsoft Power Automate Domain Security](https://apis.io/security/microsoft-power-automate/microsoft-power-automate-domain-security/)
+- [Microsoft Power Automate Trust Center](https://apis.io/security/microsoft-power-automate/microsoft-power-automate-trust-center/)
+- [Microsoft Power Automate Vulnerability Disclosure](https://apis.io/security/microsoft-power-automate/microsoft-power-automate-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Microsoft Power Automate Scopes](https://apis.io/scopes/microsoft-power-automate/microsoft-power-automate-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Microsoft Power Automate Plans Pricing](https://apis.io/plans/microsoft-power-automate/microsoft-power-automate-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Microsoft Power Automate Rate Limits](https://apis.io/rate-limits/microsoft-power-automate/microsoft-power-automate-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Microsoft Power Automate Finops](https://apis.io/finops/microsoft-power-automate/microsoft-power-automate-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.microsoft.com/)
+- [Documentation](https://learn.microsoft.com/en-us/power-automate/)
+- [Getting started](https://learn.microsoft.com/en-us/power-automate/getting-started)
 - [Pricing](https://powerautomate.microsoft.com/en-us/pricing/)
-- [PrivacyPolicy](https://privacy.microsoft.com/en-us/privacystatement)
-- [TermsOfService](https://www.microsoft.com/en-us/servicesagreement)
-- [GitHubRepository](https://github.com/microsoft/PowerApps-Samples)
+- [Support](https://powerautomate.microsoft.com/en-us/support/)
+- [Blog](https://powerautomate.microsoft.com/en-us/blog/)
+- [Terms of service](https://www.microsoft.com/en-us/servicesagreement)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+- [Status](https://status.powerplatform.microsoft.com/)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Automated Cloud Flows | Create event-triggered automations that run when specific events occur. |
-| Instant Cloud Flows | Start automations on demand with the push of a button. |
-| Scheduled Cloud Flows | Run automations on a recurring schedule. |
-| Desktop Flows (RPA) | Automate desktop and legacy application tasks using robotic process automation. |
-| Copilot Integration | Create flows using natural language descriptions powered by AI. |
-| 1000+ Connectors | Connect to over 1000 pre-built connectors for Microsoft and third-party services. |
-| Custom Connectors | Build custom connectors using OpenAPI definitions. |
-| Flow Templates | Start from pre-built templates for common automation scenarios. |
-| Approval Workflows | Build approval workflows with built-in support for multi-stage approvals. |
-| Error Handling | Configure error handling, retry policies, and notifications for flow failures. |
+**Kin Score 50.7** — developing · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 31.0 |
+| Contract governance | 31.8 |
+| Operational transparency | 47.4 |
+| Developer ergonomics | 60.7 |
+| Access clarity | 50.0 |
 
-| Name | Description |
-|------|-------------|
-| Email Automation | Automatically process, route, and respond to emails based on content or sender. |
-| Data Synchronization | Keep data synchronized across multiple systems and applications. |
-| Approval Processes | Automate business approval workflows across teams and departments. |
-| Document Processing | Automate document creation, routing, and archival workflows. |
-| IT Process Automation | Automate IT helpdesk tickets, provisioning, and monitoring workflows. |
-| Social Media Monitoring | Track brand mentions and automatically respond or alert teams. |
+**Agent readiness 34.2** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Microsoft 365 | Deep integration with SharePoint, Outlook, Teams, and other Microsoft 365 apps. |
-| Microsoft Dataverse | Native integration with Dataverse for data storage and management. |
-| Azure Services | Connect to Azure Logic Apps, Functions, and other Azure services. |
-| Dynamics 365 | Automate business processes within Dynamics 365 CRM and ERP. |
-| SAP | Connect to SAP systems for enterprise process automation. |
-| Salesforce | Integrate with Salesforce for CRM automation workflows. |
+**Regulatory alignment 43.4** — Energy & Utilities
 
-## Solutions
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/microsoft-power-automate/](https://apis.io/providers/microsoft-power-automate/).
 
-| Name | Description |
-|------|-------------|
-| Power Automate Premium | Premium plan with advanced connectors, AI Builder, and process mining. |
-| Power Automate Process | Per-process licensing for unattended RPA and hosted machines. |
-| Power Automate Hosted | Hosted machine groups for scaling desktop automation. |
+## How this profile is made
 
-## Artifacts
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-Machine-readable API specifications organized by format.
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Microsoft Power Automate: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### OpenAPI
+## Open an issue
 
-- [Power Automate Management API](openapi/microsoft-power-automate-management-api.yaml)
-
-### JSON Schema
-
-- [Flow](json-schema/power-automate-management-api-flow-schema.json)
-- [Environment](json-schema/power-automate-management-api-environment-schema.json)
-- [FlowRun](json-schema/power-automate-management-api-flow-run-schema.json)
-- [Connector](json-schema/power-automate-management-api-connector-schema.json)
-
-### JSON Structure
-
-- [Flow](json-structure/power-automate-management-api-flow-structure.json)
-- [Environment](json-structure/power-automate-management-api-environment-structure.json)
-- [FlowRun](json-structure/power-automate-management-api-flow-run-structure.json)
-- [Connector](json-structure/power-automate-management-api-connector-structure.json)
-
-### JSON-LD
-
-- [Power Automate Management API Context](json-ld/microsoft-power-automate-management-api-context.jsonld)
-
-### Examples
-
-- [Flow](examples/power-automate-management-api-flow-example.json)
-- [Environment](examples/power-automate-management-api-environment-example.json)
-- [FlowRun](examples/power-automate-management-api-flow-run-example.json)
-- [Connector](examples/power-automate-management-api-connector-example.json)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Power Automate Management API](capabilities/shared/management-api.yaml) — 10 operations for flow, environment, and connector management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Flow Automation](capabilities/flow-automation.yaml) | Power Automate Management API | 10 | Automation Engineer, Platform Administrator |
-
-## Vocabulary
-
-- [Microsoft Power Automate Vocabulary](vocabulary/microsoft-power-automate-vocabulary.yaml) — Unified taxonomy mapping 6 resources, 10 actions, 1 workflow, and 2 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Microsoft Power Automate Spectral Rules](rules/microsoft-power-automate-spectral-rules.yml) — 21 rules across 7 categories enforcing Power Automate API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/microsoft-power-automate/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
